@@ -111,9 +111,9 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
 						<button type="submit" class="btn btn-primary">Tambah</button>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-@endsection
+	@endsection
