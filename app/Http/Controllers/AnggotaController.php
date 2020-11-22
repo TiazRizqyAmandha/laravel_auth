@@ -8,12 +8,13 @@ class AnggotaController extends Controller
 {
     public function anggotaIndex()
     {
-    	$data_anggota = \App\User::all();
-    	return view('anggota.index',['data_anggota'=>$data_anggota]);
-    } 
+        $data_anggota = \App\User::all();
+        return view('anggota.index', ['data_anggota' => $data_anggota]);
+    }
 
     public function create(Request $request)
     {
-    	\App\User::create($request->all());
+        \App\User::create($request->all());
+        return redirect('/anggota')->with('sukses', 'data berhasil di tambah');
     }
 }

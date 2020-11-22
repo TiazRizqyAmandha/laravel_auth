@@ -28,6 +28,9 @@
 					<a class="nav-link" href="{{url('/kategori')}}">Kategori</a>
 				</li>
 				<li class="nav-item active">
+					<a class="nav-link" href="{{url('/anggota')}}">Anggota <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
 					<a class="nav-link" href="/logout">Logout<span class="sr-only">(current)</span></a>
 				</li>
 			</ul>
