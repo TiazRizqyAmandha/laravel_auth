@@ -40,7 +40,7 @@ class PostsCategoryController extends Controller
     public function create(Request $request)
     {
         \App\PostsCategory::create($request->all());
-        return redirect('/kategori')->with('sukses', 'data berhasil di tambah');
+        return redirect('/admin/kategori')->with('sukses', 'data berhasil di tambah');
     }
 
     /**
@@ -58,6 +58,6 @@ class PostsCategoryController extends Controller
     {
         $posts_category = \App\PostsCategory::find($id);
         $posts_category->update($request->all());
-        return redirect('/kategori')->with('sukses', 'data berhasil di update');
+        return redirect('/admin/kategori')->with('sukses', 'data berhasil di update');
     }
 }

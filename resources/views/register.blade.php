@@ -86,8 +86,8 @@
                             <div class="form-group">
                                 <label for=""><strong>Role</strong></label>
                                 <select name="role" class="form-control">
-                                    <option value="a">Admin</option>
-                                    <option value="u">User</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="User">User</option>
                                 </select>
                             </div>
                         </div>

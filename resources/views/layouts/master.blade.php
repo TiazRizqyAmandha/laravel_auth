@@ -40,6 +40,7 @@
 			</form>
 		</div>
 	</nav>
+	<x-navbar />
 	<div class="container">
 		@yield('content')
 	</div>
