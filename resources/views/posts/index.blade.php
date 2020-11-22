@@ -91,6 +91,7 @@
 						<div class="alert alert-danger">*Kategori harap dipilih</div>
 						@enderror
 					</div>
+<<<<<<< Updated upstream
 					<div class="form-group">
 						<label for="input_file">File Pendukung</label>
 						<input type="file" name="document" class="form-control-file" id="input_file">
@@ -114,6 +115,25 @@
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</div>
 			</form>
+=======
+					<!-- <label for="exampleFormControlSelect1">Category</label>
+							<div class="input-group">
+								<select name="category" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+									<option selected>Choose...</option>
+									<option value="it">IT</option>
+									<option value="bisnis">Bisnis</option>
+								</select>
+								<div class="input-group-append">
+									<button class="btn btn-outline-secondary" type="button">+</button>
+								</div>
+							</div> -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+				<button type="submit" class="btn btn-primary">Tambah</button>
+				</form>
+			</div>
+>>>>>>> Stashed changes
 		</div>
 	</div>
 </div>

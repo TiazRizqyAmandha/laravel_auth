@@ -9,6 +9,7 @@ Route::post('login', 'AuthController@login');
 Route::get('register', 'AuthController@showFormRegister')->name('register');
 Route::post('register', 'AuthController@register');
 
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('home', 'HomeController@index')->name('home');
@@ -27,3 +28,6 @@ Route::get('/kategori', 'PostsCategoryController@halamanIndex');
 Route::post('/kategori/create', 'PostsCategoryController@create');
 Route::get('/kategori/{id}/edit', 'PostsCategoryController@edit');
 Route::post('/kategori/{id}/update', 'PostsCategoryController@update');
+//! Anggota
+Route::get('/anggota','AnggotaController@anggotaIndex');
+Route::post('/anggota/create','AnggotaController@create');
