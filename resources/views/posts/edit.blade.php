@@ -11,18 +11,19 @@
 		<form action="/posts/{{$posts->id}}/update" method="POST">
 			{{csrf_field()}}
 			<div class="form-group">
-				<label for="exampleInputEmail1">Title</label>
-				<input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title" value="{{$posts->title}}">
+				<label for="input_title">Title</label>
+				<input name="title" type="text" class="form-control" id="input_title" aria-describedby="emailHelp" placeholder="Title" value="{{$posts->title}}">
 			</div>
 			<div class="form-group">
-				<label for="exampleFormControlTextarea1">Body</label>
-				<textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Body">{{$posts->body}}</textarea>
+				<label for="input_body">Body</label>
+				<textarea name="body" class="form-control" id="input_body" rows="3" placeholder="Body">{{$posts->body}}</textarea>
 			</div>
 			<div class="form-group">
-				<label for="exampleFormControlSelect1">Category</label>
-				<select name="category" class="form-control" id="exampleFormControlSelect1">
-					<option value="it" @if($posts->category == 'it') selected @endif>IT</option>
-					<option value="bisnis" @if($posts->category == 'bisnis') selected @endif>Bisnis</option>
+				<label for="input_category">Category</label>
+				<select name="posts_category_id" class="form-control" id="input_category">
+					@foreach($posts_category as $category)
+					<option value="{{$category->id}}" {{$category->id == $posts->posts_category_id ? 'selected' : ''}}>{{$category->name}}</option>
+					@endforeach
 				</select>
 			</div>
 			<button type="submit" class="btn btn-warning">Update</button>
