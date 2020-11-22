@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Nov 2020 pada 03.18
+-- Waktu pembuatan: 22 Nov 2020 pada 09.19
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.9
 
@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `laravel7_auth`
+-- Database: `laravel_auth`
 --
-CREATE DATABASE IF NOT EXISTS `laravel7_auth` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `laravel7_auth`;
+CREATE DATABASE IF NOT EXISTS `laravel_auth` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `laravel_auth`;
 
 -- --------------------------------------------------------
 
@@ -29,6 +29,7 @@ USE `laravel7_auth`;
 -- Struktur dari tabel `failed_jobs`
 --
 
+DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -44,6 +45,7 @@ CREATE TABLE `failed_jobs` (
 -- Struktur dari tabel `migrations`
 --
 
+DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -65,11 +67,16 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Struktur dari tabel `posts`
 --
 
+DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `document_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `filter` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `users_id` bigint(20) UNSIGNED NOT NULL,
   `posts_category_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -79,12 +86,13 @@ CREATE TABLE `posts` (
 -- Dumping data untuk tabel `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `body`, `category`, `posts_category_id`, `created_at`, `updated_at`) VALUES
-(2, 'Lowongan HRD', 'abcdefgh', 'bisnis', 2, '2020-11-17 15:03:35', '2020-11-17 15:03:35'),
-(3, 'Lowongan Sekretaris', 'Lowongan Baru', 'bisnis', 2, '2020-11-17 15:12:27', '2020-11-17 15:12:27'),
-(4, 'Amandha Jaemin', 'coba', 'it', 1, '2020-11-17 15:14:10', '2020-11-18 02:16:12'),
-(5, 'Ubin', 'coba2', 'it', 1, '2020-11-17 15:17:50', '2020-11-17 15:17:50'),
-(6, 'Lele', 'coba3', 'bisnis', 2, '2020-11-17 15:18:32', '2020-11-17 15:18:32');
+INSERT INTO `posts` (`id`, `title`, `body`, `category`, `document_url`, `filter`, `status`, `users_id`, `posts_category_id`, `created_at`, `updated_at`) VALUES
+(2, 'Lowongan HRD', 'abcdefgh', 'bisnis', NULL, NULL, 'Aktif', 1, 2, '2020-11-17 15:03:35', '2020-11-17 15:03:35'),
+(3, 'Lowongan Sekretaris', 'Lowongan Baru', 'bisnis', NULL, NULL, 'Aktif', 1, 2, '2020-11-17 15:12:27', '2020-11-17 15:12:27'),
+(4, 'Amandha Jaemin', 'coba', 'it', NULL, NULL, 'Aktif', 1, 1, '2020-11-17 15:14:10', '2020-11-18 02:16:12'),
+(5, 'Ubin', 'coba2', 'it', NULL, NULL, 'Aktif', 1, 1, '2020-11-17 15:17:50', '2020-11-17 15:17:50'),
+(6, 'Lele', 'coba3', 'bisnis', NULL, NULL, 'Aktif', 1, 2, '2020-11-17 15:18:32', '2020-11-17 15:18:32'),
+(11, 'Contoh Updated', 'Contoh Deskripsi', NULL, 'file/documents/doc_2/doc_Contoh-Judul_Jadwal-UAS-Genap-1920.pdf', '{\"generation\":[\"2016\",\"2018\"],\"gender\":\"P\"}', 'Aktif', 2, 1, '2020-11-21 23:46:37', '2020-11-22 01:10:47');
 
 -- --------------------------------------------------------
 
@@ -92,6 +100,7 @@ INSERT INTO `posts` (`id`, `title`, `body`, `category`, `posts_category_id`, `cr
 -- Struktur dari tabel `posts_category`
 --
 
+DROP TABLE IF EXISTS `posts_category`;
 CREATE TABLE `posts_category` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -115,6 +124,7 @@ INSERT INTO `posts_category` (`id`, `name`, `status`, `created_at`, `updated_at`
 -- Struktur dari tabel `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -141,7 +151,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `address`, `birthdate`, `generation`, `phone_number`, `gender`, `role`, `self_description`, `username`, `status`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Tiaz Rizqy Amandha', 'null', '1990-01-01', 'null', 'null', 'null', 'User', 'null', 'null', 'Aktif', 'amandhatiazrizqi@gmail.com', '2020-11-17 13:18:30', '$2y$10$kNLVsZ7stw0/RcgGljKs2O7QQMzTqGY4d0bRg.yosg0nQJv1IMunG', NULL, '2020-11-17 13:18:30', '2020-11-17 13:18:30'),
-(2, 'Coba', 'coba', '2020-11-21', 'Coba', 'Coba', 'Coba', 'Admin', 'Coba', 'Coba', 'Aktif', 'coba@co.ba', '2020-11-21 10:00:10', '$2y$10$Ec8GsHyhFP/TL9XfUFGVreVXyIZ44/kjly11L0glU66eridOpZcpW', NULL, '2020-11-21 10:00:10', NULL);
+(2, 'Coba', 'coba', '2020-11-21', '2016', 'Coba', 'L', 'Admin', 'Coba', 'Coba', 'Aktif', 'coba@co.ba', '2020-11-21 10:00:10', '$2y$10$Ec8GsHyhFP/TL9XfUFGVreVXyIZ44/kjly11L0glU66eridOpZcpW', NULL, '2020-11-21 10:00:10', NULL);
 
 --
 -- Indexes for dumped tables
@@ -163,7 +173,9 @@ ALTER TABLE `migrations`
 -- Indeks untuk tabel `posts`
 --
 ALTER TABLE `posts`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_posts_category_id` (`posts_category_id`),
+  ADD KEY `fk_users_id` (`users_id`);
 
 --
 -- Indeks untuk tabel `posts_category`
@@ -198,7 +210,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `posts_category`
@@ -211,6 +223,17 @@ ALTER TABLE `posts_category`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `posts`
+--
+ALTER TABLE `posts`
+  ADD CONSTRAINT `fk_posts_category_id` FOREIGN KEY (`posts_category_id`) REFERENCES `posts_category` (`id`),
+  ADD CONSTRAINT `fk_users_id` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

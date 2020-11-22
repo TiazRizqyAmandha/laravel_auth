@@ -11,7 +11,7 @@
 	</div>
 	<div class="col-6">
 		<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+		<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
 			Tambah
 		</button>
 	</div>
@@ -21,6 +21,8 @@
 				<th scope="col">Title</th>
 				<th scope="col">Body</th>
 				<th scope="col">Category</th>
+				<th scope="col">Document</th>
+				<th scope="col">Status</th>
 				<th scope="col">Aksi</th>
 			</tr>
 		</thead>
@@ -30,6 +32,12 @@
 				<td scope="row">{{$posts->title}}</td>
 				<td>{{$posts->body}}</td>
 				<td>{{$posts->postsCategory->name}}</td>
+				@if(!$posts->document_url)
+				<td>-</td>
+				@else
+				<td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Download</a></td>
+				@endif
+				<td>{{$posts->status}}</td>
 				<td>
 					<a href="/posts/{{$posts->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
 					<a href="/posts/{{$posts->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Akan Menghapus Data Post Lowongan Kerja?')">Hapus</a>
@@ -43,57 +51,69 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<h5 class="modal-title" id="addModalLabel">Tambah Posts Lowongan Kerja</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
-				<form action="/posts/create" method="POST">
-					{{csrf_field()}}
+			<form action="/posts/store" method="POST" enctype="multipart/form-data">
+				{{csrf_field()}}
+				<input type="hidden" name="users_id" value="{{Auth::id()}}">
+				<input type="hidden" name="status" value="Aktif">
+				<div class="modal-body" style="height: 70vh;overflow-y: auto;">
 					<div class="form-group">
-						<label for="exampleInputEmail1">Title</label>
-						<input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
+						<label for="input_title">Judul</label>
+						<input name="title" type="text" class="form-control" id="input_title" placeholder="Judul">
+						@error('title')
+						<div class="alert alert-danger">*Judul harap diisi</div>
+						@enderror
 					</div>
 					<div class="form-group">
-						<label for="exampleFormControlTextarea1">Body</label>
-						<textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Body"></textarea>
+						<label for="input_body">Deskripsi</label>
+						<textarea name="body" class="form-control" id="input_body" rows="3" placeholder="Deskripsi"></textarea>
+						@error('body')
+						<div class="alert alert-danger">*Deskripsi harap diisi</div>
+						@enderror
 					</div>
-					<!-- 						<form>
-							<div class="form-group">
-								<label for="exampleFormControlFile1">Pilih File</label>
-								<input type="file" class="form-control-file" id="exampleFormControlFile1">
-							</div>
-						</form> -->
 					<div class="form-group">
-						<label for="select-category">Category</label>
-						<select name="posts_category_id" class="form-control" id="select-category">
+						<label for="input_category">Kategori</label>
+						<select name="posts_category_id" class="form-control" id="input_category">
+							<option value="" selected disabled>Kategori</option>
 							@foreach($posts_category as $category)
 							<option value="{{$category->id}}">{{$category->name}}</option>
 							@endforeach
 						</select>
+						@error('posts_category_id')
+						<div class="alert alert-danger">*Kategori harap dipilih</div>
+						@enderror
 					</div>
-					<!-- <label for="exampleFormControlSelect1">Category</label>
-							<div class="input-group">
-								<select name="category" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-									<option selected>Choose...</option>
-									<option value="it">IT</option>
-									<option value="bisnis">Bisnis</option>
-								</select>
-								<div class="input-group-append">
-									<button class="btn btn-outline-secondary" type="button">+</button>
-								</div>
-							</div> -->
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-primary">Submit</button>
-				</form>
-			</div>
+					<div class="form-group">
+						<label for="input_file">File Pendukung</label>
+						<input type="file" name="document" class="form-control-file" id="input_file">
+					</div>
+					<div class="form-group">
+						<label for="input_filter">Filter</label>
+						<select name="generation[]" class="form-control" id="input_filter" multiple>
+							<option value="" disabled>Angkatan</option>
+							@for($i=date('Y') - 8; $i <= date('Y'); $i++) <option value="{{$i}}">{{$i}}</option>
+								@endfor
+						</select>
+						<select name="gender" class="form-control" id="input_filter">
+							<option value="" selected disabled>Jenis Kelamin</option>
+							<option value="L">Laki-laki</option>
+							<option value="P">Perempuan</option>
+						</select>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

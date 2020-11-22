@@ -26,6 +26,7 @@ class PostsCategoryController extends Controller
         return ResourcesPostsCategory::collection(PostsCategory::all());
     }
 
+    //? Mendapatkan list berdasarkan status
     public function indexStatus($status)
     {
         return ResourcesPostsCategory::collection(PostsCategory::where('status', $status)->get());

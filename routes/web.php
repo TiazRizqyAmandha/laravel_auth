@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'AuthController@showFormLogin')->name('login');
@@ -14,10 +15,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', 'AuthController@logout')->name('logout');
 });
 //! Posts
-Route::get('/posts', 'PostsController@index');
+Route::get('/posts', 'PostsController@halamanIndex');
 Route::post('/posts/create', 'PostsController@create');
+Route::post('/posts/store', 'PostsController@store');
 Route::get('/posts/{id}/edit', 'PostsController@edit');
 Route::post('/posts/{id}/update', 'PostsController@update');
+Route::put('/posts/{id}/update', 'PostsController@store');
 Route::get('/posts/{id}/delete', 'PostsController@delete');
 //! Posts Category
 Route::get('/kategori', 'PostsCategoryController@halamanIndex');
