@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Register</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
+
 <body>
     <div class="container">
         <div class="col-md-4 offset-md-4 mt-5">
@@ -33,28 +35,29 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <label for=""><strong>Full Name</strong></label>
-                                <input nama="name" type="text" class="form-control" placeholder="Nama">
+                                <input name="name" type="text" class="form-control" placeholder="Nama">
                             </div>
                             <div class="form-group">
                                 <label for=""><strong>Username</strong></label>
-                                <input nama="username" type="text" class="form-control"  placeholder="Username">
+                                <input name="username" type="text" class="form-control" placeholder="Username">
                             </div>
                             <div class="form-group">
                                 <label for=""><strong>Angkatan</strong></label>
-                                <input nama="generation" type="text" class="form-control" placeholder="Angkatan">
+                                <input name="generation" type="text" class="form-control" placeholder="Angkatan">
                             </div>
-                            <div class="form-group"> <!-- Date input -->
+                            <div class="form-group">
+                                <!-- Date input -->
                                 <label for=""><strong>Tanggal Lahir</strong></label>
-                                <input class="form-control"  name="birthdate" placeholder="MM/DD/YYY" type="date"/>
+                                <input class="form-control" name="birthdate" placeholder="MM/DD/YYY" type="date" />
                             </div>
-                            <!-- Form code ends --> 
+                            <!-- Form code ends -->
                             <div class="form-group">
                                 <label for=""><strong>Nomor Telepon</strong></label>
-                                <input nama="phone_number" type="text" class="form-control"  placeholder="Nomor Telepon">
+                                <input name="phone_number" type="text" class="form-control" placeholder="Nomor Telepon">
                             </div>
                             <div class="form-group">
                                 <label for=""><strong>Alamat</strong></label>
-                                <textarea name="address" class="form-control"  rows="3" placeholder="Alamat"></textarea>
+                                <textarea name="address" class="form-control" rows="3" placeholder="Alamat"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for=""><strong>Deskripsi Diri</strong></label>
@@ -74,7 +77,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Role</label>
-                                <select nama="role" class="form-control">
+                                <select name="role" class="form-control">
                                     <option value="a">Admin</option>
                                     <option value="u">User</option>
                                 </select>
@@ -90,4 +93,5 @@
         </div>
     </div>
 </body>
+
 </html>
