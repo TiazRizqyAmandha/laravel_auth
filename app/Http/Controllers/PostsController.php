@@ -5,36 +5,49 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Posts as ResourcesPosts;
 use App\Posts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
 	//! Function untuk View
-	public function halamanIndex(Request $request)
+	public function halamanIndex()
 	{
-		if ($request->has('cari')) {
-			$data_posts = \App\Posts::where('title', 'LIKE', '%' . $request->cari . '%')->get();
-		} else {
+		if (Auth::user()->role == 'Admin')
 			$data_posts = $this->index();
-		}
+		else
+			$data_posts = $this->indexUser();
 		$data_posts_category = $this->getActivePostsCategories();
 		return view('posts.index', ['data_posts' => $data_posts, 'posts_category' => $data_posts_category]);
 	}
+	// public function halamanIndexUser(Request $request)
+	// {
+	// 	$data_posts = $this->indexUser();
+	// 	$data_posts_category = $this->getActivePostsCategories();
+	// 	return view('posts.index', ['data_posts' => $data_posts, 'posts_category' => $data_posts_category]);
+	// }
 
 	//! Fucntion untuk ambil data
-	//? Mendapatkan list berdasarkan status
 	public function index()
 	{
 		return ResourcesPosts::collection(Posts::all());
 	}
+	//? Mendapatkan list berdasarkan status
 	public function indexStatus($status)
 	{
 		return ResourcesPosts::collection(Posts::where('status', $status)->get());
+	}
+	//? Mendapatkan list berdasarkan User
+	public function indexUser($users_id = null)
+	{
+		if ($users_id == null)
+			$users_id = Auth::user()->id;
+		return ResourcesPosts::collection(Posts::where('users_id', $users_id)->get());
 	}
 
 	public function create(Request $request)
 	{
 		\App\Posts::create($request->all());
-		return redirect('/posts')->with('sukses', 'data berhasil di tambah');
+		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data berhasil di tambah');
 	}
 
 	public function store(Request $request)
@@ -66,15 +79,15 @@ class PostsController extends Controller
 
 		$posts->save();
 		if ($request->isMethod('put'))
-			return redirect('/posts')->with('sukses', 'data berhasil di ubah');
-		return redirect('/posts')->with('sukses', 'data berhasil di tambah');
+			return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data berhasil di ubah');
+		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data berhasil di tambah');
 	}
 
 	public function edit($id)
 	{
 		$posts = \App\Posts::find($id);
 		$posts_category = $this->getActivePostsCategories();
-		return view('posts/edit', ['posts' => $posts, 'posts_category' => $posts_category]);
+		return view('posts.edit', ['posts' => $posts, 'posts_category' => $posts_category]);
 	}
 
 	public function update(Request $request, $id)

@@ -10,52 +10,7 @@
 </head>
 
 <body>
-    <!--     <div class="container">
-        <div class="col-md-12 mt-5">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Dashboard</h3>
-                </div>
-                <div class="card-body">
-                    <h5>Selamat datang di halaman dashboard, <strong>{{ Auth::user()->name }}</strong></h5>
-                    <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Alumni</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/profil">Profil</a>
-                </li>
-                <!-- <li class="nav-item active">
-                    <a class="nav-link" href="/beranda">Beranda</a>
-                </li> -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="/posts">Posts</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url('/kategori')}}">Kategori</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url('/anggota')}}">Anggota</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/logout">Logout</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0" method="GET" action="/posts">
-                <input name="cari" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
+    <x-navbar />
 </body>
 
 </html>

@@ -15,6 +15,6 @@ class AnggotaController extends Controller
     public function create(Request $request)
     {
         \App\User::create($request->all());
-        return redirect('/anggota')->with('sukses', 'data berhasil di tambah');
+        return redirect('/admin/anggota')->with('sukses', 'data berhasil di tambah');
     }
 }
