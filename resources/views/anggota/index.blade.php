@@ -47,9 +47,10 @@
 </div>
 <script type="text/javascript">
 	var span = document.querySelector("span");
-	function copyTeks(){
+
+	function copyTeks() {
 		document.execCommand("copy");
-		alert("data '" + span.textContent + "' berhasil di salin" )
+		alert("data '" + span.textContent + "' berhasil di salin")
 	}
 	span.addEventListener("copy", function(event) {
 		event.preventDefault();
@@ -76,45 +77,45 @@
 					{{csrf_field()}}
 					<div class="form-group">
 						<div class="form-group">
-							<label for=""><strong>Full Name</strong></label>
+							<label><strong>Full Name</strong></label>
 							<input name="name" type="text" class="form-control" placeholder="Nama">
 						</div>
 						<div class="form-group">
-							<label for=""><strong>Username</strong></label>
+							<label><strong>Username</strong></label>
 							<input name="username" type="text" class="form-control" placeholder="Username">
 						</div>
 						<div class="form-group">
-							<label for=""><strong>Angkatan</strong></label>
+							<label><strong>Angkatan</strong></label>
 							<input name="generation" type="text" class="form-control" placeholder="Angkatan">
 						</div>
 						<div class="form-group">
 							<!-- Date input -->
-							<label for=""><strong>Tanggal Lahir</strong></label>
+							<label><strong>Tanggal Lahir</strong></label>
 							<input class="form-control" id="date" name="birthdate" placeholder="MM/DD/YYY" type="date" />
 						</div>
 						<!-- Form code ends -->
 						<div class="form-group">
-							<label for=""><strong>Nomor Telepon</strong></label>
+							<label><strong>Nomor Telepon</strong></label>
 							<input name="phone_number" type="text" class="form-control" placeholder="Nomor Telepon">
 						</div>
 						<div class="form-group">
-							<label for=""><strong>Alamat</strong></label>
+							<label><strong>Alamat</strong></label>
 							<textarea name="address" class="form-control" rows="3" placeholder="Alamat"></textarea>
 						</div>
 						<div class="form-group">
-							<label for=""><strong>Deskripsi Diri</strong></label>
+							<label><strong>Deskripsi Diri</strong></label>
 							<textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri"></textarea>
 						</div>
 						<div class="form-group">
-							<label for=""><strong>Email</strong></label>
+							<label><strong>Email</strong></label>
 							<input type="text" name="email" class="form-control" placeholder="Email">
 						</div>
 						<div class="form-group">
-							<label for=""><strong>Password</strong></label>
+							<label><strong>Password</strong></label>
 							<input type="password" name="password" class="form-control" placeholder="Password">
 						</div>
 						<div class="form-group">
-							<label for=""><strong>Konfirmasi Password</strong></label>
+							<label><strong>Konfirmasi Password</strong></label>
 							<input type="password" name="password_confirmation" class="form-control" placeholder="Password">
 						</div>
 						<div class="form-group">
@@ -135,10 +136,9 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
 						<button type="submit" class="btn btn-primary">Tambah</button>
-					</form>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
-	@endsection
-
+</div>
+@endsection
