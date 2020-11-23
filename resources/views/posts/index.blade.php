@@ -23,7 +23,7 @@
 				<th scope="col">Category</th>
 				<th scope="col">Document</th>
 				<th scope="col">Status</th>
-				<th scope="col">ID Uploader</th>
+				<th scope="col">Name Uploader</th>
 				<th scope="col">Aksi</th>
 			</tr>
 		</thead>
@@ -39,7 +39,7 @@
 				<td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Download</a></td>
 				@endif
 				<td>{{$posts->status}}</td>
-				<td>{{$posts->users_id}}</td>
+				<td>{{$posts->users->name}}</td>
 				<td>
 					<a href="/posts/{{$posts->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
 					<a href="/posts/{{$posts->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Akan Menghapus Data Post Lowongan Kerja?')">Hapus</a>

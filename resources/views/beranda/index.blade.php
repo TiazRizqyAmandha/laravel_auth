@@ -34,7 +34,7 @@
         @if($posts->status == 'Aktif')
         <h2 class="w3-text-grey w3-padding-16">
           <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
-          {{$posts->title}} / {{$posts->users_id}}
+          {{$posts->title}} / {{$posts->users->name}}
         </h2>
         <div class="w3-container">
           <h6 class="w3-text-teal">
@@ -42,7 +42,7 @@
               <div class="col"><i class="fa fa-calendar fa-fw">Senin,23/11/2020  </i></div>
               <div class="col"><i class="fa fa-star fa-fw">{{$posts->category}}</i></div>
               <div class="col">
-                <i class="fa fa-envelope fa-fw">domain@gmail.com </i>
+                <i class="fa fa-envelope fa-fw">{{$posts->users->email}} </i>
 <!--                 @foreach($data_anggota as $anggota)
                 {{$anggota->email}}
               @endforeach -->
