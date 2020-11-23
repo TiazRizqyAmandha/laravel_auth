@@ -43,13 +43,17 @@
               <div class="col"><i class="fa fa-star fa-fw">{{$posts->category}}</i></div>
               <div class="col">
                 <i class="fa fa-envelope fa-fw">{{$posts->users->email}} </i>
-<!--                 @foreach($data_anggota as $anggota)
-                {{$anggota->email}}
-              @endforeach -->
               </div>
             </div>
           </h6>
           <p>{{$posts->body}}</p>
+          <p>Silahkan Klik 
+            @if(!$posts->document_url)
+            <td>-</td>
+            @else
+            <td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Download</a></td>
+          @endif 
+        Untuk Melihat Dokumen Resmi Perusahaan</p>
           <hr>
         </div>
         @endif
