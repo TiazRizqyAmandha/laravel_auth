@@ -47,7 +47,6 @@
 </div>
 <script type="text/javascript">
 	var span = document.querySelector("span");
-
 	function copyTeks() {
 		document.execCommand("copy");
 		alert("data '" + span.textContent + "' berhasil di salin")

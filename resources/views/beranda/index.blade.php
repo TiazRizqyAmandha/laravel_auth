@@ -56,7 +56,7 @@ $gender = $_GET['gender'];
             <select class="form-control" name="generation">
               <option value="" selected>Angkatan</option>
               @for($i=date('Y') - 8; $i <= date('Y'); $i++) <option value="{{$i}}" {{$generation != null & $generation == $i ? 'selected' : ''}}>{{$i}}</option>
-                @endfor
+              @endfor
             </select>
           </div>
           <div class="col-3">
@@ -72,24 +72,27 @@ $gender = $_GET['gender'];
         </div>
       </form>
     </div>
+    <br>
     <!-- Right Column -->
-    <div class="w3-twothird">
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
+    <div class="row">
+      <div class="col-lg-10" style="background-color: white">
         @foreach($data_posts as $posts)
         @if($generation == null || in_array($generation,json_decode($posts->filter)->generation))
         @if($gender == null || $gender == json_decode($posts->filter)->gender)
         @if($kategori == null || $kategori == $posts->posts_category_id)
         <h2 class="w3-text-grey w3-padding-16">
-          <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
-          {{$posts->title}} / {{$posts->users->name}}
+          <i class="fa fa-user fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
+          {{$posts->title}}
         </h2>
         <div class="w3-container">
           <h6 class="w3-text-teal">
             <div class="row">
-              <div class="col"><i class="fa fa-calendar fa-fw">&nbsp;Senin,23/11/2020</i></div>
-              <div class="col"><i class="fa fa-star fa-fw">&nbsp;{{$posts->postsCategory->name}}</i></div>
-              <div class="col">
-                <i class="fa fa-envelope fa-fw">&nbsp;{{$posts->users->email}} </i>
+              <div class="col-lg-1"><i class="fa fa-user fa-fw">&nbsp;{{$posts->users->username}}</i></div>
+              <div class="col-lg-1"><i class="fa fa-graduation-cap fa-fw">&nbsp;{{$posts->users->generation}}</i></div>
+              <div class="col-lg-3"><i class="fa fa-calendar fa-fw">&nbsp;{{$posts->created_at->format('l,d_F_Y')}}</i></div>
+              <div class="col-lg-2"><i class="fa fa-star fa-fw">&nbsp;{{$posts->postsCategory->name}}</i></div>
+              <div class="col-lg-5">
+                <i class="fa fa-envelope fa-fw"><a href="https://mail.google.com/">&nbsp;{{$posts->users->email}}</a></i>
               </div>
             </div>
           </h6>
@@ -99,8 +102,9 @@ $gender = $_GET['gender'];
             <td>-</td>
             @else
             <td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Download</a></td>
-          @endif 
-        Untuk Melihat Dokumen Resmi Perusahaan</p>
+            @endif 
+          Untuk Melihat Dokumen Resmi Perusahaan</p>
+          <p>Filter || {{$posts->filter}} ||</p>
           <hr>
         </div>
         @endif
@@ -113,11 +117,11 @@ $gender = $_GET['gender'];
     <!-- End Grid -->
   </div>
   <!-- End Page Container -->
-  </div>
-  <footer class="w3-container w3-teal w3-center w3-margin-top">
-    <p>Alumni IT Maranatha Copyright 2020</p>
-  </footer>
-  <!-- Page Container -->
+</div>
+<footer class="w3-container w3-teal w3-center w3-margin-top">
+  <p>Alumni IT Maranatha Copyright 2020</p>
+</footer>
+<!-- Page Container -->
 </body>
 
 </html>

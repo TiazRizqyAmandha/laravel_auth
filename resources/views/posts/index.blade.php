@@ -42,7 +42,7 @@
 				<td>{{$posts->users->name}}</td>
 				<td>
 					<a href="/posts/{{$posts->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
-					<a href="/posts/{{$posts->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Akan Menghapus Data Post Lowongan Kerja?')">Hapus</a>
+					<a href="/posts/{{$posts->id}}/delete" class="btn btn-danger btn-sm">Hapus</a>
 				</td>
 			</tr>
 			@endforeach
