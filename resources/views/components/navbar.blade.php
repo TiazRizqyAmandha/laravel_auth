@@ -1,7 +1,7 @@
 <div id="navbar">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container">
-            <div class="navbar-brand">Alumni</div>
+            <div class="navbar-brand"><a class="nav-link" href="{{url('/home')}}">Alumni</a></div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -10,7 +10,10 @@
                 <!-- // ! MENU -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/profile')}}">Profile</a>
+                        <a class="nav-link" href="{{url('/home')}}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/beranda')}}">Beranda</a>
                     </li>
                     @if(Auth::user()->role == 'Admin')
                     <li class="nav-item">
@@ -26,13 +29,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/user/posts')}}">Posts</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/user/anggota')}}">Anggota</a>
+                    </li>
                     @endif
                 </ul>
                 <!-- // ! LOGIN & LOGOUT -->
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Hey, {{ Auth::user()->name}} ({{Auth::user()->role}})
+                            Hey, {{ Auth::user()->name}} ({{Auth::user()->role}}-{{Auth::user()->id}})
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{url('/logout')}}">Logout</a>

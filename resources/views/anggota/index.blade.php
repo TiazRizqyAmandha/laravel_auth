@@ -11,10 +11,13 @@
 			<h1>Data Admin dan User Website Alumni</h1>
 		</div>
 		<div class="col-6">
+			@if(Auth::user()->role == 'Admin')
 			<!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal">
 				Tambah Data Admin dan User
 			</button>
+			@endif
+			<a href="https://mail.google.com/" class="btn btn-secondary btn-sm float-right">Email</a>
 		</div>
 		<table class="table table-hover">
 			<tr>
@@ -22,19 +25,40 @@
 				<th>Angkatan</th>
 				<th>Email</th>
 				<th>Role</th>
+				<th>Aksi</th>
 			</tr>
 			@foreach($data_anggota as $anggota)
 			<tr>
 				<td>{{$anggota->name}}</td>
 				<td>{{$anggota->generation}}</td>
-				<td>{{$anggota->email}}</td>
+				<td><span onclick="copyTeks()" name="dataCopy"><STRONG>{{$anggota->email}}</STRONG></span></td>
 				<td>{{$anggota->role}}</td>
+				<td>
+					@if(Auth::user()->role == 'Admin')
+					<a href="/anggota/{{$anggota->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
+					<a href="/anggota/{{$anggota->id}}/delete" class="btn btn-danger btn-sm">Hapus</a>
+					@endif
+					<a href="#" class="btn btn-success btn-sm">Lihat</a>
+				</td>
 			</tr>
 			@endforeach
 		</table>
 	</div>
 </div>
-
+<script type="text/javascript">
+	var span = document.querySelector("span");
+	function copyTeks(){
+		document.execCommand("copy");
+		alert("data '" + span.textContent + "' berhasil di salin" )
+	}
+	span.addEventListener("copy", function(event) {
+		event.preventDefault();
+		if (event.clipboardData) {
+			event.clipboardData.setData("text/plain", span.textContent);
+			console.log(event.clipboardData.getData("text"))
+		}
+	});
+</script>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -117,3 +141,4 @@
 		</div>
 	</div>
 	@endsection
+

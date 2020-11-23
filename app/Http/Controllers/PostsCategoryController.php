@@ -60,4 +60,11 @@ class PostsCategoryController extends Controller
         $posts_category->update($request->all());
         return redirect('/admin/kategori')->with('sukses', 'data berhasil di update');
     }
+
+    public function delete($id)
+    {
+        $posts_category = \App\PostsCategory::find($id);
+        $posts_category->delete($posts_category);
+        return redirect('/admin/kategori')->with('sukses', 'data berhasil di hapus');
+    }
 }

@@ -16,7 +16,7 @@
                 <div class="card-header">
                     <h3 class="text-center">Form Register</h3>
                 </div>
-                <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('register') }}" method="post">
                     @csrf
                     <div class="card-body">
                         @if(session('errors'))
@@ -60,14 +60,6 @@
                                 <textarea name="address" class="form-control" rows="3" placeholder="Alamat"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for=""><strong>Jenis Kelamin</strong></label>
-                                <select name="gender" class="form-control" id="input_filter">
-                                    <option value="" selected disabled>Jenis Kelamin</option>
-                                    <option value="L">Laki-laki</option>
-                                    <option value="P">Perempuan</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label for=""><strong>Deskripsi Diri</strong></label>
                                 <textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri"></textarea>
                             </div>
@@ -84,9 +76,9 @@
                                 <input type="password" name="password_confirmation" class="form-control" placeholder="Password">
                             </div>
                             <div class="form-group">
-                                <label for=""><strong>Role</strong></label>
+                                <label for="exampleFormControlSelect1">Role</label>
                                 <select name="role" class="form-control">
-                                    <option value="Admin">Admin</option>
+<!--                                     <option value="Admin">Admin</option> -->
                                     <option value="User">User</option>
                                 </select>
                             </div>

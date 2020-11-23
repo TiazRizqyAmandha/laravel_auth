@@ -17,4 +17,24 @@ class AnggotaController extends Controller
         \App\User::create($request->all());
         return redirect('/admin/anggota')->with('sukses', 'data berhasil di tambah');
     }
+
+    public function edit($id)
+    {
+        $anggota = \App\User::find($id);
+        return view('/anggota/edit',['anggota'=>$anggota]);
+    }
+
+    public function update(Request $request,$id)
+    {
+        $anggota = \App\User::find($id);
+        $anggota->update($request->all());
+        return redirect('/admin/anggota')->with('sukses', 'data berhasil di ubah');
+    }
+
+    public function delete($id)
+    {
+        $anggota = \App\User::find($id);
+        $anggota->delete($anggota);
+        return redirect('/admin/anggota')->with('sukses', 'data berhasil di hapus');
+    }
 }
