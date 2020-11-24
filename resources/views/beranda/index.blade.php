@@ -6,6 +6,10 @@ if(isset($_GET['kategori']))
 $kategori = $_GET['kategori'];
 if(isset($_GET['generation']))
 $generation = $_GET['generation'];
+if(isset($_GET['username']))
+$username = $_GET['username'];
+if(isset($_GET['created_at']))
+$created_at = $_GET['created_at'];
 if(isset($_GET['gender']))
 $gender = $_GET['gender'];
 @endphp
@@ -44,7 +48,7 @@ $gender = $_GET['gender'];
     <div class="w3-row-padding">
       <form action="" method="get">
         <div class="row">
-          <div class="col-3">
+          <div class="col-2">
             <select class="form-control" name="kategori">
               <option value="" selected>Kategori</option>
               @foreach($kategoris as $kat)
@@ -52,14 +56,47 @@ $gender = $_GET['gender'];
               @endforeach
             </select>
           </div>
-          <div class="col-3">
+          <div class="col-2">
             <select class="form-control" name="generation">
               <option value="" selected>Angkatan</option>
               @for($i=date('Y') - 8; $i <= date('Y'); $i++) <option value="{{$i}}" {{$generation != null & $generation == $i ? 'selected' : ''}}>{{$i}}</option>
-                @endfor
+              @endfor
             </select>
           </div>
-          <div class="col-3">
+          <div class="col-2">
+            <select class="form-control" name="username">
+              <option value="" selected>Nama Pengguna</option>
+              @foreach($data_anggota as $anggota)
+              <option value="{{$anggota->username}}" {{$username != null && $username == $anggota->username ? 'selected' : ''}}>{{$anggota->username}}</option> 
+              @endforeach
+            </select>
+          </div>
+<!--           <div class="col-2">
+            <select class="form-control" name="created_at">
+              <option value="" selected>Bulan Upload</option>
+              @foreach($data_posts as $po)
+              <option value="{{$po->created_at->format('F')}}" {{$created_at != null && $created_at == $po->created_at ? 'selected' : ''}}>{{$po->created_at->format('F')}}</option> 
+              @endforeach
+            </select>
+          </div> -->
+          <div class="col-2">
+            <select class="form-control" name="created_at">
+              <option value="" selected>Bulan Upload</option>
+              <option value="January" {{ $created_at != null && $created_at == 'January' ? 'selected' : ''}}>January</option>
+              <option value="February" {{ $created_at != null && $created_at == 'February' ? 'selected' : ''}}>February</option>
+              <option value="March" {{ $created_at != null && $created_at == 'March' ? 'selected' : ''}}>March</option>
+              <option value="April" {{ $created_at != null && $created_at == 'April' ? 'selected' : ''}}>April</option>
+              <option value="May" {{ $created_at != null && $created_at == 'May' ? 'selected' : ''}}>May</option>
+              <option value="June" {{ $created_at != null && $created_at == 'June' ? 'selected' : ''}}>June</option>
+              <option value="July" {{ $created_at != null && $created_at == 'July' ? 'selected' : ''}}>July</option>
+              <option value="August" {{ $created_at != null && $created_at == 'August' ? 'selected' : ''}}>August</option>
+              <option value="September" {{ $created_at != null && $created_at == 'September' ? 'selected' : ''}}>September</option>
+              <option value="October" {{ $created_at != null && $created_at == 'October' ? 'selected' : ''}}>October</option>
+              <option value="November" {{ $created_at != null && $created_at == 'November' ? 'selected' : ''}}>November</option>
+              <option value="December" {{ $created_at != null && $created_at == 'December' ? 'selected' : ''}}>December</option>
+            </select>
+          </div>
+          <div class="col-2">
             <select class="form-control" name="gender">
               <option value="" selected>Jenis Kelamin</option>
               <option value="L" {{ $gender != null && $gender == 'L' ? 'selected' : ''}}>Laki-laki</option>
@@ -67,29 +104,50 @@ $gender = $_GET['gender'];
             </select>
           </div>
           <div class="col-1">
-            <button class="btn btn-primary" type="submit">Filter</button>
+            <button class="btn btn-primary" type="submit">Saring</button>
+          </div>
+          <div class="col-1">
+            <button class="btn btn-warning" type="submit"><a href="/beranda">Normal</a></button>
           </div>
         </div>
       </form>
     </div>
+    <br>
     <!-- Right Column -->
-    <div class="w3-twothird">
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
+    <div class="row">
+      <div class="col-lg-10" style="background-color: white">
         @foreach($data_posts as $posts)
+<!--                 @php
+        var_dump($generation);
+        @endphp -->
         @if($generation == null || in_array($generation,json_decode($posts->filter)->generation))
-        @if($gender == null || $gender == json_decode($posts->filter)->gender)
+<!--         @php
+        var_dump($username);
+        @endphp -->
+        @if($username == null || $username == $posts->users->username)
+<!--                 @php
+        var_dump($kategori);
+        @endphp -->
         @if($kategori == null || $kategori == $posts->posts_category_id)
+<!--         @php
+        var_dump($created_at);
+        @endphp -->
+        @if($created_at == null || $created_at == $posts->created_at->format('F'))
+        @if($gender == null || $gender == json_decode($posts->filter)->gender)
         <h2 class="w3-text-grey w3-padding-16">
-          <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
-          {{$posts->title}} / {{$posts->users->name}}
+          <i class="fa fa-user fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
+          {{$posts->title}}
         </h2>
         <div class="w3-container">
           <h6 class="w3-text-teal">
             <div class="row">
-              <div class="col"><i class="fa fa-calendar fa-fw">&nbsp;Senin,23/11/2020</i></div>
-              <div class="col"><i class="fa fa-star fa-fw">&nbsp;{{$posts->postsCategory->name}}</i></div>
-              <div class="col">
-                <i class="fa fa-envelope fa-fw">&nbsp;{{$posts->users->email}} </i>
+              <div class="col-lg-1"><i class="fa fa-user fa-fw">&nbsp;{{$posts->users->username}}</i></div>
+              <div class="col-lg-1"><i class="fa fa-graduation-cap fa-fw">&nbsp;{{$posts->users->generation}}</i></div>
+              <div class="col-lg-3"><i class="fa fa-calendar fa-fw">&nbsp;{{$posts->created_at->format('l,d/F/Y')}}</i></div>
+              <div class="col-lg-1"><i class="fa fa-clock-o fa-fw">&nbsp;{{$posts->created_at->format('i:s')}}</i></div>
+              <div class="col-lg-2"><i class="fa fa-star fa-fw">&nbsp;{{$posts->postsCategory->name}}</i></div>
+              <div class="col-lg-4">
+                <i class="fa fa-envelope fa-fw"><a href="https://mail.google.com/">&nbsp;{{$posts->users->email}}</a></i>
               </div>
             </div>
           </h6>
@@ -98,11 +156,14 @@ $gender = $_GET['gender'];
             @if(!$posts->document_url)
             <td>-</td>
             @else
-            <td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Download</a></td>
-          @endif 
-        Untuk Melihat Dokumen Resmi Perusahaan</p>
+            <td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Unduh</a></td>
+            @endif 
+          Untuk Melihat Dokumen Resmi Perusahaan</p>
+          <p>Filter || {{$posts->filter}} ||</p>
           <hr>
         </div>
+        @endif
+        @endif
         @endif
         @endif
         @endif
@@ -113,11 +174,11 @@ $gender = $_GET['gender'];
     <!-- End Grid -->
   </div>
   <!-- End Page Container -->
-  </div>
-  <footer class="w3-container w3-teal w3-center w3-margin-top">
-    <p>Alumni IT Maranatha Copyright 2020</p>
-  </footer>
-  <!-- Page Container -->
+</div>
+<footer class="w3-container w3-teal w3-center w3-margin-top">
+  <p>Alumni IT Maranatha Copyright 2020</p>
+</footer>
+<!-- Page Container -->
 </body>
 
 </html>

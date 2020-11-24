@@ -14,7 +14,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('profile', 'HomeController@index')->name('profile');
-    Route::get('/beranda/{kategori?}/{generation?}/{gender?}', 'BerandaController@index')->name('beranda');
+    Route::get('/beranda/{kategori?}/{generation?}/{username?}/{created_at?}/{gender?}', 'BerandaController@index')->name('beranda');
     Route::get('logout', 'AuthController@logout')->name('logout');
 });
 //! Posts
@@ -42,4 +42,5 @@ Route::get('/anggota/{id}/delete', 'AnggotaController@delete');
 //! Kirim Email
 Route::get('/kirim-email', 'EmailController@index');
 // //! Profile
-// Route::get('/profile','ProfileController@profileIndex');
+Route::get('/home/{id}/edit','HomeController@edit');
+Route::post('/home/{id}/update','HomeController@update');

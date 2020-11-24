@@ -10,14 +10,14 @@
                 <!-- // ! MENU -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/home')}}">Profile</a>
+                        <a class="nav-link" href="{{url('/home')}}">Profil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/beranda')}}">Beranda</a>
                     </li>
                     @if(Auth::user()->role == 'Admin')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/admin/posts')}}">Posts</a>
+                        <a class="nav-link" href="{{url('/admin/posts')}}">Posting</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/admin/kategori')}}">Kategori</a>
@@ -27,7 +27,7 @@
                     </li>
                     @elseif(Auth::user()->role == 'User')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/user/posts')}}">Posts</a>
+                        <a class="nav-link" href="{{url('/user/posts')}}">Posting</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/user/anggota')}}">Anggota</a>

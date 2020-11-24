@@ -24,7 +24,7 @@
 				<th>Nama</th>
 				<th>Angkatan</th>
 				<th>Email</th>
-				<th>Role</th>
+				<th>Peran</th>
 				<th>Aksi</th>
 			</tr>
 			@foreach($data_anggota as $anggota)
@@ -47,7 +47,6 @@
 </div>
 <script type="text/javascript">
 	var span = document.querySelector("span");
-
 	function copyTeks() {
 		document.execCommand("copy");
 		alert("data '" + span.textContent + "' berhasil di salin")

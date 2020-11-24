@@ -17,7 +17,7 @@
     <table class="table table-bordered table-hover table-striped">
         <thead>
             <tr class="table-active">
-                <th scope="col">Name</th>
+                <th scope="col">Nama Kategori</th>
                 <th scope="col">Status</th>
                 <th scope="col">Aksi</th>
             </tr>

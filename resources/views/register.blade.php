@@ -11,10 +11,10 @@
 
 <body>
     <div class="container">
-        <div class="col-md-4 offset-md-4 mt-5">
+        <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="text-center">Form Register</h3>
+                    <h3 class="text-center">Daftar</h3>
                 </div>
                 <form action="{{ route('register') }}" method="post">
                     @csrf
@@ -85,8 +85,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
-                        <p class="text-center">Sudah punya akun? <a href="{{ route('login') }}">Login</a> sekarang!</p>
+                        <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+                        <p class="text-center">Sudah punya akun? <a href="{{ route('login') }}">Masuk</a> sekarang!</p>
                     </div>
                 </form>
             </div>
