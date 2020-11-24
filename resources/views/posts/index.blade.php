@@ -7,7 +7,7 @@
 @endif
 <div class="row">
 	<div class="col-6">
-		<h1>Data Post Lowongan Kerja</h1>
+		<h1>Data Posting Lowongan Kerja</h1>
 	</div>
 	<div class="col-6">
 		<!-- Button trigger modal -->
@@ -18,12 +18,12 @@
 	<table class="table table-bordered table-hover table-striped">
 		<thead>
 			<tr class="table-active">
-				<th scope="col">Title</th>
-				<th scope="col">Body</th>
-				<th scope="col">Category</th>
-				<th scope="col">Document</th>
+				<th scope="col">Lowongan Kerja</th>
+				<th scope="col">Deskripsi</th>
+				<th scope="col">Kategori</th>
+				<th scope="col">Dokumen</th>
 				<th scope="col">Status</th>
-				<th scope="col">Name Uploader</th>
+				<th scope="col">Pengunggah</th>
 				<th scope="col">Aksi</th>
 			</tr>
 		</thead>
@@ -36,7 +36,7 @@
 				@if(!$posts->document_url)
 				<td>-</td>
 				@else
-				<td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Download</a></td>
+				<td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Unduh</a></td>
 				@endif
 				<td>{{$posts->status}}</td>
 				<td>{{$posts->users->name}}</td>
@@ -57,7 +57,7 @@
 	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="addModalLabel">Tambah Posts Lowongan Kerja</h5>
+				<h5 class="modal-title" id="addModalLabel">Tambah Lowongan Kerja</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -68,10 +68,10 @@
 				<input type="hidden" name="status" value="Aktif">
 				<div class="modal-body" style="height: 70vh;overflow-y: auto;">
 					<div class="form-group">
-						<label for="input_title">Judul</label>
-						<input name="title" type="text" class="form-control" id="input_title" placeholder="Judul">
+						<label for="input_title">Lowongan Kerja</label>
+						<input name="title" type="text" class="form-control" id="input_title" placeholder="Lowongan Kerja">
 						@error('title')
-						<div class="alert alert-danger">*Judul harap diisi</div>
+						<div class="alert alert-danger">*Lowongan Kerja harap diisi</div>
 						@enderror
 					</div>
 					<div class="form-group">
@@ -98,7 +98,7 @@
 						<input type="file" name="document" class="form-control-file" id="input_file">
 					</div>
 					<div class="form-group">
-						<label for="input_filter">Filter</label>
+						<label for="input_filter">Saring</label>
 						<select name="generation[]" class="form-control" id="input_filter" multiple>
 							<option value="" disabled>Angkatan</option>
 							@for($i=date('Y') - 8; $i <= date('Y'); $i++) <option value="{{$i}}">{{$i}}</option>
@@ -112,8 +112,8 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+					<button type="submit" class="btn btn-primary">Tambah</button>
 				</div>
 			</form>
 		</div>

@@ -8,6 +8,10 @@ if(isset($_GET['generation']))
 $generation = $_GET['generation'];
 if(isset($_GET['username']))
 $username = $_GET['username'];
+if(isset($_GET['created_at']))
+$created_at = $_GET['created_at'];
+if(isset($_GET['gender']))
+$gender = $_GET['gender'];
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +48,7 @@ $username = $_GET['username'];
     <div class="w3-row-padding">
       <form action="" method="get">
         <div class="row">
-          <div class="col-3">
+          <div class="col-2">
             <select class="form-control" name="kategori">
               <option value="" selected>Kategori</option>
               @foreach($kategoris as $kat)
@@ -52,23 +56,58 @@ $username = $_GET['username'];
               @endforeach
             </select>
           </div>
-          <div class="col-3">
+          <div class="col-2">
             <select class="form-control" name="generation">
               <option value="" selected>Angkatan</option>
               @for($i=date('Y') - 8; $i <= date('Y'); $i++) <option value="{{$i}}" {{$generation != null & $generation == $i ? 'selected' : ''}}>{{$i}}</option>
               @endfor
             </select>
           </div>
-          <div class="col-3">
+          <div class="col-2">
             <select class="form-control" name="username">
-              <option value="" selected>Username</option>
+              <option value="" selected>Nama Pengguna</option>
               @foreach($data_anggota as $anggota)
               <option value="{{$anggota->username}}" {{$username != null && $username == $anggota->username ? 'selected' : ''}}>{{$anggota->username}}</option> 
               @endforeach
             </select>
           </div>
+<!--           <div class="col-2">
+            <select class="form-control" name="created_at">
+              <option value="" selected>Bulan Upload</option>
+              @foreach($data_posts as $po)
+              <option value="{{$po->created_at->format('F')}}" {{$created_at != null && $created_at == $po->created_at ? 'selected' : ''}}>{{$po->created_at->format('F')}}</option> 
+              @endforeach
+            </select>
+          </div> -->
+          <div class="col-2">
+            <select class="form-control" name="created_at">
+              <option value="" selected>Bulan Upload</option>
+              <option value="January" {{ $created_at != null && $created_at == 'January' ? 'selected' : ''}}>January</option>
+              <option value="February" {{ $created_at != null && $created_at == 'February' ? 'selected' : ''}}>February</option>
+              <option value="March" {{ $created_at != null && $created_at == 'March' ? 'selected' : ''}}>March</option>
+              <option value="April" {{ $created_at != null && $created_at == 'April' ? 'selected' : ''}}>April</option>
+              <option value="May" {{ $created_at != null && $created_at == 'May' ? 'selected' : ''}}>May</option>
+              <option value="June" {{ $created_at != null && $created_at == 'June' ? 'selected' : ''}}>June</option>
+              <option value="July" {{ $created_at != null && $created_at == 'July' ? 'selected' : ''}}>July</option>
+              <option value="August" {{ $created_at != null && $created_at == 'August' ? 'selected' : ''}}>August</option>
+              <option value="September" {{ $created_at != null && $created_at == 'September' ? 'selected' : ''}}>September</option>
+              <option value="October" {{ $created_at != null && $created_at == 'October' ? 'selected' : ''}}>October</option>
+              <option value="November" {{ $created_at != null && $created_at == 'November' ? 'selected' : ''}}>November</option>
+              <option value="December" {{ $created_at != null && $created_at == 'December' ? 'selected' : ''}}>December</option>
+            </select>
+          </div>
+          <div class="col-2">
+            <select class="form-control" name="gender">
+              <option value="" selected>Jenis Kelamin</option>
+              <option value="L" {{ $gender != null && $gender == 'L' ? 'selected' : ''}}>Laki-laki</option>
+              <option value="P" {{ $gender != null && $gender == 'P' ? 'selected' : ''}}>Perempuan</option>
+            </select>
+          </div>
           <div class="col-1">
-            <button class="btn btn-primary" type="submit">Filter</button>
+            <button class="btn btn-primary" type="submit">Saring</button>
+          </div>
+          <div class="col-1">
+            <button class="btn btn-warning" type="submit"><a href="/beranda">Normal</a></button>
           </div>
         </div>
       </form>
@@ -90,6 +129,11 @@ $username = $_GET['username'];
         var_dump($kategori);
         @endphp -->
         @if($kategori == null || $kategori == $posts->posts_category_id)
+<!--         @php
+        var_dump($created_at);
+        @endphp -->
+        @if($created_at == null || $created_at == $posts->created_at->format('F'))
+        @if($gender == null || $gender == json_decode($posts->filter)->gender)
         <h2 class="w3-text-grey w3-padding-16">
           <i class="fa fa-user fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
           {{$posts->title}}
@@ -112,12 +156,14 @@ $username = $_GET['username'];
             @if(!$posts->document_url)
             <td>-</td>
             @else
-            <td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Download</a></td>
+            <td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Unduh</a></td>
             @endif 
           Untuk Melihat Dokumen Resmi Perusahaan</p>
           <p>Filter || {{$posts->filter}} ||</p>
           <hr>
         </div>
+        @endif
+        @endif
         @endif
         @endif
         @endif

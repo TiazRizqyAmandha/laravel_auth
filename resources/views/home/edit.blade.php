@@ -14,11 +14,11 @@
 				{{csrf_field()}}
 				<div class="form-group">
 					<div class="form-group">
-						<label for=""><strong>Full Name</strong></label>
+						<label for=""><strong>Nama Lengkap</strong></label>
 						<input name="name" type="text" class="form-control" placeholder="Nama" value="{{ Auth::user()->name}}">
 					</div>
 					<div class="form-group">
-						<label for=""><strong>Username</strong></label>
+						<label for=""><strong>Nama Pengguna</strong></label>
 						<input name="username" type="text" class="form-control" placeholder="Username" value="{{Auth::user()->username}}">
 					</div>
 					<div class="form-group">
@@ -56,7 +56,7 @@
 					</div>
 					@if(Auth::user()->role == 'Admin')
 					<div class="form-group">
-						<label for="add_role"><strong>Role</strong></label>
+						<label for="add_role"><strong>Peran</strong></label>
 						<select name="role" class="form-control" id="add_role">
 							<option value="Admin" @if(Auth::user()->role == 'Admin') selected @endif>Admin</option>
 							<option value="User" @if(Auth::user()->role == 'User') selected @endif>User</option>

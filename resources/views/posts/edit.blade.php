@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<h1>Edit Data Post Lowongan Kerja</h1>
+<h1>Edit Data Lowongan Kerja</h1>
 @if(session('sukses'))
 <div class="alert alert-success" role="alert">
 	{{session('sukses')}}
@@ -14,10 +14,10 @@
 			<input type="hidden" name="users_id" value="{{Auth::id()}}">
 			<input type="hidden" name="id" value="{{$posts->id}}">
 			<div class="form-group">
-				<label for="update_title">Judul</label>
-				<input name="title" type="text" class="form-control" id="update_title" placeholder="Judul" value="{{$posts->title}}">
+				<label for="update_title">Lowongan Kerja</label>
+				<input name="title" type="text" class="form-control" id="update_title" placeholder="Lowongan Kerja" value="{{$posts->title}}">
 				@error('title')
-				<div class="alert alert-danger">*Judul harap diisi</div>
+				<div class="alert alert-danger">*Lowongan Kerja harap diisi</div>
 				@enderror
 			</div>
 			<div class="form-group">
@@ -28,7 +28,7 @@
 				@enderror
 			</div>
 			<div class="form-group">
-				<label for="update_category">Category</label>
+				<label for="update_category">Kategori</label>
 				<select name="posts_category_id" class="form-control" id="update_category">
 					@foreach($posts_category as $category)
 					<option value="{{$category->id}}" {{$category->id == $posts->posts_category_id ? 'selected' : ''}}>{{$category->name}}</option>
@@ -43,7 +43,7 @@
 				<input type="file" name="document" class="form-control-file" id="update_file">
 			</div>
 			<div class="form-group">
-				<label for="input_filter">Filter</label>
+				<label for="input_filter">Saring</label>
 				<select name="generation[]" class="form-control" id="input_filter" multiple>
 					<option value="" disabled>Angkatan</option>
 					<!-- //? Periksa apakah ada filter dan angkatan sesuai dengan yang sudah dipilih -->
@@ -63,7 +63,7 @@
 					<option value="Tidak Aktif" {{$posts->status == 'Tidak Aktif' ? 'selected' : ''}}>Tidak Aktif</option>
 				</select>
 			</div>
-			<button type="submit" class="btn btn-warning">Update</button>
+			<button type="submit" class="btn btn-warning">Ubah</button>
 		</form>
 	</div>
 </div>

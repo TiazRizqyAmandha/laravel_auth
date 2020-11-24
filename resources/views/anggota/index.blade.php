@@ -24,7 +24,7 @@
 				<th>Nama</th>
 				<th>Angkatan</th>
 				<th>Email</th>
-				<th>Role</th>
+				<th>Peran</th>
 				<th>Aksi</th>
 			</tr>
 			@foreach($data_anggota as $anggota)
