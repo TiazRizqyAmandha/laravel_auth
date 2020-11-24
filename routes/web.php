@@ -42,5 +42,5 @@ Route::get('/anggota/{id}/delete', 'AnggotaController@delete');
 //! Kirim Email
 Route::get('/kirim-email', 'EmailController@index');
 // //! Profile
-Route::get('profile','HomeController@edit');
-Route::post('profile','HomeController@update');
+Route::get('/home/{id}/edit','HomeController@edit');
+Route::post('/home/{id}/update','HomeController@update');

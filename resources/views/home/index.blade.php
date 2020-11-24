@@ -25,14 +25,12 @@
 
 		<!-- The Grid -->
 		<div class="w3-row-padding">
-
 			<!-- Left Column -->
 			<div class="w3-third">
-				@foreach($data_anggota as $anggota)
 				<div class="w3-white w3-text-grey w3-card-4">
 					<div class="w3-display-container">
 						<!--<img src="{{ Auth::user()->photo_url}}"  style="width:100%" alt="photo_url"> -->
-						<a href="/anggota/{{$anggota->id}}/edit"><i class="fa fa-cog fa-fw w3-margin-right w3-large w3-text-teal"></i></a>
+						<a href="/home/{{ Auth::user()->id}}/edit"><i class="fa fa-cog fa-fw w3-margin-right w3-large w3-text-teal"></i></a>
 					</div>
 
 					<div class="w3-container">
@@ -52,7 +50,7 @@
 						<br>
 					</div>
 				</div><br>					
-				@endforeach
+				
 				<!-- End Left Column -->
 			</div>
 			<!-- Right Column -->

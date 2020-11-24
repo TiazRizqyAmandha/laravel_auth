@@ -9,12 +9,12 @@ class HomeController extends Controller
 	public function index()
 	{
 		$data_anggota = \App\User::all();
-		return view('home', ['data_anggota' => $data_anggota]);
+		return view('home.index', ['data_anggota' => $data_anggota]);
 	}
 	public function edit($id)
 	{
 		$data_anggota = \App\User::find($id);
-		return view('edithome',['data_anggota'=>$data_anggota]);
+		return view('/home/edit',['data_anggota'=>$data_anggota]);
 	}
 	public function update(Request $request,$id)
 	{

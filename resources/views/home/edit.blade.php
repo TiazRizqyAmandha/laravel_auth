@@ -9,7 +9,7 @@
 	<h1>Ubah Data Admin dan User Website Alumni</h1>
 	<div class="row">
 		<div class="col-lg-12">
-			<form action="/home/{{$data_anggota->id}}/update" method="POST">
+			<form action="/home/{{ Auth::user()->id}}/update" method="POST">
 				<input type="hidden" name="status" value="Aktif">
 				{{csrf_field()}}
 				<div class="form-group">
@@ -48,20 +48,13 @@
 						<input type="text" name="email" class="form-control" placeholder="Email" value="{{Auth::user()->email}}">
 					</div>
 					<div class="form-group">
-						<label for=""><strong>Password</strong></label>
-						<input type="password" name="password" class="form-control" placeholder="Password" value="{{Auth::user()->password}}">
-					</div>
-					<div class="form-group">
-						<label for=""><strong>Konfirmasi Password</strong></label>
-						<input type="password" name="password_confirmation" class="form-control" placeholder="Password" value="{{Auth::user()->password}}">
-					</div>
-					<div class="form-group">
 						<label for="add_gender"><strong>Gender</strong></label>
 						<select name="gender" class="form-control" id="add_gender">
 							<option value="L" @if(Auth::user()->gender == 'L') selected @endif>Laki-laki</option>
 							<option value="P" @if(Auth::user()->gender == 'P') selected @endif>Perempuan</option>
 						</select>
 					</div>
+					@if(Auth::user()->role == 'Admin')
 					<div class="form-group">
 						<label for="add_role"><strong>Role</strong></label>
 						<select name="role" class="form-control" id="add_role">
@@ -69,6 +62,7 @@
 							<option value="User" @if(Auth::user()->role == 'User') selected @endif>User</option>
 						</select>
 					</div>
+					@endif
 					<button type="submit" class="btn btn-warning">Ubah</button>
 				</form>
 			</div>

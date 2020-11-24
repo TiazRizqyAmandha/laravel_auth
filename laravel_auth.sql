@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Nov 2020 pada 09.19
+-- Waktu pembuatan: 24 Nov 2020 pada 03.04
 -- Versi server: 10.4.14-MariaDB
--- Versi PHP: 7.4.9
+-- Versi PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `laravel_auth`
 --
-CREATE DATABASE IF NOT EXISTS `laravel_auth` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `laravel_auth`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,6 @@ USE `laravel_auth`;
 -- Struktur dari tabel `failed_jobs`
 --
 
-DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -45,7 +42,6 @@ CREATE TABLE `failed_jobs` (
 -- Struktur dari tabel `migrations`
 --
 
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -67,13 +63,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Struktur dari tabel `posts`
 --
 
-DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `document_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `document_url` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `filter` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `users_id` bigint(20) UNSIGNED NOT NULL,
@@ -87,12 +82,10 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `body`, `category`, `document_url`, `filter`, `status`, `users_id`, `posts_category_id`, `created_at`, `updated_at`) VALUES
-(2, 'Lowongan HRD', 'abcdefgh', 'bisnis', NULL, NULL, 'Aktif', 1, 2, '2020-11-17 15:03:35', '2020-11-17 15:03:35'),
-(3, 'Lowongan Sekretaris', 'Lowongan Baru', 'bisnis', NULL, NULL, 'Aktif', 1, 2, '2020-11-17 15:12:27', '2020-11-17 15:12:27'),
-(4, 'Amandha Jaemin', 'coba', 'it', NULL, NULL, 'Aktif', 1, 1, '2020-11-17 15:14:10', '2020-11-18 02:16:12'),
-(5, 'Ubin', 'coba2', 'it', NULL, NULL, 'Aktif', 1, 1, '2020-11-17 15:17:50', '2020-11-17 15:17:50'),
-(6, 'Lele', 'coba3', 'bisnis', NULL, NULL, 'Aktif', 1, 2, '2020-11-17 15:18:32', '2020-11-17 15:18:32'),
-(11, 'Contoh Updated', 'Contoh Deskripsi', NULL, 'file/documents/doc_2/doc_Contoh-Judul_Jadwal-UAS-Genap-1920.pdf', '{\"generation\":[\"2016\",\"2018\"],\"gender\":\"P\"}', 'Aktif', 2, 1, '2020-11-21 23:46:37', '2020-11-22 01:10:47');
+(2, 'Lowongan HRD', 'hrd membutuhkan lowongan lulusan D3/S1', 'bisnis', 'file/documents/doc_1/doc_Lowongan-HRD_jeno.jpg', '{\"generation\":[\"2016\",\"2018\",\"2020\"],\"gender\":\"L\"}', 'Aktif', 1, 4, '2020-11-17 15:03:35', '2020-11-23 08:44:03'),
+(4, 'Lowongan Sekretaris', 'dibutuhkan sekretaris perusahaan A', 'it', 'file/documents/doc_1/doc_Lowongan-Sekretaris_chenle nct.jpg', '{\"generation\":[\"2012\",\"2013\",\"2014\"],\"gender\":\"P\"}', 'Aktif', 1, 4, '2020-11-17 15:14:10', '2020-11-23 09:14:02'),
+(14, 'Lowongan BCA', 'bca membutuhkan karyawan', NULL, 'file/documents/doc_1/doc_Lowongan-BCA_er.png', '{\"generation\":[\"2012\",\"2013\",\"2014\",\"2015\",\"2016\",\"2017\",\"2018\",\"2019\",\"2020\"],\"gender\":\"P\"}', 'Aktif', 1, 2, '2020-11-23 09:12:25', '2020-11-23 09:12:25'),
+(15, 'Lowongan Kasir Indomaret', 'dibutuhkan lowongan bagian kasir indomaret', NULL, 'file/documents/doc_5/doc_Lowongan-Kasir-Indomaret_stray kids.jpg', '{\"generation\":[\"2012\",\"2013\",\"2014\",\"2015\"],\"gender\":\"P\"}', 'Aktif', 5, 2, '2020-11-23 09:15:42', '2020-11-23 09:15:42');
 
 -- --------------------------------------------------------
 
@@ -100,7 +93,6 @@ INSERT INTO `posts` (`id`, `title`, `body`, `category`, `document_url`, `filter`
 -- Struktur dari tabel `posts_category`
 --
 
-DROP TABLE IF EXISTS `posts_category`;
 CREATE TABLE `posts_category` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -116,7 +108,7 @@ CREATE TABLE `posts_category` (
 INSERT INTO `posts_category` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'IT', 'Aktif', '2020-11-21 11:02:59', NULL),
 (2, 'Bisnis', 'Aktif', '2020-11-21 11:03:05', NULL),
-(3, 'Tidak Aktif', 'Tidak Aktif', '2020-11-21 19:04:26', '2020-11-21 19:06:56');
+(4, 'HRD', 'Aktif', '2020-11-22 09:13:40', '2020-11-22 09:14:15');
 
 -- --------------------------------------------------------
 
@@ -124,7 +116,6 @@ INSERT INTO `posts_category` (`id`, `name`, `status`, `created_at`, `updated_at`
 -- Struktur dari tabel `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -150,8 +141,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `address`, `birthdate`, `generation`, `phone_number`, `gender`, `role`, `self_description`, `username`, `status`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Tiaz Rizqy Amandha', 'null', '1990-01-01', 'null', 'null', 'null', 'User', 'null', 'null', 'Aktif', 'amandhatiazrizqi@gmail.com', '2020-11-17 13:18:30', '$2y$10$kNLVsZ7stw0/RcgGljKs2O7QQMzTqGY4d0bRg.yosg0nQJv1IMunG', NULL, '2020-11-17 13:18:30', '2020-11-17 13:18:30'),
-(2, 'Coba', 'coba', '2020-11-21', '2016', 'Coba', 'L', 'Admin', 'Coba', 'Coba', 'Aktif', 'coba@co.ba', '2020-11-21 10:00:10', '$2y$10$Ec8GsHyhFP/TL9XfUFGVreVXyIZ44/kjly11L0glU66eridOpZcpW', NULL, '2020-11-21 10:00:10', NULL);
+(1, 'Tiaz Rizqy Amandha', 'Jalan Merdeka no.66', '1999-06-24', '2017', '081220452951', 'L', 'Admin', 'Mahasiswa Semester Akhir yang sedang mengambil TA', 'Amandha', 'Aktif', 'amandha@gmail.com', '2020-11-17 13:18:30', '$2y$10$kNLVsZ7stw0/RcgGljKs2O7QQMzTqGY4d0bRg.yosg0nQJv1IMunG', NULL, '2020-11-17 13:18:30', '2020-11-23 11:18:09'),
+(2, 'Coba', 'coba', '2020-11-21', '2016', 'Coba', 'L', 'Admin', 'Coba', 'Coba', 'Aktif', 'coba@co.ba', '2020-11-21 10:00:10', '$2y$10$Ec8GsHyhFP/TL9XfUFGVreVXyIZ44/kjly11L0glU66eridOpZcpW', NULL, '2020-11-21 10:00:10', NULL),
+(5, 'Febrina Anastasha', 'Jalan Holis', '1999-02-10', '2017', '081220457865', 'P', 'User', 'Mahasiswa Aktif Menempuh Semester Akhir di Kampus Universitas Kristen Maranatha', 'Ubin', 'Aktif', 'febrina@gmail.com', '2020-11-22 02:22:48', '$2y$10$QLqZ1KYirKhwtvOuRV.O1u8O9yfdZJdNlNQXwmckLQo1KT9E2mKwe', NULL, '2020-11-22 02:22:48', '2020-11-23 18:36:46'),
+(7, 'Celine Lieshiana', 'Jalan Sudirman', '1999-05-05', '2017', '081220203445', '', 'User', 'Mahasiswa Tingkat Akhir Jurusan It', 'Celcel', 'Aktif', 'celine@gmail.com', '2020-11-22 23:48:05', '$2y$10$ZrmrQtg.AyqC/HZ6wyExTOfWtYsxV30YJYuO4w/6wZqihh.ea18Im', NULL, '2020-11-22 23:48:05', '2020-11-22 23:48:05'),
+(8, 'Anastasha Levina', 'Jalan Kenangan', '1998-12-25', '2017', '081245678765', 'P', 'Admin', 'Mahasiswa Dumar dan Djarum Beasiswa', 'Lele', 'Aktif', 'anastasha@gmail.com', NULL, 'anastasha', NULL, '2020-11-22 23:50:24', '2020-11-22 23:50:39');
 
 --
 -- Indexes for dumped tables
@@ -210,19 +204,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `posts_category`
 --
 ALTER TABLE `posts_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

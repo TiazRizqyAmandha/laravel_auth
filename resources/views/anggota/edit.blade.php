@@ -48,14 +48,6 @@
 						<input type="text" name="email" class="form-control" placeholder="Email" value="{{$anggota->email}}">
 					</div>
 					<div class="form-group">
-						<label for=""><strong>Password</strong></label>
-						<input type="password" name="password" class="form-control" placeholder="Password" value="{{$anggota->password}}">
-					</div>
-					<div class="form-group">
-						<label for=""><strong>Konfirmasi Password</strong></label>
-						<input type="password" name="password_confirmation" class="form-control" placeholder="Password" value="{{$anggota->password}}">
-					</div>
-					<div class="form-group">
 						<label for="add_gender"><strong>Gender</strong></label>
 						<select name="gender" class="form-control" id="add_gender">
 							<option value="L" @if($anggota->gender == 'L') selected @endif>Laki-laki</option>
