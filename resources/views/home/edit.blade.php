@@ -6,7 +6,7 @@
 </div>
 @endif
 <div class="container">
-	<h1>Ubah Data Admin dan User Website Alumni</h1>
+	<h1>Ubah Data {{Auth::user()->role}} Website Alumni</h1>
 	<div class="row">
 		<div class="col-lg-12">
 			<form action="/home/{{ Auth::user()->id}}/update" method="POST">

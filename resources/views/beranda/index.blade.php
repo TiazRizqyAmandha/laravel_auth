@@ -6,8 +6,8 @@ if(isset($_GET['kategori']))
 $kategori = $_GET['kategori'];
 if(isset($_GET['generation']))
 $generation = $_GET['generation'];
-if(isset($_GET['gender']))
-$gender = $_GET['gender'];
+if(isset($_GET['username']))
+$username = $_GET['username'];
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -60,10 +60,11 @@ $gender = $_GET['gender'];
             </select>
           </div>
           <div class="col-3">
-            <select class="form-control" name="gender">
-              <option value="" selected>Jenis Kelamin</option>
-              <option value="L" {{ $gender != null && $gender == 'L' ? 'selected' : ''}}>Laki-laki</option>
-              <option value="P" {{ $gender != null && $gender == 'P' ? 'selected' : ''}}>Perempuan</option>
+            <select class="form-control" name="username">
+              <option value="" selected>Username</option>
+              @foreach($data_anggota as $anggota)
+              <option value="{{$anggota->username}}" {{$username != null && $username == $anggota->username ? 'selected' : ''}}>{{$anggota->username}}</option> 
+              @endforeach
             </select>
           </div>
           <div class="col-1">
@@ -77,8 +78,17 @@ $gender = $_GET['gender'];
     <div class="row">
       <div class="col-lg-10" style="background-color: white">
         @foreach($data_posts as $posts)
+<!--                 @php
+        var_dump($generation);
+        @endphp -->
         @if($generation == null || in_array($generation,json_decode($posts->filter)->generation))
-        @if($gender == null || $gender == json_decode($posts->filter)->gender)
+<!--         @php
+        var_dump($username);
+        @endphp -->
+        @if($username == null || $username == $posts->users->username)
+<!--                 @php
+        var_dump($kategori);
+        @endphp -->
         @if($kategori == null || $kategori == $posts->posts_category_id)
         <h2 class="w3-text-grey w3-padding-16">
           <i class="fa fa-user fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
@@ -89,9 +99,10 @@ $gender = $_GET['gender'];
             <div class="row">
               <div class="col-lg-1"><i class="fa fa-user fa-fw">&nbsp;{{$posts->users->username}}</i></div>
               <div class="col-lg-1"><i class="fa fa-graduation-cap fa-fw">&nbsp;{{$posts->users->generation}}</i></div>
-              <div class="col-lg-3"><i class="fa fa-calendar fa-fw">&nbsp;{{$posts->created_at->format('l,d_F_Y')}}</i></div>
+              <div class="col-lg-3"><i class="fa fa-calendar fa-fw">&nbsp;{{$posts->created_at->format('l,d/F/Y')}}</i></div>
+              <div class="col-lg-1"><i class="fa fa-clock-o fa-fw">&nbsp;{{$posts->created_at->format('i:s')}}</i></div>
               <div class="col-lg-2"><i class="fa fa-star fa-fw">&nbsp;{{$posts->postsCategory->name}}</i></div>
-              <div class="col-lg-5">
+              <div class="col-lg-4">
                 <i class="fa fa-envelope fa-fw"><a href="https://mail.google.com/">&nbsp;{{$posts->users->email}}</a></i>
               </div>
             </div>

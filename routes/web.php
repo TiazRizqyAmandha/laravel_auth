@@ -14,7 +14,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('profile', 'HomeController@index')->name('profile');
-    Route::get('/beranda/{kategori?}/{generation?}/{gender?}', 'BerandaController@index')->name('beranda');
+    Route::get('/beranda/{kategori?}/{generation?}/{username?}', 'BerandaController@index')->name('beranda');
     Route::get('logout', 'AuthController@logout')->name('logout');
 });
 //! Posts
