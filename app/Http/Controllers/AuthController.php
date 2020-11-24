@@ -70,18 +70,13 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $rules = [
-            'name'                  => 'required|min:3|max:35',
-            'email'                 => 'required|email|unique:users,email',
+            'email'                 => 'required|email',
             'password'              => 'required|confirmed'
         ];
 
         $messages = [
-            'name.required'         => 'Nama Lengkap wajib diisi',
-            'name.min'              => 'Nama lengkap minimal 3 karakter',
-            'name.max'              => 'Nama lengkap maksimal 35 karakter',
             'email.required'        => 'Email wajib diisi',
             'email.email'           => 'Email tidak valid',
-            'email.unique'          => 'Email sudah terdaftar',
             'password.required'     => 'Password wajib diisi',
             'password.confirmed'    => 'Password tidak sama dengan konfirmasi password'
         ];
@@ -92,18 +87,12 @@ class AuthController extends Controller
             return redirect()->back()->withErrors($validator)->withInput($request->all);
         }
 
-        $user = new User;
-        $user->name = ucwords(strtolower($request->name));
-        $user->email = strtolower($request->email);
+        $user = User::where('key_user', $request->input('key_user'))->first();
         $user->password = Hash::make($request->password);
         $user->address = ucwords(strtolower($request->address));
         $user->birthdate = ucwords(strtolower($request->birthdate));
-        $user->generation = ucwords(strtolower($request->generation));
         $user->phone_number = ucwords(strtolower($request->phone_number));
-        $user->gender = ucwords(strtolower($request->gender));
-        $user->role = ucwords(strtolower($request->role));
         $user->self_description = ucwords(strtolower($request->self_description));
-        $user->username = ucwords(strtolower($request->username));
         $user->status = 'Aktif';
         $user->email_verified_at = \Carbon\Carbon::now();
         $simpan = $user->save();
@@ -114,6 +103,35 @@ class AuthController extends Controller
         } else {
             Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
             return redirect()->route('register');
+        }
+    }
+    public function halamanKeyUser()
+    {
+        return view('userkey');
+    }
+    public function keyUser(Request $request)
+    {
+        $rules = [
+            'key_user'                  => 'required',
+        ];
+
+        $messages = [
+            'key_user.required'         => 'Key wajib diisi',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all);
+        }
+
+        $user = User::where('key_user', $request->input('key_user'))->first();
+        if ($user != null) {
+            Session::flash('success', 'Key ditemukan, silahkan lengkapi data registrasi');
+            return redirect()->route('register')->with(['data_register' => $user]);
+        } else {
+            Session::flash('error', 'Key tidak ditemukan, pastikan key yang dimasukan sudah benar');
+            return redirect()->route('key-user');
         }
     }
 

@@ -27,6 +27,7 @@ class User extends Authenticatable
         'role',
         'self_description',
         'username',
+        'key_user',
         'status',
     ];
 

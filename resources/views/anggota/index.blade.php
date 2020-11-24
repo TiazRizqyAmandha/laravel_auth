@@ -47,6 +47,7 @@
 </div>
 <script type="text/javascript">
 	var span = document.querySelector("span");
+
 	function copyTeks() {
 		document.execCommand("copy");
 		alert("data '" + span.textContent + "' berhasil di salin")
@@ -72,7 +73,6 @@
 			</div>
 			<div class="modal-body">
 				<form action="/anggota/create" method="POST">
-					<input type="hidden" name="status" value="Aktif">
 					{{csrf_field()}}
 					<div class="form-group">
 						<div class="form-group">
