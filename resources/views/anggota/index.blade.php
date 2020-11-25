@@ -115,12 +115,14 @@
 							<input type="text" name="email" class="form-control" placeholder="Email">
 						</div>
 						<div class="form-group">
-							<label><strong>Password</strong></label>
-							<input type="password" name="password" class="form-control" placeholder="Password">
+							<label for=""><strong>Password</strong>&nbsp;
+							<input type="checkbox" onclick="myFunction()"></label>
+							<input type="password" name="password" class="form-control" id="myInput">
 						</div>
 						<div class="form-group">
-							<label><strong>Konfirmasi Password</strong></label>
-							<input type="password" name="password_confirmation" class="form-control" placeholder="Password">
+							<label for=""><strong>Konfirmasi Password</strong>&nbsp;
+							<input type="checkbox" onclick="myFunction2()"></label>
+							<input type="password" name="password_confirmation" class="form-control" id="myInput2">
 						</div>
 						<div class="form-group">
 							<label for="add_gender"><strong>Jenis Kelamin</strong></label>
@@ -146,3 +148,27 @@
 	</div>
 </div>
 @endsection
+<script type="text/javascript">
+    function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") 
+        {
+        	x.type = "text";
+       	} 
+        else 
+        {
+            x.type = "password";
+        }
+		}
+		function myFunction2() {
+			var x = document.getElementById("myInput2");
+			if (x.type === "password") 
+			{
+				x.type = "text";
+			} 
+			else 
+			{
+				x.type = "password";
+			}
+		}
+</script>
