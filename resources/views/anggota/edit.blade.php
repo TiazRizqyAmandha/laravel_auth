@@ -17,11 +17,11 @@
 				{{csrf_field()}}
 				<div class="form-group">
 					<div class="form-group">
-						<label for=""><strong>Full Name</strong></label>
+						<label for=""><strong>Nama Lengkap</strong></label>
 						<input name="name" type="text" class="form-control" placeholder="Nama" value="{{$anggota->name}}">
 					</div>
 					<div class="form-group">
-						<label for=""><strong>Username</strong></label>
+						<label for=""><strong>Nama Pengguna</strong></label>
 						<input name="username" type="text" class="form-control" placeholder="Username" value="{{$anggota->username}}">
 					</div>
 					<div class="form-group">
@@ -47,18 +47,14 @@
 						<textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri">{{$anggota->self_description}}</textarea>
 					</div>
 					<div class="form-group">
-						<label for=""><strong>Email</strong></label>
-						<input type="text" name="email" class="form-control" placeholder="Email" value="{{$anggota->email}}">
-					</div>
-					<div class="form-group">
-						<label for="add_gender"><strong>Gender</strong></label>
+						<label for="add_gender"><strong>Jenis Kelamin</strong></label>
 						<select name="gender" class="form-control" id="add_gender">
 							<option value="L" @if($anggota->gender == 'L') selected @endif>Laki-laki</option>
 							<option value="P" @if($anggota->gender == 'P') selected @endif>Perempuan</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="add_role"><strong>Role</strong></label>
+						<label for="add_role"><strong>Peran</strong></label>
 						<select name="role" class="form-control" id="add_role">
 							<option value="Admin" @if($anggota->role == 'Admin') selected @endif>Admin</option>
 							<option value="User" @if($anggota->role == 'User') selected @endif>User</option>

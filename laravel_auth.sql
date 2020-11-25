@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Nov 2020 pada 03.04
+-- Waktu pembuatan: 25 Nov 2020 pada 09.14
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.10
 
@@ -82,10 +82,14 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `body`, `category`, `document_url`, `filter`, `status`, `users_id`, `posts_category_id`, `created_at`, `updated_at`) VALUES
-(2, 'Lowongan HRD', 'hrd membutuhkan lowongan lulusan D3/S1', 'bisnis', 'file/documents/doc_1/doc_Lowongan-HRD_jeno.jpg', '{\"generation\":[\"2016\",\"2018\",\"2020\"],\"gender\":\"L\"}', 'Aktif', 1, 4, '2020-11-17 15:03:35', '2020-11-23 08:44:03'),
+(2, 'Lowongan HRD', 'hrd membutuhkan lowongan lulusan S1/S2', 'bisnis', 'file/documents/doc_2/doc_Lowongan-HRD_nct dream black hair.png', '{\"generation\":[\"2016\",\"2018\",\"2020\"],\"gender\":\"L\"}', 'Aktif', 2, 4, '2020-11-17 15:03:35', '2020-11-24 23:20:52'),
 (4, 'Lowongan Sekretaris', 'dibutuhkan sekretaris perusahaan A', 'it', 'file/documents/doc_1/doc_Lowongan-Sekretaris_chenle nct.jpg', '{\"generation\":[\"2012\",\"2013\",\"2014\"],\"gender\":\"P\"}', 'Aktif', 1, 4, '2020-11-17 15:14:10', '2020-11-23 09:14:02'),
 (14, 'Lowongan BCA', 'bca membutuhkan karyawan', NULL, 'file/documents/doc_1/doc_Lowongan-BCA_er.png', '{\"generation\":[\"2012\",\"2013\",\"2014\",\"2015\",\"2016\",\"2017\",\"2018\",\"2019\",\"2020\"],\"gender\":\"P\"}', 'Aktif', 1, 2, '2020-11-23 09:12:25', '2020-11-23 09:12:25'),
-(15, 'Lowongan Kasir Indomaret', 'dibutuhkan lowongan bagian kasir indomaret', NULL, 'file/documents/doc_5/doc_Lowongan-Kasir-Indomaret_stray kids.jpg', '{\"generation\":[\"2012\",\"2013\",\"2014\",\"2015\"],\"gender\":\"P\"}', 'Aktif', 5, 2, '2020-11-23 09:15:42', '2020-11-23 09:15:42');
+(15, 'Lowongan Kasir Indomaret', 'dibutuhkan lowongan bagian kasir indomaret', NULL, 'file/documents/doc_5/doc_Lowongan-Kasir-Indomaret_stray kids.jpg', '{\"generation\":[\"2012\",\"2013\",\"2014\",\"2015\"],\"gender\":\"P\"}', 'Aktif', 5, 2, '2020-11-23 09:15:42', '2020-11-23 09:15:42'),
+(16, 'Lowongan Dosen Maranatha', 'dosen maranatha', NULL, 'file/documents/doc_1/doc_Lowongan-Dosen-Maranatha_stray kids3.jpg', '{\"generation\":[\"2014\",\"2015\",\"2016\"],\"gender\":\"P\"}', 'Aktif', 1, 1, '2020-11-23 20:18:21', '2020-11-23 20:18:21'),
+(17, 'Lowongan Manager NCT DREAM', 'Mencari manager untuk boy group nct dream, dengan masa magang 3 bulan, dan jika berhasil akan menjadi manager tetap dengan kontrak 5 tahun.', NULL, 'file/documents/doc_2/doc_Lowongan-Manager-NCT-DREAM_nct_dream_ridin.jpg', '{\"generation\":[\"2020\"],\"gender\":\"ALL\"}', 'Aktif', 1, 2, '2020-11-24 23:26:41', '2020-11-25 00:47:13'),
+(18, 'Lowongan MUA', 'MUA untuk pengantin', NULL, 'file/documents/doc_2/doc_Lowongan-MUA_Jaehyun6.jpg', '{\"generation\":[\"2012\"],\"gender\":\"ALL\"}', 'Aktif', 1, 2, '2020-11-24 23:32:45', '2020-11-25 00:43:44'),
+(19, 'Lowongan TU', 'Mencari orang', NULL, 'file/documents/doc_1/doc_Lowongan-TU_chenle nct.jpg', '{\"generation\":[\"2012\",\"2013\",\"2014\"],\"gender\":\"ALL\"}', 'Aktif', 1, 4, '2020-11-25 00:40:59', '2020-11-25 00:40:59');
 
 -- --------------------------------------------------------
 
@@ -127,6 +131,7 @@ CREATE TABLE `users` (
   `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `self_description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `key_user` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -140,12 +145,12 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `address`, `birthdate`, `generation`, `phone_number`, `gender`, `role`, `self_description`, `username`, `status`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Tiaz Rizqy Amandha', 'Jalan Merdeka no.66', '1999-06-24', '2017', '081220452951', 'L', 'Admin', 'Mahasiswa Semester Akhir yang sedang mengambil TA', 'Amandha', 'Aktif', 'amandha@gmail.com', '2020-11-17 13:18:30', '$2y$10$kNLVsZ7stw0/RcgGljKs2O7QQMzTqGY4d0bRg.yosg0nQJv1IMunG', NULL, '2020-11-17 13:18:30', '2020-11-23 11:18:09'),
-(2, 'Coba', 'coba', '2020-11-21', '2016', 'Coba', 'L', 'Admin', 'Coba', 'Coba', 'Aktif', 'coba@co.ba', '2020-11-21 10:00:10', '$2y$10$Ec8GsHyhFP/TL9XfUFGVreVXyIZ44/kjly11L0glU66eridOpZcpW', NULL, '2020-11-21 10:00:10', NULL),
-(5, 'Febrina Anastasha', 'Jalan Holis', '1999-02-10', '2017', '081220457865', 'P', 'User', 'Mahasiswa Aktif Menempuh Semester Akhir di Kampus Universitas Kristen Maranatha', 'Ubin', 'Aktif', 'febrina@gmail.com', '2020-11-22 02:22:48', '$2y$10$QLqZ1KYirKhwtvOuRV.O1u8O9yfdZJdNlNQXwmckLQo1KT9E2mKwe', NULL, '2020-11-22 02:22:48', '2020-11-23 18:36:46'),
-(7, 'Celine Lieshiana', 'Jalan Sudirman', '1999-05-05', '2017', '081220203445', '', 'User', 'Mahasiswa Tingkat Akhir Jurusan It', 'Celcel', 'Aktif', 'celine@gmail.com', '2020-11-22 23:48:05', '$2y$10$ZrmrQtg.AyqC/HZ6wyExTOfWtYsxV30YJYuO4w/6wZqihh.ea18Im', NULL, '2020-11-22 23:48:05', '2020-11-22 23:48:05'),
-(8, 'Anastasha Levina', 'Jalan Kenangan', '1998-12-25', '2017', '081245678765', 'P', 'Admin', 'Mahasiswa Dumar dan Djarum Beasiswa', 'Lele', 'Aktif', 'anastasha@gmail.com', NULL, 'anastasha', NULL, '2020-11-22 23:50:24', '2020-11-22 23:50:39');
+INSERT INTO `users` (`id`, `name`, `address`, `birthdate`, `generation`, `phone_number`, `gender`, `role`, `self_description`, `username`, `key_user`, `status`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Tiaz Rizqy Amandha', 'Jalan Merdeka no.66', '1999-06-24', '2017', '081220452951', 'P', 'Admin', 'Mahasiswa Semester Akhir yang sedang mengambil TA', 'cunda', '', 'Aktif', 'amandha@gmail.com', '2020-11-17 13:18:30', '$2y$10$Gz2ezZ3DRoYgCUKEon8KfeIFBU1TTGgXoSmnJRX9vcUM2qEnDYPHe', NULL, '2020-11-17 13:18:30', '2020-11-24 06:53:42'),
+(2, 'Daniel Jahja Surjawan', 'Jalan Sudirman Maranatha', '2020-11-21', '2016', '085353531051', 'L', 'Admin', 'Dosen Maranatha yang mengajar pada Fakultas Teknologi Informasi', 'daniel', '', 'Aktif', 'DanielJahjaSurjawan@gmail.com', '2020-11-21 10:00:10', '$2y$10$Ec8GsHyhFP/TL9XfUFGVreVXyIZ44/kjly11L0glU66eridOpZcpW', NULL, '2020-11-21 10:00:10', '2020-11-24 23:13:07'),
+(5, 'Febrina Anastasha', 'Jalan Holis', '1999-02-10', '2017', '081220457865', 'P', 'User', 'Mahasiswa Aktif Menempuh Semester Akhir di Kampus Universitas Kristen Maranatha', 'Ubin', '', 'Aktif', 'ubin@gmail.com', '2020-11-22 02:22:48', '$2y$10$QLqZ1KYirKhwtvOuRV.O1u8O9yfdZJdNlNQXwmckLQo1KT9E2mKwe', NULL, '2020-11-22 02:22:48', '2020-11-24 07:13:06'),
+(7, 'Celine Lieshiana', 'Jalan Sudirman', '1999-05-05', '2017', '081220203445', '', 'User', 'Mahasiswa Tingkat Akhir Jurusan It', 'Celcel', '', 'Aktif', 'celine@gmail.com', '2020-11-22 23:48:05', '$2y$10$ZrmrQtg.AyqC/HZ6wyExTOfWtYsxV30YJYuO4w/6wZqihh.ea18Im', NULL, '2020-11-22 23:48:05', '2020-11-22 23:48:05'),
+(9, 'Na Jaemin', 'Jalan Dream Cabang Nct', '2000-08-13', '2018', '081220451234', 'L', 'User', 'Moodboster Orang Lain :)', 'nana', 'nana-faTJV', 'Aktif', 'jaemin@gmail.com', '2020-11-24 06:40:51', '$2y$10$4d0qQQ.WKXRflAUt9jAuZ.ZSpiT12gUpy//uEY2y4uT4D1nfBTSBm', NULL, '2020-11-24 06:40:03', '2020-11-24 06:40:51');
 
 --
 -- Indexes for dumped tables
@@ -204,7 +209,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `posts_category`
@@ -216,7 +221,7 @@ ALTER TABLE `posts_category`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

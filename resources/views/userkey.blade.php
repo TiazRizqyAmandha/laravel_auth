@@ -39,6 +39,13 @@
                             </ul>
                         </div>
                         @endif
+                        @if(session('no'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <ul>
+                                <li>Key yang dimasukan sudah dipakai. Pastikan key yang dimasukan sudah benar.</li>
+                            </ul>
+                        </div>
+                        @endif
                         <div class="form-group">
                             <label><strong>Key</strong></label>
                             <input name="key_user" type="text" class="form-control" placeholder="Key" required>

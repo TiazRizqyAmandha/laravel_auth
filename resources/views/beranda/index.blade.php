@@ -50,7 +50,7 @@ $gender = $_GET['gender'];
         <div class="row">
           <div class="col-2">
             <select class="form-control" name="kategori">
-              <option value="" selected>Kategori</option>
+              <option value="" selected disabled>Kategori</option>
               @foreach($kategoris as $kat)
               <option value="{{$kat->id}}" {{$kategori != null && $kategori == $kat->id ? 'selected' : ''}}>{{$kat->name}}</option>
               @endforeach
@@ -58,14 +58,14 @@ $gender = $_GET['gender'];
           </div>
           <div class="col-2">
             <select class="form-control" name="generation">
-              <option value="" selected>Angkatan</option>
+              <option value="" selected disabled>Angkatan</option>
               @for($i=date('Y') - 8; $i <= date('Y'); $i++) <option value="{{$i}}" {{$generation != null & $generation == $i ? 'selected' : ''}}>{{$i}}</option>
               @endfor
             </select>
           </div>
           <div class="col-2">
             <select class="form-control" name="username">
-              <option value="" selected>Nama Pengguna</option>
+              <option value="" selected disabled>Nama Pengguna</option>
               @foreach($data_anggota as $anggota)
               <option value="{{$anggota->username}}" {{$username != null && $username == $anggota->username ? 'selected' : ''}}>{{$anggota->username}}</option> 
               @endforeach
@@ -81,7 +81,7 @@ $gender = $_GET['gender'];
           </div> -->
           <div class="col-2">
             <select class="form-control" name="created_at">
-              <option value="" selected>Bulan Upload</option>
+              <option value="" selected disabled>Bulan Upload</option>
               <option value="January" {{ $created_at != null && $created_at == 'January' ? 'selected' : ''}}>January</option>
               <option value="February" {{ $created_at != null && $created_at == 'February' ? 'selected' : ''}}>February</option>
               <option value="March" {{ $created_at != null && $created_at == 'March' ? 'selected' : ''}}>March</option>
@@ -98,7 +98,8 @@ $gender = $_GET['gender'];
           </div>
           <div class="col-2">
             <select class="form-control" name="gender">
-              <option value="" selected>Jenis Kelamin</option>
+              <option value="" selected disabled>Jenis Kelamin</option>
+              <option value="ALL" {{ $gender != null && $gender == 'P' ? 'selected' : ''}}>Semua</option>
               <option value="L" {{ $gender != null && $gender == 'L' ? 'selected' : ''}}>Laki-laki</option>
               <option value="P" {{ $gender != null && $gender == 'P' ? 'selected' : ''}}>Perempuan</option>
             </select>

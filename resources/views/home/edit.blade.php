@@ -44,10 +44,6 @@
 						<textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri">{{Auth::user()->self_description}}</textarea>
 					</div>
 					<div class="form-group">
-						<label for=""><strong>Email</strong></label>
-						<input type="text" name="email" class="form-control" placeholder="Email" value="{{Auth::user()->email}}">
-					</div>
-					<div class="form-group">
 						<label for="add_gender"><strong>Gender</strong></label>
 						<select name="gender" class="form-control" id="add_gender">
 							<option value="L" @if(Auth::user()->gender == 'L') selected @endif>Laki-laki</option>

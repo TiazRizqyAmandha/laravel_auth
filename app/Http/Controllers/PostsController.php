@@ -94,14 +94,14 @@ class PostsController extends Controller
 	{
 		$posts = \App\Posts::find($id);
 		$posts->update($request->all());
-		return redirect('/posts')->with('sukses', 'data berhasil di update');
+		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data berhasil di update');
 	}
 
 	public function delete($id)
 	{
 		$posts = \App\Posts::find($id);
 		$posts->delete($posts);
-		return redirect('/posts')->with('sukses', 'data berhasil di hapus');
+		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data berhasil di hapus');
 	}
 
 	//? Function untuk mengambil data Posts Category dari Controller lain (default parameter)

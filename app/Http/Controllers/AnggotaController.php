@@ -17,8 +17,12 @@ class AnggotaController extends Controller
     public function create(Request $request)
     {
         if ($request->input('role') == 'Admin')
+        {
             $request->request->add(['status' => 'Aktif']);
-        else {
+            $request->request->add(['password' => Hash::make($request->password)]);
+        }
+        else 
+        {
             $permitted_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $request->request->add(['status' => 'Belum Aktif']);
             $request->request->add(['key_user' => $request->input('username') . '-' . substr(str_shuffle($permitted_chars), 0, 5)]);
@@ -43,8 +47,16 @@ class AnggotaController extends Controller
     public function delete($id)
     {
         $anggota = \App\User::find($id);
-        $anggota->delete($anggota);
-        return redirect('/admin/anggota')->with('sukses', 'data berhasil di hapus');
+        $post = \App\Posts::where('users_id',$id)->first();
+        if($post)
+        {
+            return redirect('/admin/anggota')->with('gagal', 'data masih ada di tabel posting');
+        }
+        else
+        {
+            $anggota->delete($anggota);
+            return redirect('/admin/anggota')->with('sukses', 'data berhasil di hapus');
+        }
     }
 
     public function resetPassword(Request $request)

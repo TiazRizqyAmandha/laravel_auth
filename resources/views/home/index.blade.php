@@ -47,7 +47,15 @@
 						<p><i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal" name="name"></i> {{ Auth::user()->name}} ({{Auth::user()->role}})</p>
 						<p><i class="fa fa-id-card fa-fw w3-margin-right w3-large w3-text-teal" name="username"></i> {{ Auth::user()->username}}</p>
 						<p><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-large w3-text-teal" name="generation"></i> {{ Auth::user()->generation}}</p>
-						<p><i class="fa fa-transgender fa-fw w3-margin-right w3-large w3-text-teal" name="gender"></i> {{ Auth::user()->gender}}</p>
+						@if(Auth::user()->gender == 'P')
+						<p><i class="fa fa-female fa-fw w3-margin-right w3-large w3-text-teal" name="gender"></i>
+							Perempuan
+						</p>
+						@else
+						<p><i class="fa fa-male fa-fw w3-margin-right w3-large w3-text-teal" name="gender"></i>
+							Laki-Laki
+						</p>
+							@endif
 						<p><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal" name="birthdate"></i> {{ Auth::user()->birthdate}}</p>
 						<p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal" name="address"></i>{{ Auth::user()->address}} </p>
 						<p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal" name="email"></i>{{ Auth::user()->email}}</p>

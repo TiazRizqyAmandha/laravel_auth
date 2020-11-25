@@ -106,6 +106,7 @@
 						</select>
 						<select name="gender" class="form-control" id="input_filter">
 							<option value="" selected disabled>Jenis Kelamin</option>
+							<option value="ALL">Semua</option>
 							<option value="L">Laki-laki</option>
 							<option value="P">Perempuan</option>
 						</select>

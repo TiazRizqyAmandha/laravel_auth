@@ -5,6 +5,11 @@
     {{session('sukses')}}
 </div>
 @endif
+@if(session('gagal'))
+<div class="alert alert-success" role="alert">
+    {{session('gagal')}}
+</div>
+@endif
 <div class="row">
     <div class="col-6">
         <h1>Data Kategori</h1>

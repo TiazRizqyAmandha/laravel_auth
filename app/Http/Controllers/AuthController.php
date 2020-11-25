@@ -127,9 +127,17 @@ class AuthController extends Controller
 
         $user = User::where('key_user', $request->input('key_user'))->first();
         if ($user != null) {
-            Session::flash('success', 'Key ditemukan, silahkan lengkapi data registrasi');
-            return redirect()->route('register')->with(['data_register' => $user]);
-        } else {
+            if($user->status == 'Belum Aktif')
+            {
+                Session::flash('success', 'Key ditemukan, silahkan lengkapi data registrasi');
+                return redirect()->route('register')->with(['data_register' => $user]);
+            }
+            elseif ($user->status == 'Aktif') {
+                Session::flash('no', 'Key sudah dipakai, silahkan lengkapi data registrasi');
+                return redirect()->route('key-user');
+            }
+        }
+        else {
             Session::flash('error', 'Key tidak ditemukan, pastikan key yang dimasukan sudah benar');
             return redirect()->route('key-user');
         }

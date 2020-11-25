@@ -52,6 +52,7 @@
 				</select>
 				<select name="gender" class="form-control" id="input_filter">
 					<option value="" selected disabled>Jenis Kelamin</option>
+					<option value="ALL" {{!empty($posts->filter) && json_decode($posts->filter)->gender == 'ALL' ? 'selected':''}}>Semua</option>
 					<option value="L" {{!empty($posts->filter) && json_decode($posts->filter)->gender == 'L' ? 'selected':''}}>Laki-laki</option>
 					<option value="P" {{!empty($posts->filter) && json_decode($posts->filter)->gender == 'P' ? 'selected':''}}>Perempuan</option>
 				</select>

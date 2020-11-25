@@ -5,6 +5,11 @@
 	{{session('sukses')}}
 </div>
 @endif
+@if(session('gagal'))
+<div class="alert alert-success" role="alert">
+    {{session('gagal')}}
+</div>
+@endif
 <div class="container">
 	<div class="row">
 		<div class="col-6">
@@ -76,11 +81,11 @@
 					{{csrf_field()}}
 					<div class="form-group">
 						<div class="form-group">
-							<label><strong>Full Name</strong></label>
+							<label><strong>Nama Lengkap</strong></label>
 							<input name="name" type="text" class="form-control" placeholder="Nama">
 						</div>
 						<div class="form-group">
-							<label><strong>Username</strong></label>
+							<label><strong>Nama Pengguna</strong></label>
 							<input name="username" type="text" class="form-control" placeholder="Username">
 						</div>
 						<div class="form-group">
@@ -118,14 +123,14 @@
 							<input type="password" name="password_confirmation" class="form-control" placeholder="Password">
 						</div>
 						<div class="form-group">
-							<label for="add_gender"><strong>Gender</strong></label>
+							<label for="add_gender"><strong>Jenis Kelamin</strong></label>
 							<select name="gender" class="form-control" id="add_gender">
 								<option value="L">Laki-laki</option>
 								<option value="P">Perempuan</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="add_role"><strong>Role</strong></label>
+							<label for="add_role"><strong>Peran</strong></label>
 							<select name="role" class="form-control" id="add_role">
 								<option value="Admin">Admin</option>
 								<option value="User">User</option>
