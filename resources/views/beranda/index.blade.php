@@ -160,7 +160,11 @@ $gender = $_GET['gender'];
             <td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Unduh</a></td>
             @endif 
           Untuk Melihat Dokumen Resmi Perusahaan</p>
-          <p>Filter || {{$posts->filter}} ||</p>
+          <p>Filter 
+            || 
+            {{$posts->filter}} 
+            ||
+          </p>
           <hr>
         </div>
         @endif

@@ -13,6 +13,7 @@
 				<input type="hidden" name="status" value="Aktif">
 				{{csrf_field()}}
 				<div class="form-group">
+					<a href="/home/{{ Auth::user()->id}}/editpassword" class="btn btn-warning btn-sm">Ubah Password</a>
 					<div class="form-group">
 						<label for=""><strong>Nama Lengkap</strong></label>
 						<input name="name" type="text" class="form-control" placeholder="Nama" value="{{ Auth::user()->name}}">

@@ -51,3 +51,5 @@ Route::get('/kirim-email', 'EmailController@index');
 // //! Profile
 Route::get('/home/{id}/edit', 'HomeController@edit');
 Route::post('/home/{id}/update', 'HomeController@update');
+Route::get('/home/{id}/editpassword', 'HomeController@editpassword');
+Route::post('/home/{id}/updatepassword', 'HomeController@updatepassword');

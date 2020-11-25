@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -21,5 +22,17 @@ class HomeController extends Controller
 		$data_anggota = \App\User::find($id);
 		$data_anggota->update($request->all());
 		return redirect('home')->with('sukses', 'data berhasil di ubah');
+	}
+	public function editpassword($id)
+	{
+		$data_anggota = \App\User::find($id);
+		return view('/home/editpassword',['data_anggota'=>$data_anggota]);
+	}
+	public function updatepassword(Request $request,$id)
+	{
+		$data_anggota = \App\User::find($id);
+        $data_anggota->password = Hash::make($request->password);
+        $data_anggota->save();
+        return redirect("home")->with('sukses', 'password berhasil di reset');
 	}
 }
