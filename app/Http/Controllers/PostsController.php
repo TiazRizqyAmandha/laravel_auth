@@ -47,7 +47,7 @@ class PostsController extends Controller
 	public function create(Request $request)
 	{
 		\App\Posts::create($request->all());
-		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data berhasil di tambah');
+		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data posting berhasil di tambah');
 	}
 
 	public function store(Request $request)
@@ -79,8 +79,8 @@ class PostsController extends Controller
 
 		$posts->save();
 		if ($request->isMethod('put'))
-			return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data berhasil di ubah');
-		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data berhasil di tambah');
+			return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data posting berhasil di ubah');
+		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data posting berhasil di tambah');
 	}
 
 	public function edit($id)
@@ -94,14 +94,14 @@ class PostsController extends Controller
 	{
 		$posts = \App\Posts::find($id);
 		$posts->update($request->all());
-		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data berhasil di update');
+		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data posting berhasil di update');
 	}
 
 	public function delete($id)
 	{
 		$posts = \App\Posts::find($id);
 		$posts->delete($posts);
-		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data berhasil di hapus');
+		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data posting berhasil di hapus');
 	}
 
 	//? Function untuk mengambil data Posts Category dari Controller lain (default parameter)

@@ -17,6 +17,9 @@
                     </li>
                     @if(Auth::user()->role == 'Admin')
                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('/admin/works')}}">Pekerjaan</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{url('/admin/posts')}}">Posting</a>
                     </li>
                     <li class="nav-item">
@@ -26,6 +29,9 @@
                         <a class="nav-link" href="{{url('/admin/anggota')}}">Anggota</a>
                     </li>
                     @elseif(Auth::user()->role == 'User')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/user/works')}}">Pekerjaan</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/user/posts')}}">Posting</a>
                     </li>

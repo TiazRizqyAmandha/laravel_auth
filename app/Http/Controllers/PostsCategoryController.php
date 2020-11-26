@@ -40,7 +40,7 @@ class PostsCategoryController extends Controller
     public function create(Request $request)
     {
         \App\PostsCategory::create($request->all());
-        return redirect('/admin/kategori')->with('sukses', 'data berhasil di tambah');
+        return redirect('/admin/kategori')->with('sukses', 'data kategori berhasil di tambah');
     }
 
     /**
@@ -58,7 +58,7 @@ class PostsCategoryController extends Controller
     {
         $posts_category = \App\PostsCategory::find($id);
         $posts_category->update($request->all());
-        return redirect('/admin/kategori')->with('sukses', 'data berhasil di update');
+        return redirect('/admin/kategori')->with('sukses', 'data kategori berhasil di update');
     }
 
     public function delete($id)
@@ -67,12 +67,12 @@ class PostsCategoryController extends Controller
         $post = \App\Posts::where('posts_category_id',$id)->first();
         if($post)
         {
-            return redirect('/admin/kategori')->with('gagal', 'data masih ada di tabel posting');
+            return redirect('/admin/kategori')->with('gagal', 'data kategori masih ada di tabel posting');
         }
         else
         {
             $posts_category->delete($posts_category);
-            return redirect('/admin/kategori')->with('sukses', 'data berhasil di hapus');
+            return redirect('/admin/kategori')->with('sukses', 'data kategori berhasil di hapus');
         }
     }
 }

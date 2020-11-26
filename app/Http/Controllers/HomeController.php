@@ -21,7 +21,7 @@ class HomeController extends Controller
 	{
 		$data_anggota = \App\User::find($id);
 		$data_anggota->update($request->all());
-		return redirect('home')->with('sukses', 'data berhasil di ubah');
+		return redirect('home')->with('sukses', 'data anggota berhasil di ubah');
 	}
 	public function editpassword($id)
 	{

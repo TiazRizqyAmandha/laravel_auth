@@ -48,8 +48,15 @@ Route::get('/anggota/{id}/delete', 'AnggotaController@delete');
 Route::post('/anggota/reset-password', 'AnggotaController@resetPassword');
 //! Kirim Email
 Route::get('/kirim-email', 'EmailController@index');
-// //! Profile
+//! Profile
 Route::get('/home/{id}/edit', 'HomeController@edit');
 Route::post('/home/{id}/update', 'HomeController@update');
 Route::get('/home/{id}/editpassword', 'HomeController@editpassword');
 Route::post('/home/{id}/updatepassword', 'HomeController@updatepassword');
+//! Works
+Route::get('/admin/works', 'WorksController@index');
+Route::get('/user/works', 'WorksController@index');
+Route::post('/works/create', 'WorksController@create');
+Route::get('/works/{id}/edit', 'WorksController@edit');
+Route::post('/works/{id}/update', 'WorksController@update');
+Route::get('/works/{id}/delete', 'WorksController@delete');
