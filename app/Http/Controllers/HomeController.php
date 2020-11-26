@@ -9,8 +9,9 @@ class HomeController extends Controller
 {
 	public function index()
 	{
+		$data_works = \App\Works::all();
 		$data_anggota = \App\User::all();
-		return view('home.index', ['data_anggota' => $data_anggota]);
+		return view('home.index', ['data_anggota' => $data_anggota, 'data_works' => $data_works]);
 	}
 	public function edit($id)
 	{
