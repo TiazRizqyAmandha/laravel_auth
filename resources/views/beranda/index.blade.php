@@ -160,10 +160,19 @@ $gender = $_GET['gender'];
             <td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Unduh</a></td>
             @endif 
           Untuk Melihat Dokumen Resmi Perusahaan</p>
-          <p>Filter 
-            || 
-            {{$posts->filter}} 
-            ||
+          <p>Filter || Jenis Kelamin Yang DiButuhkan : 
+            @if(json_decode($posts->filter)->gender == 'L')
+              Laki-Laki
+            @elseif(json_decode($posts->filter)->gender == 'P')
+              Perempuan
+            @else
+              Laki-Laki dan Perempuan
+            @endif ||
+          </p>
+          <p>Filter || Angkatan Yang DiCari :
+            @for($i=0 ; $i < count(json_decode($posts->filter)->generation) ; $i++)
+                {{json_decode($posts->filter)->generation[$i]}} - 
+            @endfor ||
           </p>
           <hr>
         </div>

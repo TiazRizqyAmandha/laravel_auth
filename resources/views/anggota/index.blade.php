@@ -36,7 +36,12 @@
 			<tr>
 				<td>{{$anggota->name}}</td>
 				<td>{{$anggota->generation}}</td>
-				<td><span onclick="copyTeks()" name="dataCopy"><STRONG>{{$anggota->email}}</STRONG></span></td>
+				<td>
+					<span id="theList">
+						{{$anggota->email}}
+					</span>
+					<button id="copyButton" onclick="myCopyFunction()" disabled="select">Copy</button>
+				</td>
 				<td>{{$anggota->role}}</td>
 				<td>
 					@if(Auth::user()->role == 'Admin')
@@ -50,21 +55,7 @@
 		</table>
 	</div>
 </div>
-<script type="text/javascript">
-	var span = document.querySelector("span");
 
-	function copyTeks() {
-		document.execCommand("copy");
-		alert("data '" + span.textContent + "' berhasil di salin")
-	}
-	span.addEventListener("copy", function(event) {
-		event.preventDefault();
-		if (event.clipboardData) {
-			event.clipboardData.setData("text/plain", span.textContent);
-			console.log(event.clipboardData.getData("text"))
-		}
-	});
-</script>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -160,15 +151,26 @@
             x.type = "password";
         }
 		}
-		function myFunction2() {
-			var x = document.getElementById("myInput2");
-			if (x.type === "password") 
-			{
-				x.type = "text";
-			} 
-			else 
-			{
-				x.type = "password";
-			}
+	function myFunction2() {
+		var x = document.getElementById("myInput2");
+		if (x.type === "password") 
+		{
+			x.type = "text";
+		} 
+		else 
+		{
+			x.type = "password";
 		}
+	}
+	function myCopyFunction() {
+	  var myText = document.createElement("textarea")
+	  myText.value = document.getElementById("theList").innerHTML;
+	  myText.value = myText.value.replace(/&lt;/g,"<");
+	  myText.value = myText.value.replace(/&gt;/g,">");
+	  document.body.appendChild(myText)
+	  myText.focus();
+	  myText.select();
+	  document.execCommand('copy');
+	  document.body.removeChild(myText);
+	}
 </script>
