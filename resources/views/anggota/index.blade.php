@@ -34,7 +34,7 @@
 			</tr>
 			@foreach($data_anggota as $anggota)
 			<tr>
-				<td><img src="{{$anggota->getPhotoProfil()}}" style="border: 1px solid #000000; width: 150px;height: 150px; overflow: hidden; border-radius: 50%;" class="circular-image" alt="photo_profil"/></td>
+				<td><a href="{{$anggota->getPhotoProfil()}}"><img src="{{$anggota->getPhotoProfil()}}" style="border: 1px solid #000000; width: 150px;height: 150px; overflow: hidden; border-radius: 50%;" class="circular-image" alt="photo_profil"/></a></td>
 				<td>{{$anggota->name}}</td>
 				<td>{{$anggota->generation}}</td>
 				<td>
@@ -72,6 +72,10 @@
 				<form action="/anggota/create" method="POST" enctype="multipart/form-data">
 					{{csrf_field()}}
 					<div class="form-group">
+						<div class="form-group">
+							<label for=""><strong>Photo Profil</strong></label>
+							<input type="file" name="photo_profil"  class="form-control" disabled="select">
+						</div>
 						<div class="form-group">
 							<label><strong>Nama Lengkap</strong></label>
 							<input name="name" type="text" class="form-control" placeholder="Nama" required>

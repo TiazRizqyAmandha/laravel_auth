@@ -42,9 +42,10 @@
                 </ul>
                 <!-- // ! LOGIN & LOGOUT -->
                 <ul class="navbar-nav">
+                    <a href="{{Auth::user()->getPhotoProfil()}}"><img src="{{Auth::user()->getPhotoProfil()}}" style="border: 1px solid #000000; width: 30px;height: 30px; overflow: hidden; border-radius: 50%; margin-top: 6px;" class="circular-image" alt="photo_profil"/></a>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Hey, {{ Auth::user()->name}} ({{Auth::user()->role}})
+                            {{ Auth::user()->name}} ({{Auth::user()->role}})
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{url('/logout')}}">Logout</a>

@@ -44,7 +44,7 @@
 
 					<div class="w3-container w3-margin-right text-align: center">
 						<br>
-						<p><img src="{{Auth::user()->getPhotoProfil()}}"  class="img-circle" alt="photo_profil" style="border: 1px solid #000000; width: 200px;height: 200px; overflow: hidden; border-radius: 50%; margin-left: 50px;"/></p>
+						<p><a href="{{Auth::user()->getPhotoProfil()}}"><img src="{{Auth::user()->getPhotoProfil()}}"  class="img-circle" alt="photo_profil" style="border: 1px solid #000000; width: 200px;height: 200px; overflow: hidden; border-radius: 50%; margin-left: 50px;"/></a></p>
 						<p><h4 class="w3-text-grey w3-padding-16" align="middle">{{ Auth::user()->name}} ({{Auth::user()->role}})</h4></p>
 						<p><i class="fa fa-id-card fa-fw w3-margin-right w3-large w3-text-teal" name="username"></i> {{ Auth::user()->username}}</p>
 						<p><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-large w3-text-teal" name="generation"></i> {{ Auth::user()->generation}}</p>
@@ -76,7 +76,7 @@
 				@foreach($data_works as $works)
 				@if($works->users->id == Auth::user()->id)
 				<div class="w3-container w3-card w3-white w3-margin-bottom">
-					<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>{{$works->company}}</h2>
+					<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Perusahaan : {{$works->company}}</h2>
 					<div class="w3-container">
 						<h5 class="w3-opacity"><b>{{$works->position}} / {{$works->works_place}}</b></h5>
 						<h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Kontrak Kerja : {{$works->date_start}} s/d {{$works->date_end}}</h6>

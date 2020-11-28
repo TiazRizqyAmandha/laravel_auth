@@ -136,7 +136,7 @@ $gender = $_GET['gender'];
         @if($created_at == null || $created_at == $posts->created_at->format('F'))
         @if($gender == null || $gender == json_decode($posts->filter)->gender)
         <h2 class="w3-text-grey w3-padding-16">
-          <i><img src="{{$posts->users->getPhotoProfil()}}" style="border: 1px solid #000000; width: 45px;height: 60px; overflow: hidden; border-radius: 50%;" class="img-circle" alt="photo_profil"/></i>
+          <i><a href="{{$posts->users->getPhotoProfil()}}"><img src="{{$posts->users->getPhotoProfil()}}" style="border: 1px solid #000000; width: 45px;height: 45px; overflow: hidden; border-radius: 50%;" class="img-circle" alt="photo_profil"/></a></i>
           {{$posts->title}}
         </h2>
         <div class="w3-container">
