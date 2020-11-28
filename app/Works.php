@@ -7,13 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Works extends Model
 {
     protected $table = 'works';
-    protected $fillable = ['company', 'position', 'works_place', 'description', 'date_start', 'date_end', 'users_id'];
-
-    // public function postsCategory()
-    // {
-    // 	return $this->belongsTo('App\PostsCategory', 'posts_category_id');
-    // }
-
+    protected $fillable = ['users_id', 'company',  'position', 'works_place', 'description', 'date_start', 'date_end'];
 
 
     public function users()

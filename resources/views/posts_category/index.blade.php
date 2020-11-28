@@ -34,7 +34,7 @@
                 <td>{{$category->status}}</td>
                 <td>
                     <a href="/kategori/{{$category->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
-                    <a href="/kategori/{{$category->id}}/delete" class="btn btn-danger btn-sm">Hapus</a>
+                    <a href="/kategori/{{$category->id}}/delete" class="btn btn-danger btn-sm" id="btnDeleted">Hapus</a>
                 </td>
             </tr>
             @endforeach
@@ -57,7 +57,7 @@
                     {{csrf_field()}}
                     <div class="form-group">
                         <label for="input_name">Name</label>
-                        <input name="name" type="text" class="form-control" id="input_name" placeholder="Name">
+                        <input name="name" type="text" class="form-control" id="input_name" placeholder="Name" required>
                     </div>
                     <input type="hidden" name="status" value="Aktif">
             </div>
@@ -70,3 +70,12 @@
     </div>
 </div>
 @endsection
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript"> 
+        $(function () {
+            $("#btnDeleted").click(function () {
+                alert("Yakin Ingin Menghapus Data");
+                return true;
+            });
+        });
+</script>

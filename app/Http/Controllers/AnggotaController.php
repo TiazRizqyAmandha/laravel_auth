@@ -14,6 +14,13 @@ class AnggotaController extends Controller
         return view('anggota.index', ['data_anggota' => $data_anggota]);
     }
 
+    public function read($id)
+    {
+        $anggota = \App\User::find($id);
+        $pekerjaan = \App\Works::where('users_id', $id)->get();
+        return view('/anggota/read', ['anggota' => $anggota, 'pekerjaan' => $pekerjaan]);
+    }
+
     public function create(Request $request)
     {
         if ($request->input('role') == 'Admin')

@@ -75,11 +75,13 @@
                             </div>
                             <div class="form-group">
                                 <label for=""><strong>Password</strong></label>
-                                <input type="password" name="password" class="form-control" placeholder="Password">
+                                <input type="checkbox" onclick="myFunction()"></label>
+                                <input type="password" name="password" class="form-control" id="myInput" placeholder="Password">
                             </div>
                             <div class="form-group">
                                 <label for=""><strong>Konfirmasi Password</strong></label>
-                                <input type="password" name="password_confirmation" class="form-control" placeholder="Password">
+                                <input type="checkbox" onclick="myFunction2()"></label>
+                                <input type="password" name="password_confirmation" class="form-control" id="myInput2" placeholder="Password">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Role</label>
@@ -99,5 +101,29 @@
         </div>
     </div>
 </body>
-
 </html>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") 
+        {
+            x.type = "text";
+        } 
+        else 
+        {
+            x.type = "password";
+        }
+        }
+    function myFunction2() {
+        var x = document.getElementById("myInput2");
+        if (x.type === "password") 
+        {
+            x.type = "text";
+        } 
+        else 
+        {
+            x.type = "password";
+        }
+    }
+</script>

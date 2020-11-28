@@ -40,7 +40,7 @@
 				<td>{{$works->users->name}}</td>
 				<td>
 					<a href="/works/{{$works->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
-					<a href="/works/{{$works->id}}/delete" class="btn btn-danger btn-sm">Hapus</a>
+					<a href="/works/{{$works->id}}/delete" class="btn btn-danger btn-sm" id="btnDeleted">Hapus</a>
 				</td>
 			</tr>
 			@endforeach
@@ -65,28 +65,25 @@
 				<div class="modal-body" style="height: 70vh;overflow-y: auto;">
 					<div class="form-group">
 						<label for="input_company">Perusahaan</label>
-						<input name="company" type="text" class="form-control" id="input_company" placeholder="Perusahaan">
-						@error('company')
-						<div class="alert alert-danger">*Perusahaan harap diisi</div>
-						@enderror
+						<input name="company" type="text" class="form-control" id="input_company" placeholder="Perusahaan" required>
 					</div>
 					<div class="form-group">
 						<label for="input_position">Posisi</label>
-						<input name="position" type="text" class="form-control" id="input_position" placeholder="Perusahaan">
+						<input name="position" type="text" class="form-control" id="input_position" placeholder="Posisi" required>
 						@error('position')
 						<div class="alert alert-danger">*Posisi harap diisi</div>
 						@enderror
 					</div>
 					<div class="form-group">
 						<label for="input_works_place">Alamat Perusahaan</label>
-						<textarea name="works_place" class="form-control" id="input_works_place" rows="3" placeholder="Alamat Perusahaan"></textarea>
+						<textarea name="works_place" class="form-control" id="input_works_place" rows="3" placeholder="Alamat Perusahaan" required></textarea>
 						@error('works_place')
 						<div class="alert alert-danger">*Alamat Perusahaan harap diisi</div>
 						@enderror
 					</div>
 					<div class="form-group">
 						<label for="input_description">Deskripsi Pekerjaan</label>
-						<textarea name="description" class="form-control" id="input_description" rows="3" placeholder="Deskripsi Pekerjaan"></textarea>
+						<textarea name="description" class="form-control" id="input_description" rows="3" placeholder="Deskripsi Pekerjaan" required></textarea>
 						@error('description')
 						<div class="alert alert-danger">*Deskripsi Pekerjaan harap diisi</div>
 						@enderror
@@ -94,12 +91,12 @@
 					<div class="form-group">
 						<!-- Date input -->
 						<label><strong>Tanggal Masuk</strong></label>
-						<input class="form-control" id="date" name="date_start" placeholder="MM/DD/YYY" type="date" />
+						<input class="form-control" id="date" name="date_start" placeholder="MM/DD/YYY" type="date" required/>
 					</div>
 					<div class="form-group">
 						<!-- Date input -->
 						<label><strong>Tanggal Keluar</strong></label>
-						<input class="form-control" id="date" name="date_end" placeholder="MM/DD/YYY" type="date" />
+						<input class="form-control" id="date" name="date_end" placeholder="MM/DD/YYY" type="date" required/>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -111,3 +108,12 @@
 	</div>
 </div>
 @endsection
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript"> 
+		$(function () {
+			$("#btnDeleted").click(function () {
+				alert("Yakin Ingin Menghapus Data");
+				return true;
+			});
+		});
+</script>

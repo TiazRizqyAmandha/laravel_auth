@@ -12,11 +12,11 @@
             {{csrf_field()}}
             <div class="form-group">
                 <label for="update_name">Name</label>
-                <input name="name" type="text" class="form-control" id="update_name" aria-describedby="emailHelp" placeholder="Name" value="{{$posts_category->name}}">
+                <input name="name" type="text" class="form-control" id="update_name" aria-describedby="emailHelp" placeholder="Name" value="{{$posts_category->name}}" required>
             </div>
             <div class="form-group">
                 <label for="update_status">Status</label>
-                <select name="status" class="form-control" id="update_status">
+                <select name="status" class="form-control" id="update_status" required>
                     <option value="Aktif" {{$posts_category->status == 'Aktif' ? 'selected' : ''}}>Aktif</option>
                     <option value="Tidak Aktif" {{$posts_category->status == 'Tidak Aktif' ? 'selected' : ''}}>Tidak Aktif</option>
                 </select>

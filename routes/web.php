@@ -44,6 +44,7 @@ Route::post('/anggota/create', 'AnggotaController@create');
 Route::get('/anggota/{id}/edit', 'AnggotaController@edit');
 Route::post('/anggota/{id}/update', 'AnggotaController@update');
 Route::get('/anggota/{id}/delete', 'AnggotaController@delete');
+Route::get('/anggota/{id}/read', 'AnggotaController@read');
 //! Reset Password
 Route::post('/anggota/reset-password', 'AnggotaController@resetPassword');
 //! Kirim Email

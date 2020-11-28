@@ -18,44 +18,44 @@
 				<div class="form-group">
 					<div class="form-group">
 						<label for=""><strong>Nama Lengkap</strong></label>
-						<input name="name" type="text" class="form-control" placeholder="Nama" value="{{$anggota->name}}">
+						<input name="name" type="text" class="form-control" placeholder="Nama" value="{{$anggota->name}}" required>
 					</div>
 					<div class="form-group">
 						<label for=""><strong>Nama Pengguna</strong></label>
-						<input name="username" type="text" class="form-control" placeholder="Username" value="{{$anggota->username}}">
+						<input name="username" type="text" class="form-control" placeholder="Username" value="{{$anggota->username}}" required>
 					</div>
 					<div class="form-group">
 						<label for=""><strong>Angkatan</strong></label>
-						<input name="generation" type="text" class="form-control" placeholder="Angkatan" value="{{$anggota->generation}}">
+						<input name="generation" type="text" class="form-control" placeholder="Angkatan" value="{{$anggota->generation}}" required>
 					</div>
 					<div class="form-group">
 						<!-- Date input -->
 						<label for=""><strong>Tanggal Lahir</strong></label>
-						<input class="form-control" id="date" name="birthdate" placeholder="MM/DD/YYY" type="date" value="{{$anggota->birthdate}}" />
+						<input class="form-control" id="date" name="birthdate" placeholder="MM/DD/YYY" type="date" value="{{$anggota->birthdate}}" required/>
 					</div>
 					<!-- Form code ends -->
 					<div class="form-group">
 						<label for=""><strong>Nomor Telepon</strong></label>
-						<input name="phone_number" type="text" class="form-control" placeholder="Nomor Telepon" value="{{$anggota->phone_number}}">
+						<input name="phone_number" type="text" class="form-control" placeholder="Nomor Telepon" value="{{$anggota->phone_number}}" required>
 					</div>
 					<div class="form-group">
 						<label for=""><strong>Alamat</strong></label>
-						<textarea name="address" class="form-control" rows="3" placeholder="Alamat">{{$anggota->address}}</textarea>
+						<textarea name="address" class="form-control" rows="3" placeholder="Alamat" required>{{$anggota->address}}</textarea>
 					</div>
 					<div class="form-group">
 						<label for=""><strong>Deskripsi Diri</strong></label>
-						<textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri">{{$anggota->self_description}}</textarea>
+						<textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri" required>{{$anggota->self_description}}</textarea>
 					</div>
 					<div class="form-group">
 						<label for="add_gender"><strong>Jenis Kelamin</strong></label>
-						<select name="gender" class="form-control" id="add_gender">
+						<select name="gender" class="form-control" id="add_gender" required>
 							<option value="L" @if($anggota->gender == 'L') selected @endif>Laki-laki</option>
 							<option value="P" @if($anggota->gender == 'P') selected @endif>Perempuan</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="add_role"><strong>Peran</strong></label>
-						<select name="role" class="form-control" id="add_role">
+						<select name="role" class="form-control" id="add_role" required>
 							<option value="Admin" @if($anggota->role == 'Admin') selected @endif>Admin</option>
 							<option value="User" @if($anggota->role == 'User') selected @endif>User</option>
 						</select>

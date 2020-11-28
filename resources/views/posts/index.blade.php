@@ -42,7 +42,7 @@
 				<td>{{$posts->users->name}}</td>
 				<td>
 					<a href="/posts/{{$posts->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
-					<a href="/posts/{{$posts->id}}/delete" class="btn btn-danger btn-sm">Hapus</a>
+					<a href="/posts/{{$posts->id}}/delete" class="btn btn-danger btn-sm" id="btnDelete">Hapus</a>
 				</td>
 			</tr>
 			@endforeach
@@ -69,21 +69,21 @@
 				<div class="modal-body" style="height: 70vh;overflow-y: auto;">
 					<div class="form-group">
 						<label for="input_title">Lowongan Kerja</label>
-						<input name="title" type="text" class="form-control" id="input_title" placeholder="Lowongan Kerja">
+						<input name="title" type="text" class="form-control" id="input_title" placeholder="Lowongan Kerja" required>
 						@error('title')
 						<div class="alert alert-danger">*Lowongan Kerja harap diisi</div>
 						@enderror
 					</div>
 					<div class="form-group">
 						<label for="input_body">Deskripsi</label>
-						<textarea name="body" class="form-control" id="input_body" rows="3" placeholder="Deskripsi"></textarea>
+						<textarea name="body" class="form-control" id="input_body" rows="3" placeholder="Deskripsi" required></textarea>
 						@error('body')
 						<div class="alert alert-danger">*Deskripsi harap diisi</div>
 						@enderror
 					</div>
 					<div class="form-group">
 						<label for="input_category">Kategori</label>
-						<select name="posts_category_id" class="form-control" id="input_category">
+						<select name="posts_category_id" class="form-control" id="input_category" required>
 							<option value="" selected disabled>Kategori</option>
 							@foreach($posts_category as $category)
 							<option value="{{$category->id}}">{{$category->name}}</option>
@@ -99,12 +99,12 @@
 					</div>
 					<div class="form-group">
 						<label for="input_filter">Saring</label>
-						<select name="generation[]" class="form-control" id="input_filter" multiple>
+						<select name="generation[]" class="form-control" id="input_filter" multiple required>
 							<option value="" disabled>Angkatan</option>
 							@for($i=date('Y') - 8; $i <= date('Y'); $i++) <option value="{{$i}}">{{$i}}</option>
 								@endfor
 						</select>
-						<select name="gender" class="form-control" id="input_filter">
+						<select name="gender" class="form-control" id="input_filter" required>
 							<option value="" selected disabled>Jenis Kelamin</option>
 							<option value="ALL">Semua</option>
 							<option value="L">Laki-laki</option>
@@ -121,3 +121,12 @@
 	</div>
 </div>
 @endsection
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript"> 
+		$(function () {
+			$("#btnDelete").click(function () {
+				alert("Yakin Ingin Menghapus Data");
+				return true;
+			});
+		});
+</script>
