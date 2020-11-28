@@ -34,6 +34,7 @@ class AnggotaController extends Controller
             $request->request->add(['status' => 'Belum Aktif']);
             $request->request->add(['key_user' => $request->input('username') . '-' . substr(str_shuffle($permitted_chars), 0, 5)]);
         }
+
         \App\User::create($request->all());
         return redirect('/admin/anggota')->with('sukses', 'data anggota berhasil di tambah');
     }

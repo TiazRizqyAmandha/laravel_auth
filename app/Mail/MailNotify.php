@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendMail extends Mailable
+class MailNotify extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +16,9 @@ class SendMail extends Mailable
      *
      * @return void
      */
-    public function __construct($nama)
+    public function __construct()
     {
-        $this->nama = $nama;
+        //
     }
 
     /**
@@ -28,11 +28,6 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->from('email@domainAnda.com')
-            ->view('email')
-            ->with(
-            [
-                'nama' => $this->nama
-            ]);
+        return $this->view('register_notify');
     }
-} 
+}

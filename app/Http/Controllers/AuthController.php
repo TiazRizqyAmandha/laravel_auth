@@ -12,6 +12,8 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailNotify;
 
 class AuthController extends Controller
 {
@@ -95,7 +97,11 @@ class AuthController extends Controller
         $user->self_description = ucwords(strtolower($request->self_description));
         $user->status = 'Aktif';
         $user->email_verified_at = \Carbon\Carbon::now();
+
+        Mail::to($user->email)->send(new MailNotify($user->username));
+
         $simpan = $user->save();
+
 
         if ($simpan) {
             Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');

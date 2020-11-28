@@ -32,6 +32,8 @@ class User extends Authenticatable
         'photo_profil',
     ];
 
+    
+
     /**
      * The attributes that should be hidden for arrays.
      *

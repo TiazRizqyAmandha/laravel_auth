@@ -1,3 +1,2 @@
-<h1>Halo {{ Auth::user()->name }}</h1>
-<h1>CONTOH BARU INI MASUK GAK</h1>
-<p>Email ini merupakan contoh pengiriman email di Laravel menggunakan SMPT Gmail. Silahkan baca tutorial lengkapnya di <a href="https://ilmucoding.com/laravel-kirim-email-smpt-gmail">di sini</a>.</p>
+<h1>Halo {{ $nama }}</h1>
+ <p>Lorem ipsum dolo sit amet, consectetur adipisicing elit. Dicta perspiciatis quibusdam quia, eveniet pariatur alias est sunt ut harum ab fuga culpa. Doloribus veniam error a beatae possimus, corrupti consequuntur!</p>
