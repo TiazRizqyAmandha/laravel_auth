@@ -29,6 +29,7 @@ class User extends Authenticatable
         'username',
         'key_user',
         'status',
+        'photo_profil',
     ];
 
     /**
@@ -57,5 +58,14 @@ class User extends Authenticatable
     public function works()
     {
         return $this->hasMany('App\Works','users_id');
+    }
+
+    public function getPhotoProfil()
+    {
+        if(!$this->photo_profil)
+        {
+            return asset('images/default.jpg');
+        }
+        return asset('images/'.$this->photo_profil);
     }
 }

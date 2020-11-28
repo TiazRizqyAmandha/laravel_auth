@@ -12,20 +12,20 @@
 @endif
 <div class="container">
 	<div class="row">
-		<div class="col-6">
-			<h1>Data Admin dan User Website Alumni</h1>
-		</div>
-		<div class="col-6">
+		<div class="col-lg-12">
+			<h1 style="text-align: center;">Data Anggota</h1>
 			@if(Auth::user()->role == 'Admin')
 			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal">
-				Tambah Data Admin dan User
+			<button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 10px;">
+				Tambah Anggota
 			</button>
 			@endif
+			&nbsp;
 			<a href="https://mail.google.com/" class="btn btn-secondary btn-sm float-right">Email</a>
 		</div>
-		<table class="table table-hover">
+		<table class="table table-bordered table-hover table-striped">
 			<tr>
+				<th>Photo Profil</th>
 				<th>Nama</th>
 				<th>Angkatan</th>
 				<th>Email</th>
@@ -34,6 +34,7 @@
 			</tr>
 			@foreach($data_anggota as $anggota)
 			<tr>
+				<td><img src="{{$anggota->getPhotoProfil()}}" style="border: 1px solid #000000; width: 150px;height: 150px; overflow: hidden; border-radius: 50%;" class="circular-image" alt="photo_profil"/></td>
 				<td>{{$anggota->name}}</td>
 				<td>{{$anggota->generation}}</td>
 				<td>
@@ -68,7 +69,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form action="/anggota/create" method="POST">
+				<form action="/anggota/create" method="POST" enctype="multipart/form-data">
 					{{csrf_field()}}
 					<div class="form-group">
 						<div class="form-group">

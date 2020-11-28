@@ -116,7 +116,7 @@ $gender = $_GET['gender'];
     <br>
     <!-- Right Column -->
     <div class="row">
-      <div class="col-lg-10" style="background-color: white">
+      <div class="col-lg-10" style="background-color: white; margin-left: 85px;">
         @foreach($data_posts as $posts)
 <!--                 @php
         var_dump($generation);
@@ -136,7 +136,7 @@ $gender = $_GET['gender'];
         @if($created_at == null || $created_at == $posts->created_at->format('F'))
         @if($gender == null || $gender == json_decode($posts->filter)->gender)
         <h2 class="w3-text-grey w3-padding-16">
-          <i class="fa fa-user fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
+          <i><img src="{{$posts->users->getPhotoProfil()}}" style="border: 1px solid #000000; width: 45px;height: 60px; overflow: hidden; border-radius: 50%;" class="img-circle" alt="photo_profil"/></i>
           {{$posts->title}}
         </h2>
         <div class="w3-container">
@@ -190,7 +190,7 @@ $gender = $_GET['gender'];
   <!-- End Page Container -->
 </div>
 <footer class="w3-container w3-teal w3-center w3-margin-top">
-  <p>Alumni IT Maranatha Copyright 2020</p>
+  <p>Alumni IT Maranatha Copyright 2020 || Email Admin : 1772052@maranatha.ac.id || Nomor Telepon : 081220452951</p>
 </footer>
 <!-- Page Container -->
 </body>

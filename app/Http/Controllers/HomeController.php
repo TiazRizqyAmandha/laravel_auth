@@ -22,6 +22,12 @@ class HomeController extends Controller
 	{
 		$data_anggota = \App\User::find($id);
 		$data_anggota->update($request->all());
+		if($request->hasFile('photo_profil'))
+        {
+            $request->file('photo_profil')->move('images/',$request->file('photo_profil')->getClientOriginalName());
+            $data_anggota->photo_profil = $request->file('photo_profil')->getClientOriginalName();
+            $data_anggota->save();
+        }
 		return redirect('home')->with('sukses', 'data anggota berhasil di ubah');
 	}
 	public function editpassword($id)

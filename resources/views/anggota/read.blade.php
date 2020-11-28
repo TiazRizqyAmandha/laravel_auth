@@ -26,6 +26,7 @@
 
 	<title>Dashboard</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css" />
 </head>
 
 <body class="w3-light-grey">
@@ -37,7 +38,10 @@
 			<!-- Left Column -->
 			<div class="w3-third">
 				<div class="w3-white w3-text-black w3-card-4">
-					<h4 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>{{$anggota->name}}</h4>
+					<div class="circular-image">
+						<img src="{{$anggota->getPhotoProfil()}}" class="img-circle" alt="photo_profil"class="img-circle" alt="photo_profil" style="border: 1px solid #000000; width: 200px;height: 200px; overflow: hidden; border-radius: 50%; margin-left: 70px; margin-top: 10px"/>
+					</div>
+					<h4 class="w3-text-grey w3-padding-16" align="middle">{{$anggota->name}}</h4>
 					<div class="w3-container">
 						<h6 class="w3-opacity"><b>Anggota ID : </b>{{$anggota->id}}</h6>
 						<h6 class="w3-opacity"><b>Alamat : </b>{{$anggota->address}}</h6>

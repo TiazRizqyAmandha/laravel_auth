@@ -42,9 +42,10 @@
 						<a href="/home/{{ Auth::user()->id}}/edit"><i class="fa fa-cog fa-fw w3-margin-right w3-large w3-text-teal"></i></a>
 					</div>
 
-					<div class="w3-container">
+					<div class="w3-container w3-margin-right text-align: center">
 						<br>
-						<p><i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal" name="name"></i> {{ Auth::user()->name}} ({{Auth::user()->role}})</p>
+						<p><img src="{{Auth::user()->getPhotoProfil()}}"  class="img-circle" alt="photo_profil" style="border: 1px solid #000000; width: 200px;height: 200px; overflow: hidden; border-radius: 50%; margin-left: 50px;"/></p>
+						<p><h4 class="w3-text-grey w3-padding-16" align="middle">{{ Auth::user()->name}} ({{Auth::user()->role}})</h4></p>
 						<p><i class="fa fa-id-card fa-fw w3-margin-right w3-large w3-text-teal" name="username"></i> {{ Auth::user()->username}}</p>
 						<p><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-large w3-text-teal" name="generation"></i> {{ Auth::user()->generation}}</p>
 						@if(Auth::user()->gender == 'P')
@@ -93,14 +94,10 @@
 
 		<!-- End Page Container -->
 	</div>
-
-	<footer class="w3-container w3-teal w3-center w3-margin-top">
-		<p>Alumni IT Maranatha Copyright 2020</p>
-	</footer>
-
-
 	<!-- Page Container -->
-
+	<footer class="w3-container w3-teal w3-center w3-margin-top">
+		<p>Alumni IT Maranatha Copyright 2020 || Email Admin : 1772052@maranatha.ac.id || Nomor Telepon : 081220452951</p>
+	</footer>
 </body>
 
 </html>

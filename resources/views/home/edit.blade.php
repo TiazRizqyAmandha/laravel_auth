@@ -9,11 +9,15 @@
 	<h1>Ubah Data {{Auth::user()->role}} Website Alumni</h1>
 	<div class="row">
 		<div class="col-lg-12">
-			<form action="/home/{{ Auth::user()->id}}/update" method="POST">
+			<form action="/home/{{ Auth::user()->id}}/update" method="POST" enctype="multipart/form-data">
 				<input type="hidden" name="status" value="Aktif">
 				{{csrf_field()}}
 				<div class="form-group">
 					<a href="/home/{{ Auth::user()->id}}/editpassword" class="btn btn-warning btn-sm">Ubah Password</a>
+					<div class="form-group">
+						<label for=""><strong>Photo Profil</strong></label>
+						<input type="file" name="photo_profil"  class="form-control">
+					</div>
 					<div class="form-group">
 						<label for=""><strong>Nama Lengkap</strong></label>
 						<input name="name" type="text" class="form-control" placeholder="Nama" value="{{ Auth::user()->name}}" required>

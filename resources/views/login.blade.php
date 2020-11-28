@@ -13,7 +13,7 @@
     <div class="container">
         <div class="col-md-4 offset-md-4 mt-5">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="background-color: #94b8b8;">
                     <h3 class="text-center">Masuk</h3>
                 </div>
                 <form action="{{ route('login') }}" method="post">
@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <label for=""><strong>Password</strong>&nbsp;
                             <input type="checkbox" onclick="myFunction()"></label>
-                            <input type="password" name="password" class="form-control" id="myInput">
+                            <input type="password" name="password" class="form-control" id="myInput" placeholder="Password">
                         </div>
                     </div>
                     <div class="card-footer">
@@ -70,6 +70,9 @@
         }
     }
     </script>
+    <div class='footer' style="width: 1230px; height: 100px; margin-top: 100px; background-color: #94b8b8; text-align: center;">
+      Alumni IT Maranatha Copyright 2020 || Email Admin : 1772052@maranatha.ac.id || Nomor Telepon : 081220452951
+    </div>
 </body>
 
 </html>

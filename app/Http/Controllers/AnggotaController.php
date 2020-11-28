@@ -46,8 +46,15 @@ class AnggotaController extends Controller
 
     public function update(Request $request, $id)
     {
+        //dd($request->all());
         $anggota = \App\User::find($id);
         $anggota->update($request->all());
+        if($request->hasFile('photo_profil'))
+        {
+            $request->file('photo_profil')->move('images/',$request->file('photo_profil')->getClientOriginalName());
+            $anggota->photo_profil = $request->file('photo_profil')->getClientOriginalName();
+            $anggota->save();
+        }
         return redirect('/admin/anggota')->with('sukses', 'data anggota berhasil di ubah');
     }
 

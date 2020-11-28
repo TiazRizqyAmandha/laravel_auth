@@ -18,7 +18,7 @@
     <div class="container">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="background-color: #94b8b8;">
                     <h3 class="text-center">Daftar</h3>
                 </div>
                 <form action="/register" method="post">
@@ -100,6 +100,9 @@
             </div>
         </div>
     </div>
+    <div class='footer' style="width: 1230px; height: 100px; margin-top: 100px; background-color: #94b8b8; text-align: center;">
+      Alumni IT Maranatha Copyright 2020 || Email Admin : 1772052@maranatha.ac.id || Nomor Telepon : 081220452951
+  </div>
 </body>
 </html>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>

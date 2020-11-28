@@ -6,12 +6,10 @@
 </div>
 @endif
 <div class="row">
-	<div class="col-6">
-		<h1>Data Pekerjaan</h1>
-	</div>
-	<div class="col-6">
+	<div class="col-lg-12">
+		<h1 style="text-align: center;">Data Pekerjaan</h1>
 		<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">
+		<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal" style="margin-bottom: 10px;">
 			Tambah
 		</button>
 	</div>
