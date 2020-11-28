@@ -21,7 +21,7 @@
 			</button>
 			@endif
 			&nbsp;
-			<a href="https://mail.google.com/" class="btn btn-secondary btn-sm float-right">Email</a>
+			<a href="https://mail.google.com/" class="btn btn-secondary btn-sm float-right" style="margin-bottom: 10px;">Email</a>
 		</div>
 		<table class="table table-bordered table-hover table-striped">
 			<tr>
@@ -34,14 +34,11 @@
 			</tr>
 			@foreach($data_anggota as $anggota)
 			<tr>
-				<td><a href="{{$anggota->getPhotoProfil()}}"><img src="{{$anggota->getPhotoProfil()}}" style="border: 1px solid #000000; width: 150px;height: 150px; overflow: hidden; border-radius: 50%;" class="circular-image" alt="photo_profil"/></a></td>
+				<td align="center"><a href="{{$anggota->getPhotoProfil()}}"><img src="{{$anggota->getPhotoProfil()}}" style="border: 1px solid #000000; width: 150px;height: 150px; overflow: hidden; border-radius: 50%;" class="circular-image" alt="photo_profil"/></a></td>
 				<td>{{$anggota->name}}</td>
 				<td>{{$anggota->generation}}</td>
 				<td>
-					<span id="theList">
-						{{$anggota->email}}
-					</span>
-					<button id="copyButton" onclick="myCopyFunction()" disabled="select">Copy</button>
+					{{$anggota->email}}
 				</td>
 				<td>{{$anggota->role}}</td>
 				<td>
@@ -168,17 +165,6 @@
 			x.type = "password";
 		}
 	}
-	function myCopyFunction() {
-	  var myText = document.createElement("textarea")
-	  myText.value = document.getElementById("theList").innerHTML;
-	  myText.value = myText.value.replace(/&lt;/g,"<");
-	  myText.value = myText.value.replace(/&gt;/g,">");
-	  document.body.appendChild(myText)
-	  myText.focus();
-	  myText.select();
-	  document.execCommand('copy');
-	  document.body.removeChild(myText);
-	}
 	$(function () {
 		$("#btnSubmit").click(function () {
 			var password = $("#myInput").val();
@@ -190,4 +176,9 @@
 			return true;
 		});
 	});
+	// function copy_text() {
+	// 	document.getElementById("pilih").select();
+	// 	document.execCommand("copy");
+	// 	alert("Text berhasil dicopy");
+	// }
 </script>

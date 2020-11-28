@@ -48,7 +48,8 @@ Route::get('/anggota/{id}/read', 'AnggotaController@read');
 //! Reset Password
 Route::post('/anggota/reset-password', 'AnggotaController@resetPassword');
 //! Kirim Email
-Route::get('/kirim-email', 'EmailController@index');
+Route::get('/admin/kirim-email', 'EmailController@index');
+Route::get('/user/kirim-email', 'EmailController@index');
 //! Profile
 Route::get('/home/{id}/edit', 'HomeController@edit');
 Route::post('/home/{id}/update', 'HomeController@update');

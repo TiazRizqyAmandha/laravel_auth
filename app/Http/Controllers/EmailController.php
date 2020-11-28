@@ -15,11 +15,11 @@ class EmailController extends Controller
 		// $user = \App\User::all();
 		// $nama = $user->name = $request->input('name');
 		$nama = "Tiaz Rizqy Amandha";
-		$email = "wildanfuady@gmail.com";
+		$email = "amandhatiazrizqi@gmail.com";
 		$kirim = Mail::to($email)->send(new SendMail($nama));
 
 		if($kirim){
-			echo "Email telah dikirim";
+			echo "Pendaftaran Berhasil";
 		}
 
 	}
