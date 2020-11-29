@@ -16,19 +16,19 @@
 					<a href="/home/{{ Auth::user()->id}}/editpassword" class="btn btn-warning btn-sm">Ubah Password</a>
 					<div class="form-group">
 						<label for=""><strong>Photo Profil</strong></label>
-						<input type="file" name="photo_profil"  class="form-control">
+						<input  type="file" name="photo_profil"  class="form-control">
 					</div>
 					<div class="form-group">
 						<label for=""><strong>Nama Lengkap</strong></label>
-						<input name="name" type="text" class="form-control" placeholder="Nama" value="{{ Auth::user()->name}}" required>
+						<input disabled name="name" type="text" class="form-control" placeholder="Nama" value="{{ Auth::user()->name}}" required>
 					</div>
 					<div class="form-group">
 						<label for=""><strong>Nama Pengguna</strong></label>
-						<input name="username" type="text" class="form-control" placeholder="Username" value="{{Auth::user()->username}}" required>
+						<input disabled name="username" type="text" class="form-control" placeholder="Username" value="{{Auth::user()->username}}" required>
 					</div>
 					<div class="form-group">
 						<label for=""><strong>Angkatan</strong></label>
-						<input name="generation" type="text" class="form-control" placeholder="Angkatan" value="{{Auth::user()->generation}}" required>
+						<input disabled name="generation" type="text" class="form-control" placeholder="Angkatan" value="{{Auth::user()->generation}}" required>
 					</div>
 					<div class="form-group">
 						<!-- Date input -->
