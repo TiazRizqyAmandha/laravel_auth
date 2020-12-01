@@ -40,6 +40,6 @@ class HomeController extends Controller
 		$data_anggota = \App\User::find($id);
         $data_anggota->password = Hash::make($request->password);
         $data_anggota->save();
-        return redirect("home")->with('sukses', 'password berhasil di reset');
+        return redirect("home")->with('sukses', 'password berhasil di ganti');
 	}
 }

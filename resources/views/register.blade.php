@@ -40,11 +40,11 @@
                         @endif
                         <div class="form-group">
                             <div class="form-group">
-                                <label for=""><strong>Full Name</strong></label>
+                                <label for=""><strong>Nama Lengkap</strong></label>
                                 <input disabled value="{{ $data_reg != null ? $data_reg->name : null}}" name="name" type="text" class="form-control" placeholder="Nama">
                             </div>
                             <div class="form-group">
-                                <label for=""><strong>Username</strong></label>
+                                <label for=""><strong>Nama Pengguna</strong></label>
                                 <input disabled value="{{ $data_reg != null ? $data_reg->username : null}}" name="username" type="text" class="form-control" placeholder="Username">
                             </div>
                             <div class="form-group">
@@ -84,7 +84,7 @@
                                 <input type="password" name="password_confirmation" class="form-control" id="myInput2" placeholder="Password">
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">Role</label>
+                                <label for="exampleFormControlSelect1"><strong>Peran</strong></label>
                                 <select name="role" class="form-control" disabled>
                                     <!--                                     <option value="Admin">Admin</option> -->
                                     <option value="User" selected>User</option>

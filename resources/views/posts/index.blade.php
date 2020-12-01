@@ -38,7 +38,7 @@
 				@endif
 				<td>{{$posts->status}}</td>
 				<td>{{$posts->users->name}}</td>
-				<td>
+				<td align="center">
 					<a href="/posts/{{$posts->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
 					<a href="/posts/{{$posts->id}}/delete" class="btn btn-danger btn-sm" id="btnDelete">Hapus</a>
 				</td>

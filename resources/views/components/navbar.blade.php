@@ -20,7 +20,7 @@
                         <a class="nav-link" href="{{url('/admin/works')}}">Pekerjaan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/admin/posts')}}">Posting</a>
+                        <a class="nav-link" href="{{url('/admin/posts')}}">Lowongan Kerja</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/admin/kategori')}}">Kategori</a>
@@ -33,7 +33,7 @@
                         <a class="nav-link" href="{{url('/user/works')}}">Pekerjaan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/user/posts')}}">Posting</a>
+                        <a class="nav-link" href="{{url('/user/posts')}}">Lowongan Kerja</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/user/anggota')}}">Anggota</a>
@@ -48,7 +48,7 @@
                             {{ Auth::user()->name}} ({{Auth::user()->role}})
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{url('/logout')}}">Logout</a>
+                            <a class="dropdown-item" href="{{url('/logout')}}">Keluar</a>
                         </div>
                     </li>
                 </ul>

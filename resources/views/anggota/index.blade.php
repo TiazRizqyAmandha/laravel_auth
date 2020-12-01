@@ -20,8 +20,6 @@
 				Tambah Anggota
 			</button>
 			@endif
-			&nbsp;
-			<a href="https://mail.google.com/" class="btn btn-secondary btn-sm float-right" style="margin-bottom: 10px;">Email</a>
 		</div>
 		<table class="table table-bordered table-hover table-striped">
 			<tr>
@@ -41,7 +39,7 @@
 					{{$anggota->email}}
 				</td>
 				<td>{{$anggota->role}}</td>
-				<td>
+				<td align="center">
 					@if(Auth::user()->role == 'Admin')
 					<a href="/anggota/{{$anggota->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
 					<a href="/anggota/{{$anggota->id}}/delete" class="btn btn-danger btn-sm">Hapus</a>
@@ -170,7 +168,7 @@
 			var password = $("#myInput").val();
 			var confirmPassword = $("#myInput2").val();
 			if (password != confirmPassword) {
-				alert("Passwords do not match.");
+				alert("Password dan Konfirmasi Password tidak sama.");
 				return false;
 			}
 			return true;

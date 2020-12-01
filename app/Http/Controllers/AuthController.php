@@ -104,10 +104,10 @@ class AuthController extends Controller
 
 
         if ($simpan) {
-            Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
+            Session::flash('success', 'Pendaftaran berhasil! Silahkan masuk untuk mengakses data');
             return redirect()->route('login');
         } else {
-            Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
+            Session::flash('errors', ['' => 'Pendaftaran gagal! Silahkan ulangi beberapa saat lagi']);
             return redirect()->route('register');
         }
     }
@@ -135,16 +135,16 @@ class AuthController extends Controller
         if ($user != null) {
             if($user->status == 'Belum Aktif')
             {
-                Session::flash('success', 'Key ditemukan, silahkan lengkapi data registrasi');
+                Session::flash('success', 'Kunci ditemukan, silahkan lengkapi data registrasi');
                 return redirect()->route('register')->with(['data_register' => $user]);
             }
             elseif ($user->status == 'Aktif') {
-                Session::flash('no', 'Key sudah dipakai, silahkan lengkapi data registrasi');
+                Session::flash('no', 'Kunci sudah dipakai, silahkan masukkan kunci yang lain');
                 return redirect()->route('key-user');
             }
         }
         else {
-            Session::flash('error', 'Key tidak ditemukan, pastikan key yang dimasukan sudah benar');
+            Session::flash('error', 'Kunci tidak ditemukan, pastikan Kunci yang dimasukan sudah benar');
             return redirect()->route('key-user');
         }
     }

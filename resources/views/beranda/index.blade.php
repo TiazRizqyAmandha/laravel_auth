@@ -71,29 +71,21 @@ $gender = $_GET['gender'];
               @endforeach
             </select>
           </div>
-<!--           <div class="col-2">
-            <select class="form-control" name="created_at">
-              <option value="" selected>Bulan Upload</option>
-              @foreach($data_posts as $po)
-              <option value="{{$po->created_at->format('F')}}" {{$created_at != null && $created_at == $po->created_at ? 'selected' : ''}}>{{$po->created_at->format('F')}}</option> 
-              @endforeach
-            </select>
-          </div> -->
           <div class="col-2">
             <select class="form-control" name="created_at">
               <option value="" selected disabled>Bulan Upload</option>
-              <option value="January" {{ $created_at != null && $created_at == 'January' ? 'selected' : ''}}>January</option>
-              <option value="February" {{ $created_at != null && $created_at == 'February' ? 'selected' : ''}}>February</option>
-              <option value="March" {{ $created_at != null && $created_at == 'March' ? 'selected' : ''}}>March</option>
+              <option value="January" {{ $created_at != null && $created_at == 'January' ? 'selected' : ''}}>Januari</option>
+              <option value="February" {{ $created_at != null && $created_at == 'February' ? 'selected' : ''}}>Februari</option>
+              <option value="March" {{ $created_at != null && $created_at == 'March' ? 'selected' : ''}}>Maret</option>
               <option value="April" {{ $created_at != null && $created_at == 'April' ? 'selected' : ''}}>April</option>
-              <option value="May" {{ $created_at != null && $created_at == 'May' ? 'selected' : ''}}>May</option>
-              <option value="June" {{ $created_at != null && $created_at == 'June' ? 'selected' : ''}}>June</option>
-              <option value="July" {{ $created_at != null && $created_at == 'July' ? 'selected' : ''}}>July</option>
-              <option value="August" {{ $created_at != null && $created_at == 'August' ? 'selected' : ''}}>August</option>
+              <option value="May" {{ $created_at != null && $created_at == 'May' ? 'selected' : ''}}>Mei</option>
+              <option value="June" {{ $created_at != null && $created_at == 'June' ? 'selected' : ''}}>Juni</option>
+              <option value="July" {{ $created_at != null && $created_at == 'July' ? 'selected' : ''}}>Juli</option>
+              <option value="August" {{ $created_at != null && $created_at == 'August' ? 'selected' : ''}}>Agustus</option>
               <option value="September" {{ $created_at != null && $created_at == 'September' ? 'selected' : ''}}>September</option>
-              <option value="October" {{ $created_at != null && $created_at == 'October' ? 'selected' : ''}}>October</option>
+              <option value="October" {{ $created_at != null && $created_at == 'October' ? 'selected' : ''}}>Oktober</option>
               <option value="November" {{ $created_at != null && $created_at == 'November' ? 'selected' : ''}}>November</option>
-              <option value="December" {{ $created_at != null && $created_at == 'December' ? 'selected' : ''}}>December</option>
+              <option value="December" {{ $created_at != null && $created_at == 'December' ? 'selected' : ''}}>Desember</option>
             </select>
           </div>
           <div class="col-2">

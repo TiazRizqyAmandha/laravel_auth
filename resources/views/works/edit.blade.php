@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<h1>Edit Data Lowongan Kerja</h1>
+<h1>Ubah Data Pekerjaan</h1>
 @if(session('sukses'))
 <div class="alert alert-success" role="alert">
 	{{session('sukses')}}

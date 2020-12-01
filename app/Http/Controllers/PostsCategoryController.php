@@ -67,7 +67,7 @@ class PostsCategoryController extends Controller
         $post = \App\Posts::where('posts_category_id',$id)->first();
         if($post)
         {
-            return redirect('/admin/kategori')->with('gagal', 'data kategori masih ada di tabel posting');
+            return redirect('/admin/kategori')->with('gagal', 'data kategori masih ada di tabel lowongan kerja');
         }
         else
         {

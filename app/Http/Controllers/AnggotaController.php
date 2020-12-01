@@ -64,11 +64,11 @@ class AnggotaController extends Controller
         $post = \App\Posts::where('users_id',$id)->first();
         $work = \App\Works::where('users_id',$id)->first();
         if ($post && $work) {
-            return redirect('/admin/anggota')->with('gagal', 'data anggota masih ada di tabel posting dan pekerjaan');
+            return redirect('/admin/anggota')->with('gagal', 'data anggota masih ada di tabel lowongan pekerjaan dan pekerjaan');
         }
         elseif($post)
         {
-            return redirect('/admin/anggota')->with('gagal', 'data anggota masih ada di tabel posting');
+            return redirect('/admin/anggota')->with('gagal', 'data anggota masih ada di tabel lowongan pekerjaan');
         }
         elseif($work)
         {

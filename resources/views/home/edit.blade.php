@@ -49,7 +49,7 @@
 						<textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri" required>{{Auth::user()->self_description}}</textarea>
 					</div>
 					<div class="form-group">
-						<label for="add_gender"><strong>Gender</strong></label>
+						<label for="add_gender"><strong>Jenis Kelamin</strong></label>
 						<select name="gender" class="form-control" id="add_gender" required>
 							<option value="L" @if(Auth::user()->gender == 'L') selected @endif>Laki-laki</option>
 							<option value="P" @if(Auth::user()->gender == 'P') selected @endif>Perempuan</option>

@@ -24,7 +24,7 @@
 		}
 	</style>
 
-	<title>Dashboard</title>
+	<title>Lihat Anggota</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css" />
 </head>
@@ -44,6 +44,7 @@
 					<h4 class="w3-text-grey w3-padding-16" align="middle">{{$anggota->name}}</h4>
 					<div class="w3-container">
 						<h6 class="w3-opacity"><b>Anggota ID : </b>{{$anggota->id}}</h6>
+						<h6 class="w3-opacity"><b>Peran : </b>{{$anggota->role}}</h6>
 						<h6 class="w3-opacity"><b>Alamat : </b>{{$anggota->address}}</h6>
 						<h6 class="w3-opacity"><b>Tanggal Lahir : </b>{{$anggota->birthdate}}</h6>
 						<h6 class="w3-opacity"><b>Angkatan : </b>{{$anggota->generation}}</h6>
@@ -59,7 +60,16 @@
 						<h6 class="w3-opacity"><b>Deskripsi Diri : </b>{{$anggota->self_description}}</h6>	
 						<h6 class="w3-opacity"><b>Nama Pengguna : </b>{{$anggota->username}}</h6>
 						<h6 class="w3-opacity"><b>Status Akun : </b>{{$anggota->status}}</h6>
-						<h6 class="w3-opacity"><b>Email : </b>{{$anggota->email}}</h6>
+						<h6 class="w3-opacity">
+							<b>
+								Email : 
+							</b>
+							<!-- The text field -->
+							<input type="text" value="{{$anggota->email}}" id="myInput">
+							<!-- The button used to copy the text -->
+							<button onclick="myFunction()">Copy Email</button>&nbsp;
+							<button style="width: 50px; height: 25px; text-align: center; background-color: #ff6600;"><a href="https://mail.google.com/" >Email</a></button>
+						</h6>
 						<h6 class="w3-opacity"><b>Tanggal Pembuatan Akun : </b>{{$anggota->created_at}}</h6>
 						<h6 class="w3-opacity"><b>Tanggal Terakhir Update Akun : </b>{{$anggota->updated_at}}</h6>
 						<hr>
@@ -118,3 +128,19 @@
 
 </html>
 @endsection
+<script type="text/javascript">
+	function myFunction() {
+		/* Get the text field */
+		var copyText = document.getElementById("myInput");
+
+		/* Select the text field */
+		copyText.select();
+		copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+		/* Copy the text inside the text field */
+		document.execCommand("copy");
+
+		/* Alert the copied text */
+		alert("Copied the text: " + copyText.value);
+	}
+</script>

@@ -36,7 +36,7 @@
 				<td>{{$works->date_start}}</td>
 				<td>{{$works->date_end}}</td>
 				<td>{{$works->users->name}}</td>
-				<td>
+				<td align="center">
 					<a href="/works/{{$works->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
 					<a href="/works/{{$works->id}}/delete" class="btn btn-danger btn-sm" id="btnDeleted">Hapus</a>
 				</td>

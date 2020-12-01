@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<h1>Edit Data Posts Category</h1>
+<h1>Ubah Data Kategori</h1>
 @if(session('sukses'))
 <div class="alert alert-success" role="alert">
     {{session('sukses')}}
@@ -11,7 +11,7 @@
         <form action="/kategori/{{$posts_category->id}}/update" method="POST">
             {{csrf_field()}}
             <div class="form-group">
-                <label for="update_name">Name</label>
+                <label for="update_name">Nama Kategori</label>
                 <input name="name" type="text" class="form-control" id="update_name" aria-describedby="emailHelp" placeholder="Name" value="{{$posts_category->name}}" required>
             </div>
             <div class="form-group">

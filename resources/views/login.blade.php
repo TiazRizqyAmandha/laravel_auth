@@ -70,7 +70,7 @@
         }
     }
     </script>
-    <div class='footer' style="width: 1230px; height: 100px; margin-top: 100px; background-color: #94b8b8; text-align: center;">
+    <div class='footer' style="width: 1230px; height: 50px; margin-top: 80px; background-color: #94b8b8; text-align: center;">
       Alumni IT Maranatha Copyright 2020 || Email Admin : 1772052@maranatha.ac.id || Nomor Telepon : 081220452951
     </div>
 </body>

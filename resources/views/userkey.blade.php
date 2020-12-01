@@ -11,10 +11,10 @@
 
 <body>
     <div class="container">
-        <div class="col-lg-12">
+        <div class="col-md-4 offset-md-4 mt-5" style="margin-top: 100px;">
             <div class="card">
                 <div class="card-header" style="background-color: #94b8b8;">
-                    <h3 class="text-center">Key</h3>
+                    <h3 class="text-center">Kunci</h3>
                 </div>
                 <form action="/key-user" method="post">
                     @csrf
@@ -35,31 +35,31 @@
                         @if(session('error'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <ul>
-                                <li>Key yang dimasukan belum benar. Pastikan key yang dimasukan sudah benar.</li>
+                                <li>Key yang dimasukan belum benar. Pastikan Kunci yang dimasukan sudah benar.</li>
                             </ul>
                         </div>
                         @endif
                         @if(session('no'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <ul>
-                                <li>Key yang dimasukan sudah dipakai. Pastikan key yang dimasukan sudah benar.</li>
+                                <li>Key yang dimasukan sudah dipakai. Pastikan Kunci yang dimasukan sudah benar.</li>
                             </ul>
                         </div>
                         @endif
                         <div class="form-group">
-                            <label><strong>Key</strong></label>
-                            <input name="key_user" type="text" class="form-control" placeholder="Key" required>
+                            <label><strong>Kunci</strong></label>
+                            <input name="key_user" type="text" class="form-control" placeholder="Kunci" required>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-block">Cek</button>
+                        <button type="submit" class="btn btn-primary btn-block">Periksa</button>
                         <p class="text-center">Sudah punya akun? <a href="{{ route('login') }}">Masuk</a> sekarang!</p>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-        <div class='footer' style="width: 1230px; height: 40px; margin-top: 250px; background-color: #94b8b8; text-align: center;">
+        <div class='footer' style="width: 1230px; height: 40px; margin-top: 170px; background-color: #94b8b8; text-align: center;">
       Alumni IT Maranatha Copyright 2020 || Email Admin : 1772052@maranatha.ac.id || Nomor Telepon : 081220452951
     </div>
 </body>

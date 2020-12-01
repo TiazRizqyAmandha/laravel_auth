@@ -30,7 +30,7 @@
             <tr>
                 <td scope="row">{{$category->name}}</td>
                 <td>{{$category->status}}</td>
-                <td>
+                <td align="center">
                     <a href="/kategori/{{$category->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
                     <a href="/kategori/{{$category->id}}/delete" class="btn btn-danger btn-sm" id="btnDeleted">Hapus</a>
                 </td>
@@ -45,7 +45,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addModalLabel">Tambah Posts Category</h5>
+                <h5 class="modal-title" id="addModalLabel">Tambah Kategori</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -54,14 +54,14 @@
                 <form action="/kategori/create" method="POST">
                     {{csrf_field()}}
                     <div class="form-group">
-                        <label for="input_name">Name</label>
-                        <input name="name" type="text" class="form-control" id="input_name" placeholder="Name" required>
+                        <label for="input_name">Nama Kategori</label>
+                        <input name="name" type="text" class="form-control" id="input_name" placeholder="Nama Kategori" required>
                     </div>
                     <input type="hidden" name="status" value="Aktif">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary">Tambah</button>
                 </form>
             </div>
         </div>

@@ -73,13 +73,13 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="resetPasswordModalLabel">Reset Password</h5>
+						<h5 class="modal-title" id="resetPasswordModalLabel">Ganti Password</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
-						Password <b>{{$anggota->name}} </b>akan di reset?
+						Password <b>{{$anggota->name}} </b>akan di ganti?
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
