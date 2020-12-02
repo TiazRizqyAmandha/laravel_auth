@@ -12,8 +12,9 @@ Route::get('/key-user', 'AuthController@halamanKeyUser')->name('key-user');
 Route::post('/key-user', 'AuthController@keyUser');
 //! new register
 Route::post('register-user', 'AuthController@register');
-
-
+//! email key
+Route::get('/email-key','AuthController@halamanEmailUser')->name('email-key');
+Route::post('/email-key','AuthController@keyEmail');
 
 Route::group(['middleware' => 'auth'], function () {
 

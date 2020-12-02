@@ -7,18 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendMail extends Mailable
+class NotifPendaftaranAlumni extends Mailable
 {
     use Queueable, SerializesModels;
+    public $details;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($nama)
+    public function __construct($details)
     {
-        $this->nama = $nama;
+        $this->details = $details;
     }
 
     /**
@@ -28,11 +29,6 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->from('email@domainAnda.com')
-            ->view('email')
-            ->with(
-            [
-                'nama' => $this->nama
-            ]);
+        return $this->view('emails.sites.pendaftaran');
     }
-} 
+}

@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\MailNotify;
+use App\Mail\NotifPendaftaranAlumni;
+use App\Mail\NotifEmailAlumni;
 
 class AuthController extends Controller
 {
@@ -98,7 +99,16 @@ class AuthController extends Controller
         $user->status = 'Aktif';
         $user->email_verified_at = \Carbon\Carbon::now();
 
-        Mail::to($user->email)->send(new MailNotify($user->username));
+        // Mail::raw('Selamat Datang'.$user->name, function($message) use($user){
+        //     $message->to($user->email, $user->name);
+        //     $message->subject('Selamat anda sudah terdaftar di Website Alumni');
+        // });
+        $details = [
+            'name' => $user->name,
+            'username' => $user->username,
+        ];
+        \Mail::to($user->email)->send(new NotifPendaftaranAlumni($details));
+        echo "Email Sudah Dikirim";
 
         $simpan = $user->save();
 
@@ -111,6 +121,8 @@ class AuthController extends Controller
             return redirect()->route('register');
         }
     }
+
+
     public function halamanKeyUser()
     {
         return view('userkey');
@@ -146,6 +158,53 @@ class AuthController extends Controller
         else {
             Session::flash('error', 'Kunci tidak ditemukan, pastikan Kunci yang dimasukan sudah benar');
             return redirect()->route('key-user');
+        }
+    }
+
+
+    public function halamanEmailUser()
+    {
+        return view('emailkey');
+    }
+    public function keyEmail(Request $request)
+    {
+        $rules = [
+            'email_key'                  => 'required',
+        ];
+
+        $messages = [
+            'email_key.required'         => 'Email wajib diisi',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all);
+        }
+
+        $user = User::where('email', $request->input('email_key'))->first();
+        
+
+        if ($user != null) 
+        {
+            $details = [
+                'key_user' => $user->key_user,
+                'name' => $user->name,
+            ];
+            if($user->status == 'Belum Aktif')
+            {
+                \Mail::to($user->email)->send(new NotifEmailAlumni($details));
+                Session::flash('success', 'Email ditemukan, silahkan cek notifikasi email anda');
+                return redirect()->route('key-user');
+            }
+            elseif ($user->status == 'Aktif') {
+                Session::flash('no', 'Email sudah dipakai, silahkan masukkan email yang lain');
+                return redirect()->route('email-key');
+            }
+        }
+        else {
+            Session::flash('gagal', 'Email tidak ditemukan, pastikan email yang dimasukan sudah benar');
+            return redirect()->route('email-key');
         }
     }
 

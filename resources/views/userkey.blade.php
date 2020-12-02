@@ -49,6 +49,7 @@
                         <div class="form-group">
                             <label><strong>Kunci</strong></label>
                             <input name="key_user" type="text" class="form-control" placeholder="Kunci" required>
+                            <p style="color:grey; font-size: 12px; text-align: center;">!!Kunci sudah dikirim tolong cek email!!</p>
                         </div>
                     </div>
                     <div class="card-footer">
