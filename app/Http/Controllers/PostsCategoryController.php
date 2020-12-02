@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Resources\PostsCategory as ResourcesPostsCategory;
 use App\PostsCategory;
 use Illuminate\Http\Request;
+use App\Exports\PostsCategoryExport;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class PostsCategoryController extends Controller
 {
@@ -74,5 +77,17 @@ class PostsCategoryController extends Controller
             $posts_category->delete($posts_category);
             return redirect('/admin/kategori')->with('sukses', 'data kategori berhasil di hapus');
         }
+    }
+
+    public function export() 
+    {
+        return Excel::download(new PostsCategoryExport, 'Kategori.xlsx');
+    }
+
+    public function exportPDF() 
+    {
+        $c = \App\PostsCategory::all();
+        $pdf = PDF::loadView('export.postscategorypdf',['c' => $c]);
+        return $pdf->download('Kategori.pdf');
     }
 }

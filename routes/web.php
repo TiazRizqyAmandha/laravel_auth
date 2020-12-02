@@ -32,12 +32,24 @@ Route::get('/posts/{id}/edit', 'PostsController@edit');
 Route::post('/posts/{id}/update', 'PostsController@update');
 Route::put('/posts/{id}/update', 'PostsController@store');
 Route::get('/posts/{id}/delete', 'PostsController@delete');
+//! Export Excel
+Route::get('/posts/export','PostsController@export');
+//! Export PDF
+Route::get('/posts/exportpdf','PostsController@exportPDF');
+
+
 //! Posts Category
 Route::get('/admin/kategori', 'PostsCategoryController@halamanIndex');
 Route::post('/kategori/create', 'PostsCategoryController@create');
 Route::get('/kategori/{id}/edit', 'PostsCategoryController@edit');
 Route::post('/kategori/{id}/update', 'PostsCategoryController@update');
 Route::get('/kategori/{id}/delete', 'PostsCategoryController@delete');
+//! Export Excel
+Route::get('/kategori/export','PostsCategoryController@export');
+//! Export PDF
+Route::get('/kategori/exportpdf','PostsCategoryController@exportPDF');
+
+
 //! Anggota
 Route::get('/admin/anggota', 'AnggotaController@anggotaIndex');
 Route::get('/user/anggota', 'AnggotaController@anggotaIndex');
@@ -46,15 +58,23 @@ Route::get('/anggota/{id}/edit', 'AnggotaController@edit');
 Route::post('/anggota/{id}/update', 'AnggotaController@update');
 Route::get('/anggota/{id}/delete', 'AnggotaController@delete');
 Route::get('/anggota/{id}/read', 'AnggotaController@read');
+//! Export Excel
+Route::get('/anggota/export','AnggotaController@export');
+//! Export PDF
+Route::get('/anggota/exportpdf','AnggotaController@exportPDF');
 //! Reset Password
 Route::post('/anggota/reset-password', 'AnggotaController@resetPassword');
 //! Kirim Email
 Route::get('/kirim-email', 'EmailController@index');
+
+
 //! Profile
 Route::get('/home/{id}/edit', 'HomeController@edit');
 Route::post('/home/{id}/update', 'HomeController@update');
 Route::get('/home/{id}/editpassword', 'HomeController@editpassword');
 Route::post('/home/{id}/updatepassword', 'HomeController@updatepassword');
+
+
 //! Works
 Route::get('/admin/works', 'WorksController@index');
 Route::get('/user/works', 'WorksController@index');
@@ -62,3 +82,7 @@ Route::post('/works/create', 'WorksController@create');
 Route::get('/works/{id}/edit', 'WorksController@edit');
 Route::post('/works/{id}/update', 'WorksController@update');
 Route::get('/works/{id}/delete', 'WorksController@delete');
+//! Export Excel
+Route::get('/works/export','WorksController@export');
+//! Export PDF
+Route::get('/works/exportpdf','WorksController@exportPDF');

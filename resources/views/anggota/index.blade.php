@@ -16,9 +16,12 @@
 			<h1 style="text-align: center;">Data Anggota</h1>
 			@if(Auth::user()->role == 'Admin')
 			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 10px;">
+			<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 10px;">
 				Tambah Anggota
 			</button>
+			&nbsp;
+			<a href="/anggota/export" class="btn" style="margin-bottom: 10px; background-color: #ff66cc;">Export Excel</a>
+			<a href="/anggota/exportpdf" class="btn" style="margin-bottom: 10px; background-color: #66ff33;">Export PDF</a>
 			@endif
 		</div>
 		<table class="table table-bordered table-hover table-striped">

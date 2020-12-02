@@ -6,11 +6,14 @@ use App\Http\Resources\Posts as ResourcesPosts;
 use App\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\PostsExport;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class PostsController extends Controller
 {
 	//! Function untuk View
-	public function halamanIndex()
+	public function halamanIndex(Request $request)
 	{
 		if (Auth::user()->role == 'Admin')
 			$data_posts = $this->index();
@@ -109,5 +112,18 @@ class PostsController extends Controller
 	{
 		$postsCategoryController = app(PostsCategoryController::class);
 		return $postsCategoryController->indexStatus($status);
+	}
+
+	public function export() 
+	{
+		return Excel::download(new PostsExport, 'LowonganKerja.xlsx');
+	}
+
+	public function exportPDF() 
+	{
+		$p = \App\Posts::all();
+		$pdf = PDF::loadView('export.postspdf',['p' => $p]);
+		$pdf->setPaper('A4', 'landscape');
+		return $pdf->download('LowonganKerja.pdf');
 	}
 }

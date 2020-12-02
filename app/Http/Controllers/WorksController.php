@@ -5,6 +5,9 @@ use App\Http\Resources\Works as ResourcesWorks;
 use App\Works;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\WorksExport;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class WorksController extends Controller
 {
@@ -55,4 +58,17 @@ class WorksController extends Controller
 		$works->delete($works);
 		return redirect('/' . strtolower(Auth::user()->role) . '/works')->with('sukses', 'data pekerjaan berhasil di hapus');
 	}
+
+	public function export() 
+	{
+		return Excel::download(new WorksExport, 'Pekerjaan.xlsx');
+	}
+
+	public function exportPDF() 
+    {
+        $w = \App\Works::all();
+        $pdf = PDF::loadView('export.workspdf',['w' => $w]);
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->download('Pekerjaan.pdf');
+    }
 }

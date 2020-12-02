@@ -12,6 +12,11 @@
 		<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal" style="margin-bottom: 10px;">
 			Tambah
 		</button>
+		&nbsp;
+		@if(Auth::user()->role == 'Admin')
+		<a href="/posts/export" class="btn" style="margin-bottom: 10px; background-color: #ff66cc;">Export Excel</a>
+		<a href="/posts/exportpdf" class="btn" style="margin-bottom: 10px; background-color: #66ff33;">Export PDF</a>
+		@endif
 	</div>
 	<table class="table table-bordered table-hover table-striped">
 		<thead>

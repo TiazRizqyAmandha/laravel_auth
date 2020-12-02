@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class AnggotaController extends Controller
 {
@@ -89,5 +92,18 @@ class AnggotaController extends Controller
             $anggota->save();
             return redirect("/admin/anggota")->with('sukses', 'password berhasil di reset');
         }
+    }
+
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'Anggota.xlsx');
+    }
+
+    public function exportPDF() 
+    {
+        $ang = \App\User::all();
+        $pdf = PDF::loadView('export.anggotapdf',['ang' => $ang]);
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->download('Anggota.pdf');
     }
 }
