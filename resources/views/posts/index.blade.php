@@ -5,55 +5,64 @@
 	{{session('sukses')}}
 </div>
 @endif
-<div class="row">
-	<div class="col-lg-12">
-		<h1 style="text-align: center;">Data Posting Lowongan Kerja</h1>
-		<!-- Button trigger modal --> 
-		<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal" style="margin-bottom: 10px;">
-			Tambah
-		</button>
-		&nbsp;
-		@if(Auth::user()->role == 'Admin')
-		<a href="/posts/export" class="btn" style="margin-bottom: 10px; background-color: #ff66cc;">Export Excel</a>
-		<a href="/posts/exportpdf" class="btn" style="margin-bottom: 10px; background-color: #66ff33;">Export PDF</a>
-		@endif
+	<div class="main">
+		<div class="main-content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel">
+								<div class="col-lg-6">
+									<h1 style="text-align: left; margin-left: 10px;">Data Lowongan Kerja</h1>
+								</div>
+								<div class="col-lg-6">
+									<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal" style="margin-left: 30px; margin-top: 25px;"><i class="fa fa-check-circle"></i> Tambah</button>
+									&nbsp;
+									@if(Auth::user()->role == 'Admin')
+									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff3399; margin-top: 25px;"><i class="lnr lnr-printer"></i><a href="/posts/export" style="margin-bottom: 10px; color: white;"> Export Excel</a></button>
+									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff6600; margin-top: 25px;"><i class="lnr lnr-printer"></i><a href="/posts/exportpdf" style="margin-bottom: 10px; color: white;"> Export PDF</a></button>
+									@endif
+								</div>
+								<div class="panel-body">
+									<table class="table table-bordered table-hover table-striped">
+										<thead>
+											<tr style="background-color: #d6d6c2;">
+												<th scope="col">Lowongan Kerja</th>
+												<th scope="col">Deskripsi</th>
+												<th scope="col">Kategori</th>
+												<th scope="col">Dokumen</th>
+												<th scope="col">Status</th>
+												<th scope="col">Pengunggah</th>
+												<th scope="col">Aksi</th>
+											</tr>
+										</thead>
+										<tbody>
+											@foreach($data_posts as $posts)
+											<tr>
+												<td scope="row">{{$posts->title}}</td>
+												<td>{{$posts->body}}</td>
+												<td>{{$posts->postsCategory->name}}</td>
+												@if(!$posts->document_url)
+												<td>-</td>
+												@else
+												<td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Unduh</a></td>
+												@endif
+												<td>{{$posts->status}}</td>
+												<td>{{$posts->users->name}}</td>
+												<td align="center">
+													<a href="/posts/{{$posts->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
+													<a href="/posts/{{$posts->id}}/delete" class="btn btn-danger btn-sm" id="btnDelete">Hapus</a>
+												</td>
+											</tr>
+											@endforeach
+										</tbody>
+									</table>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<table class="table table-bordered table-hover table-striped">
-		<thead>
-			<tr class="table-active">
-				<th scope="col">Lowongan Kerja</th>
-				<th scope="col">Deskripsi</th>
-				<th scope="col">Kategori</th>
-				<th scope="col">Dokumen</th>
-				<th scope="col">Status</th>
-				<th scope="col">Pengunggah</th>
-				<th scope="col">Aksi</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($data_posts as $posts)
-			<tr>
-				<td scope="row">{{$posts->title}}</td>
-				<td>{{$posts->body}}</td>
-				<td>{{$posts->postsCategory->name}}</td>
-				@if(!$posts->document_url)
-				<td>-</td>
-				@else
-				<td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Unduh</a></td>
-				@endif
-				<td>{{$posts->status}}</td>
-				<td>{{$posts->users->name}}</td>
-				<td align="center">
-					<a href="/posts/{{$posts->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
-					<a href="/posts/{{$posts->id}}/delete" class="btn btn-danger btn-sm" id="btnDelete">Hapus</a>
-				</td>
-			</tr>
-			@endforeach
-		</tbody>
-	</table>
-
-</div>
-</div>
 
 <!-- Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">

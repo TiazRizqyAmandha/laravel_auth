@@ -1,22 +1,94 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-	<title></title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	
+	<title>Website Alumni - Fakultas Teknologi Informasi</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="{{asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('admin/assets/vendor/font-awesome/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" href="{{asset('admin/assets/vendor/linearicons/style.css')}}">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="{{asset('admin/assets/css/main.css')}}">
+	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	<link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<!-- ICONS -->
+	<link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
+	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.png')}}">
 </head>
 
 <body>
-	<x-navbar />
-	<div class="container">
+	<!-- WRAPPER -->
+	<div id="wrapper">
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="brand">
+				<a href="index.html"><img src="{{asset('admin/assets/img/logo-dark2.png')}}" alt="Klorofil Logo" class="img-responsive logo" style="width: 80px; height: 25px;"></a>
+			</div>
+			<div class="container-fluid">
+				<div class="navbar-btn">
+					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+				</div>
+				<div id="navbar-menu">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{Auth::user()->getPhotoProfil()}}" class="img-circle" alt="Avatar" style="width: 35px; height: 35px;"> <span>{{ Auth::user()->name}} ({{Auth::user()->role}})</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="{{url('/logout')}}"><i class="lnr lnr-exit"></i> <span>Keluar</span></a></li>
+							</ul>
+						</li>
+						<!-- <li>
+							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- END NAVBAR -->
+		<!-- LEFT SIDEBAR -->
+		<div id="sidebar-nav" class="sidebar">
+			<div class="sidebar-scroll">
+				<nav>
+					<ul class="nav">
+						<li><a href="{{url('/home')}}" class="active"><i class="lnr lnr-home"></i> <span>Profil</span></a></li>
+						<li><a href="{{url('/beranda')}}" class=""><i class="lnr lnr-code"></i> <span>Beranda</span></a></li>
+						@if(Auth::user()->role == 'Admin')
+						<li><a href="{{url('/admin/works')}}" class=""><i class="lnr lnr-chart-bars"></i> <span>Pekerjaan</span></a></li>
+						<li><a href="{{url('/admin/posts')}}" class=""><i class="lnr lnr-cog"></i> <span>Lowongan Kerja</span></a></li>
+						<li><a href="{{url('/admin/kategori')}}" class=""><i class="lnr lnr-alarm"></i> <span>Kategori</span></a></li>
+						<li><a href="{{url('/admin/anggota')}}" class=""><i class="lnr lnr-dice"></i> <span>Anggota</span></a></li>
+						@elseif(Auth::user()->role == 'User')
+						<li><a href="{{url('/user/works')}}" class=""><i class="lnr lnr-chart-bars"></i> <span>Pekerjaan</span></a></li>
+						<li><a href="{{url('/user/posts')}}" class=""><i class="lnr lnr-cog"></i> <span>Lowongan Kerja</span></a></li>
+						<li><a href="{{url('/user/anggota')}}" class=""><i class="lnr lnr-dice"></i> <span>Anggota</span></a></li>
+                    	@endif
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<!-- END LEFT SIDEBAR -->
+		<!-- MAIN -->
 		@yield('content')
+		<!-- END MAIN -->
+		<div class="clearfix"></div>
+		<footer>
+			<div class="container-fluid">
+				<p class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+</p>
+			</div>
+		</footer>
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<!-- END WRAPPER -->
+	<!-- Javascript -->
+	<script src="{{asset('admin/assets/vendor/jquery/jquery.min.js')}}"></script>
+	<script src="{{asset('admin/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+	<script src="{{asset('admin/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
+	<script src="{{asset('admin/assets/scripts/klorofil-common.js')}}"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

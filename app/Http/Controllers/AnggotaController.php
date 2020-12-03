@@ -21,7 +21,8 @@ class AnggotaController extends Controller
     {
         $anggota = \App\User::find($id);
         $pekerjaan = \App\Works::where('users_id', $id)->get();
-        return view('/anggota/read', ['anggota' => $anggota, 'pekerjaan' => $pekerjaan]);
+        $post = \App\Posts::where('users_id',$id)->get();
+        return view('/anggota/read', ['anggota' => $anggota, 'pekerjaan' => $pekerjaan, 'post' => $post]);
     }
 
     public function create(Request $request)

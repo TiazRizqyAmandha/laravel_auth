@@ -1,12 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="fullscreen-bg">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Daftar</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="{{asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/assets/vendor/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/assets/vendor/linearicons/style.css')}}">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{{asset('admin/assets/css/main.css')}}">
+    <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+    <link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/apple-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.png')}}">
 </head>
 
 <body>
@@ -15,95 +27,100 @@
     if(session()->get('data_register'))
     $data_reg = session()->get('data_register');
     @endphp
-    <div class="container">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header" style="background-color: #94b8b8;">
-                    <h3 class="text-center">Daftar</h3>
+    <!-- WRAPPER -->
+    <div id="wrapper">
+        <div class="vertical-align-wrap">
+            <div class="vertical-align-middle">
+                <div class="auth-box lockscreen clearfix" style="height: auto;">
+                    <div class="content">
+                        <div class="user text-center">
+                            <img src="{{asset('admin/assets/img/logo-dark3.png')}}" class="img-circle" alt="Avatar">
+                            <h2 class="name">Daftar</h2>
+                        </div>
+                        <form action="/register" method="post">
+                            @csrf
+                            <input type="hidden" name="key_user" value="{{$data_reg != null ? $data_reg->key_user : null}}">
+                            <div class="card-body">
+                                @if(session('errors'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    Something it's wrong:
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label for=""><strong>Nama Lengkap</strong></label>
+                                        <input disabled value="{{ $data_reg != null ? $data_reg->name : null}}" name="name" type="text" class="form-control" placeholder="Nama">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""><strong>Nama Pengguna</strong></label>
+                                        <input disabled value="{{ $data_reg != null ? $data_reg->username : null}}" name="username" type="text" class="form-control" placeholder="Username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""><strong>Angkatan</strong></label>
+                                        <input disabled value="{{ $data_reg != null ? $data_reg->generation : null}}" name="generation" type="text" class="form-control" placeholder="Angkatan">
+                                    </div>
+                                    <div class="form-group">
+                                        <!-- Date input -->
+                                        <label for=""><strong>Tanggal Lahir</strong></label>
+                                        <input value="{{ $data_reg != null ? $data_reg->birthdate : null}}" class="form-control" name="birthdate" placeholder="MM/DD/YYY" type="date" />
+                                    </div>
+                                    <!-- Form code ends -->
+                                    <div class="form-group">
+                                        <label for=""><strong>Nomor Telepon</strong></label>
+                                        <input value="{{ $data_reg != null ? $data_reg->phone_number : null}}" name="phone_number" type="text" class="form-control" placeholder="Nomor Telepon">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""><strong>Alamat</strong></label>
+                                        <textarea name="address" class="form-control" rows="3" placeholder="Alamat">{{ $data_reg != null ? $data_reg->address : null}}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""><strong>Deskripsi Diri</strong></label>
+                                        <textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri">{{ $data_reg != null ? $data_reg->self_description : null}}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""><strong>Email</strong></label>
+                                        <input value="{{ $data_reg != null ? $data_reg->email : null}}" type="text" name="email" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""><strong>Password</strong></label>
+                                        <input type="checkbox" onclick="myFunction()"></label>
+                                        <input type="password" name="password" class="form-control" id="myInput" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""><strong>Konfirmasi Password</strong></label>
+                                        <input type="checkbox" onclick="myFunction2()"></label>
+                                        <input type="password" name="password_confirmation" class="form-control" id="myInput2" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1"><strong>Peran</strong></label>
+                                        <select name="role" class="form-control" disabled>
+                                            <!--                                     <option value="Admin">Admin</option> -->
+                                            <option value="User" selected>User</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+                                <p class="text-center">Sudah punya akun? <a href="{{ route('login') }}">Masuk</a> sekarang!</p>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <form action="/register" method="post">
-                    @csrf
-                    <input type="hidden" name="key_user" value="{{$data_reg != null ? $data_reg->key_user : null}}">
-                    <div class="card-body">
-                        @if(session('errors'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            Something it's wrong:
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for=""><strong>Nama Lengkap</strong></label>
-                                <input disabled value="{{ $data_reg != null ? $data_reg->name : null}}" name="name" type="text" class="form-control" placeholder="Nama">
-                            </div>
-                            <div class="form-group">
-                                <label for=""><strong>Nama Pengguna</strong></label>
-                                <input disabled value="{{ $data_reg != null ? $data_reg->username : null}}" name="username" type="text" class="form-control" placeholder="Username">
-                            </div>
-                            <div class="form-group">
-                                <label for=""><strong>Angkatan</strong></label>
-                                <input disabled value="{{ $data_reg != null ? $data_reg->generation : null}}" name="generation" type="text" class="form-control" placeholder="Angkatan">
-                            </div>
-                            <div class="form-group">
-                                <!-- Date input -->
-                                <label for=""><strong>Tanggal Lahir</strong></label>
-                                <input value="{{ $data_reg != null ? $data_reg->birthdate : null}}" class="form-control" name="birthdate" placeholder="MM/DD/YYY" type="date" />
-                            </div>
-                            <!-- Form code ends -->
-                            <div class="form-group">
-                                <label for=""><strong>Nomor Telepon</strong></label>
-                                <input value="{{ $data_reg != null ? $data_reg->phone_number : null}}" name="phone_number" type="text" class="form-control" placeholder="Nomor Telepon">
-                            </div>
-                            <div class="form-group">
-                                <label for=""><strong>Alamat</strong></label>
-                                <textarea name="address" class="form-control" rows="3" placeholder="Alamat">{{ $data_reg != null ? $data_reg->address : null}}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for=""><strong>Deskripsi Diri</strong></label>
-                                <textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri">{{ $data_reg != null ? $data_reg->self_description : null}}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for=""><strong>Email</strong></label>
-                                <input value="{{ $data_reg != null ? $data_reg->email : null}}" type="text" name="email" class="form-control" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <label for=""><strong>Password</strong></label>
-                                <input type="checkbox" onclick="myFunction()"></label>
-                                <input type="password" name="password" class="form-control" id="myInput" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <label for=""><strong>Konfirmasi Password</strong></label>
-                                <input type="checkbox" onclick="myFunction2()"></label>
-                                <input type="password" name="password_confirmation" class="form-control" id="myInput2" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1"><strong>Peran</strong></label>
-                                <select name="role" class="form-control" disabled>
-                                    <!--                                     <option value="Admin">Admin</option> -->
-                                    <option value="User" selected>User</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-block">Daftar</button>
-                        <p class="text-center">Sudah punya akun? <a href="{{ route('login') }}">Masuk</a> sekarang!</p>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
-    <div class='footer' style="width: 1230px; height: 100px; margin-top: 100px; background-color: #94b8b8; text-align: center;">
-      Alumni IT Maranatha Copyright 2020 || Email Admin : 1772052@maranatha.ac.id || Nomor Telepon : 081220452951
-  </div>
+    <!-- END WRAPPER -->
 </body>
+
 </html>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">

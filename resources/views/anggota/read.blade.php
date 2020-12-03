@@ -1,132 +1,133 @@
 @extends('layouts.master')
 @section('content')
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<style>
-		html,
-		body,
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			font-family: "Roboto", sans-serif
-		}
-	</style>
-
-	<title>Lihat Anggota</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css" />
-</head>
-
-<body class="w3-light-grey">
-
-	<div class="w3-content w3-margin-top" style="max-width:1400px;">
-
-		<!-- The Grid -->
-		<div class="w3-row-padding">
-			<!-- Left Column -->
-			<div class="w3-third">
-				<div class="w3-white w3-text-black w3-card-4">
-					<div class="circular-image">
-						<img src="{{$anggota->getPhotoProfil()}}" class="img-circle" alt="photo_profil"class="img-circle" alt="photo_profil" style="border: 1px solid #000000; width: 200px;height: 200px; overflow: hidden; border-radius: 50%; margin-left: 70px; margin-top: 10px"/>
-					</div>
-					<h4 class="w3-text-grey w3-padding-16" align="middle">{{$anggota->name}}</h4>
-					<div class="w3-container">
-						<h6 class="w3-opacity"><b>Anggota ID : </b>{{$anggota->id}}</h6>
-						<h6 class="w3-opacity"><b>Peran : </b>{{$anggota->role}}</h6>
-						<h6 class="w3-opacity"><b>Alamat : </b>{{$anggota->address}}</h6>
-						<h6 class="w3-opacity"><b>Tanggal Lahir : </b>{{$anggota->birthdate}}</h6>
-						<h6 class="w3-opacity"><b>Angkatan : </b>{{$anggota->generation}}</h6>
-						<h6 class="w3-opacity"><b>Nomor Telepon : </b>{{$anggota->phone_number}}</h6>
-						<h6 class="w3-opacity">
-							@if($anggota->gender == 'P')
-							<b>Jenis Kelamin : </b>Perempuan
-							@else
-							<b>Jenis Kelamin : </b>Laki-Laki
-							@endif
-						</h6>
-						<h6 class="w3-opacity"><b>Peran : </b>{{$anggota->role}}</h6>
-						<h6 class="w3-opacity"><b>Deskripsi Diri : </b>{{$anggota->self_description}}</h6>	
-						<h6 class="w3-opacity"><b>Nama Pengguna : </b>{{$anggota->username}}</h6>
-						<h6 class="w3-opacity"><b>Status Akun : </b>{{$anggota->status}}</h6>
-						<h6 class="w3-opacity">
-							<b>
-								Email : 
-							</b>
-							<!-- The text field -->
-							<input type="text" value="{{$anggota->email}}" id="myInput">
-							<!-- The button used to copy the text -->
-							<button onclick="myFunction()">Copy Email</button>&nbsp;
-							<button style="width: 50px; height: 25px; text-align: center; background-color: #ff6600;"><a href="https://mail.google.com/" >Email</a></button>
-						</h6>
-						<h6 class="w3-opacity"><b>Tanggal Pembuatan Akun : </b>{{$anggota->created_at}}</h6>
-						<h6 class="w3-opacity"><b>Tanggal Terakhir Update Akun : </b>{{$anggota->updated_at}}</h6>
-						<hr>
-					</div>
-				</div><br>					
-				
-				<!-- End Left Column -->
-			</div>
-			<!-- Right Column -->
-				@foreach($pekerjaan as $p)
-				@if($p != null)
-				<div class="w3-twothird">
-					<div class="w3-container w3-card w3-white w3-margin-bottom">
-						<h4 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Perusahaan : {{$p->company}}</h4>
-						<div class="w3-container">
-							<h6 class="w3-opacity"><b>posisi : </b>{{$p->position}}</h6>
-							<h6 class="w3-opacity"><b>Alamat Perusahaan : </b>{{$p->works_place}}</h6>
-							<h6 class="w3-opacity"><b>Deskripsi : </b>{{$p->description}}</h6>
-							<h6 class="w3-opacity"><b>Tanggal Masuk : </b>{{$p->date_start}}</h6>
-							<h6 class="w3-opacity"><b>Tanggal Keluar : </b>{{$p->date_end}}</h6>
-							<hr>
+<div class="main">
+	<div class="main-content">
+		<div class="container-fluid">
+			<div class="panel panel-profile" style="height: 1000px;">
+						<div class="clearfix">
+							<!-- LEFT COLUMN -->
+							<div class="profile-left">
+								<!-- PROFILE HEADER -->
+								<div class="profile-header">
+									<div class="overlay"></div>
+									<div class="profile-main">
+										<img src="{{$anggota->getPhotoProfil()}}" class="img-circle" alt="Avatar" style="border: 1px solid #000000; width: 80px;height: 80px; overflow: hidden; border-radius: 50%;">
+										<h3 class="name">{{$anggota->name}}</h3>
+										<span class="online-status status-available">{{$anggota->status}}</span>
+									</div>
+								</div>
+								<!-- END PROFILE HEADER -->
+								<!-- PROFILE DETAIL -->
+								<div class="profile-detail">
+									<div class="profile-info">
+										<h4 class="heading"><strong>Data Diri</strong></h4>
+										<ul class="list-unstyled list-justify">
+											<li>ID<span>{{$anggota->id}}</span></li>
+											<li>Nama Pengguna<span>{{$anggota->username}}</span></li>
+											<li>Angkatan<span>{{$anggota->generation}}</span></li>
+											<li>Jenis Kelamin
+												<span>
+												@if($anggota->gender == 'P')
+													Perempuan
+												@else
+													Laki-Laki
+												@endif
+												</span>
+											</li>
+											<li>Tanggal Lahir<span>{{$anggota->birthdate}}</span></li>
+											<li>Nomor Telepon<span>{{$anggota->phone_number}}</span></li>
+											<li>Peran <span>{{$anggota->role}}</span></li>
+											<li>Alamat <span>{{$anggota->address}}</span></li>
+										</ul>
+									</div>
+									<div class="profile-info">
+										<h4 class="heading"><strong>Tentang Saya</strong></h4>
+										<p>{{$anggota->self_description}}</p>
+									</div>
+								</div>
+								<!-- END PROFILE DETAIL -->
+							</div>
+							<!-- END LEFT COLUMN -->
+							<!-- RIGHT COLUMN -->
+							<div class="profile-right">
+								<h4 class="heading">Kirim Email</h4>
+								<!-- AWARDS -->
+								<div class="awards">
+									<div class="text-center">
+										<a href="https://mail.google.com/" class="btn btn-default">Email</a>
+										<input type="text" value="{{$anggota->email}}" id="myInput" readonly="">
+										<!-- The button used to copy the text -->
+										<button onclick="myFunction()" style="width: 75px; height: 28px; text-align: center; background-color: #ff6600;">Copy</button>
+									</div>
+								</div>
+								<!-- END AWARDS -->
+								<!-- TABBED CONTENT -->
+								<div class="custom-tabs-line tabs-line-bottom left-aligned">
+									<ul class="nav" role="tablist">
+										<li class="active"><a href="#tab-bottom-left1" role="tab" data-toggle="tab">Pekerjaan</a></li>
+										<li><a href="#tab-bottom-left2" role="tab" data-toggle="tab">Riwayat <span class="badge">{{count($post)}}</span></a></li>
+									</ul>
+								</div>
+								<div class="tab-content">
+									<div class="tab-pane fade in active" id="tab-bottom-left1">
+										<ul class="list-unstyled activity-timeline">
+											@foreach($pekerjaan as $p)
+											@if($p != null)
+											<li>
+												<i class="lnr lnr-briefcase activity-icon"></i>
+												<p><b style="font-size: 20px;">Perusahaan : {{$p->company}}</b>
+												 <span class="timestamp"><b>Alamat Perusahaan : </b>{{$p->works_place}}</span>
+												 <span class="title"><b>posisi : </b>{{$p->position}}</span><br>
+												 <span class="short-description"><b>Deskripsi : </b>{{$p->description}}</span><br>
+												 <span class="date"><b>Tanggal Masuk : </b>{{$p->date_start}}</span><br>
+												 <span class="date"><b>Tanggal Keluar : </b>{{$p->date_end}}</span><br>
+												</p>
+											</li>
+											@endif
+											@endforeach
+										</ul>
+									</div>
+									<div class="tab-pane fade" id="tab-bottom-left2">
+										<div class="table-responsive">
+											<table class="table project-table">
+												<thead>
+													<tr>
+														<th scope="col">Lowongan Kerja</th>
+														<th scope="col">Deskripsi</th>
+														<th scope="col">Kategori</th>
+														<th scope="col">Dokumen</th>
+														<th scope="col">Status</th>
+													</tr>
+												</thead>
+												<tbody>
+													@foreach($post as $posts)
+													@if($p != null)
+													<tr>
+														<td scope="row">{{$posts->title}}</td>
+														<td>{{$posts->body}}</td>
+														<td>{{$posts->postsCategory->name}}</td>
+														@if(!$posts->document_url)
+														<td>-</td>
+														@else
+														<td><a download="{{$posts->title}}" href="{{url($posts->document_url)}}">Unduh</a></td>
+														@endif
+														<td>{{$posts->status}}</td>
+													</tr>
+													@endif
+													@endforeach
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+								<!-- END TABBED CONTENT -->
+							</div>
+							<!-- END RIGHT COLUMN -->
 						</div>
 					</div>
-				</div>
-				@else
-				<div class="w3-twothird">
-					<div class="w3-container w3-card w3-white w3-margin-bottom">
-						<h3 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>-</h3>
-						<div class="w3-container">
-							<h5 class="w3-opacity"><b>posisi : </b>Tidak Ada Data Pekerjaan</h5>
-							<hr>
-						</div>
-					</div>
-				</div>
-				@endif
-				@endforeach
-				<!-- End Left Column -->
-			</div>
-				<!-- End Right Column -->
-			</div>
-
-			<!-- End Grid -->
 		</div>
-
-		<!-- End Page Container -->
 	</div>
-
-	<footer class="w3-container w3-teal w3-center w3-margin-top">
-		<p>Alumni IT Maranatha Copyright 2020</p>
-	</footer>
-
-
-	<!-- Page Container -->
-
-</body>
-
-</html>
+</div>
 @endsection
 <script type="text/javascript">
 	function myFunction() {

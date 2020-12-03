@@ -10,51 +10,62 @@
     {{session('gagal')}}
 </div>
 @endif
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<h1 style="text-align: center;">Data Anggota</h1>
-			@if(Auth::user()->role == 'Admin')
-			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 10px;">
-				Tambah Anggota
-			</button>
-			&nbsp;
-			<a href="/anggota/export" class="btn" style="margin-bottom: 10px; background-color: #ff66cc;">Export Excel</a>
-			<a href="/anggota/exportpdf" class="btn" style="margin-bottom: 10px; background-color: #66ff33;">Export PDF</a>
-			@endif
+<div class="main">
+		<div class="main-content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel">
+								<div class="col-lg-6"><h1 style="text-align: left; margin-left: 10px;">Data Pekerjaan</h1>
+								</div>
+								<div class="col-lg-6">
+									@if(Auth::user()->role == 'Admin')
+									<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" style="margin-left: 30px; margin-top: 25px;"><i class="fa fa-check-circle"></i> Tambah</button>
+									&nbsp;
+									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff3399; margin-top: 25px;"><i class="lnr lnr-printer"></i><a href="/anggota/export" style="margin-bottom: 10px; color: white;"> Export Excel</a></button>
+									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff6600; margin-top: 25px;"><i class="lnr lnr-printer"></i><a href="/anggota/exportpdf" style="margin-bottom: 10px; color: white;"> Export PDF</a></button>
+									@endif
+								</div>
+								<div class="panel-body">
+									<table class="table table-bordered table-hover table-striped">
+										<thead>
+											<tr style="background-color: #d6d6c2;">
+												<th scope="col">Photo Profil</th>
+												<th scope="col">Nama</th>
+												<th scope="col">Angkatan</th>
+												<th scope="col">Email</th>
+												<th scope="col">Peran</th>
+												<th scope="col">Aksi</th>
+											</tr>
+										</thead>
+										<tbody>
+											@foreach($data_anggota as $anggota)
+											<tr>
+												<td align="center"><a href="{{$anggota->getPhotoProfil()}}"><img src="{{$anggota->getPhotoProfil()}}" style="border: 1px solid #000000; width: 150px;height: 150px; overflow: hidden; border-radius: 50%;" class="circular-image" alt="photo_profil"/></a></td>
+												<td>{{$anggota->name}}</td>
+												<td>{{$anggota->generation}}</td>
+												<td>
+													{{$anggota->email}}
+												</td>
+												<td>{{$anggota->role}}</td>
+												<td align="center">
+													@if(Auth::user()->role == 'Admin')
+													<a href="/anggota/{{$anggota->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
+													<a href="/anggota/{{$anggota->id}}/delete" class="btn btn-danger btn-sm">Hapus</a>
+													@endif
+													<a href="/anggota/{{$anggota->id}}/read" class="btn btn-success btn-sm">Lihat</a>
+												</td>
+											</tr>
+											@endforeach
+										</tbody>
+									</table>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<table class="table table-bordered table-hover table-striped">
-			<tr>
-				<th>Photo Profil</th>
-				<th>Nama</th>
-				<th>Angkatan</th>
-				<th>Email</th>
-				<th>Peran</th>
-				<th>Aksi</th>
-			</tr>
-			@foreach($data_anggota as $anggota)
-			<tr>
-				<td align="center"><a href="{{$anggota->getPhotoProfil()}}"><img src="{{$anggota->getPhotoProfil()}}" style="border: 1px solid #000000; width: 150px;height: 150px; overflow: hidden; border-radius: 50%;" class="circular-image" alt="photo_profil"/></a></td>
-				<td>{{$anggota->name}}</td>
-				<td>{{$anggota->generation}}</td>
-				<td>
-					{{$anggota->email}}
-				</td>
-				<td>{{$anggota->role}}</td>
-				<td align="center">
-					@if(Auth::user()->role == 'Admin')
-					<a href="/anggota/{{$anggota->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
-					<a href="/anggota/{{$anggota->id}}/delete" class="btn btn-danger btn-sm">Hapus</a>
-					@endif
-					<a href="/anggota/{{$anggota->id}}/read" class="btn btn-success btn-sm">Lihat</a>
-				</td>
-			</tr>
-			@endforeach
-		</table>
 	</div>
-</div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -141,6 +152,7 @@
 		</div>
 	</div>
 </div>
+<!-- End Modal -->
 @endsection
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
