@@ -11,7 +11,7 @@
 								<div class="profile-header">
 									<div class="overlay"></div>
 									<div class="profile-main">
-										<img src="{{$anggota->getPhotoProfil()}}" class="img-circle" alt="Avatar" style="border: 1px solid #000000; width: 80px;height: 80px; overflow: hidden; border-radius: 50%;">
+										<a href="{{$anggota->getPhotoProfil()}}"><img src="{{$anggota->getPhotoProfil()}}" class="img-circle" alt="Avatar" style="border: 1px solid #000000; width: 80px;height: 80px; overflow: hidden; border-radius: 50%;"></a>
 										<h3 class="name">{{$anggota->name}}</h3>
 										<span class="online-status status-available">{{$anggota->status}}</span>
 									</div>

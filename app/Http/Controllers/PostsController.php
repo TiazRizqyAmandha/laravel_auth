@@ -82,8 +82,8 @@ class PostsController extends Controller
 
 		$posts->save();
 		if ($request->isMethod('put'))
-			return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data lowongan pekerjaan berhasil di ubah');
-		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data lowongan pekerjaan berhasil di tambah');
+			return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses1', 'data lowongan pekerjaan berhasil di ubah');
+		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses0', 'data lowongan pekerjaan berhasil di tambah');
 	}
 
 	public function edit($id)
@@ -97,14 +97,14 @@ class PostsController extends Controller
 	{
 		$posts = \App\Posts::find($id);
 		$posts->update($request->all());
-		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data lowongan pekrjaan berhasil di update');
+		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses2', 'data lowongan pekrjaan berhasil di update');
 	}
 
 	public function delete($id)
 	{
 		$posts = \App\Posts::find($id);
 		$posts->delete($posts);
-		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses', 'data lowongan pekerjaan berhasil di hapus');
+		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses3', 'data lowongan pekerjaan berhasil di hapus');
 	}
 
 	//? Function untuk mengambil data Posts Category dari Controller lain (default parameter)

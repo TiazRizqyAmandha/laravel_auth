@@ -1,13 +1,28 @@
 @extends('layouts.master')
 @section('content')
-@if(session('sukses'))
-<div class="alert alert-success" role="alert">
-	{{session('sukses')}}
-</div>
-@endif
 	<div class="main">
 		<div class="main-content">
 			<div class="container-fluid">
+				@if (Session::has('sukses1'))
+				<div class="alert alert-success">
+					{{ Session::get('sukses1') }}
+				</div>
+				@endif
+				@if (Session::has('sukses2'))
+				<div class="alert alert-warning">
+					{{ Session::get('sukses2') }}
+				</div>
+				@endif
+				@if (Session::has('sukses3'))
+				<div class="alert alert-danger">
+					{{ Session::get('sukses3') }}
+				</div>
+				@endif
+				@if (Session::has('sukses0'))
+				<div class="alert alert-info">
+					{{ Session::get('sukses0') }}
+				</div>
+				@endif
 				<div class="row">
 					<div class="col-md-12">
 						<div class="panel">

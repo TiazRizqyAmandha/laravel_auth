@@ -35,38 +35,14 @@
                 <form action="/email-key" method="post">
                     @csrf
                     <div class="card-body">
-                        @if(session('errors'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            Something it's wrong:
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                        @if (Session::has('no'))
+                        <div class="alert alert-danger">
+                            {{ Session::get('no') }}
                         </div>
                         @endif
-                        @if(session('success'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <ul>
-                                <li>Email ditemukan, silahkan cek notifikasi email anda</li>
-                            </ul>
-                        </div>
-                        @endif
-                        @if(session('gagal'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <ul>
-                                <li>Email yang dimasukan tidak terdftar. Pastikan email yang dimasukan sudah benar.</li>
-                            </ul>
-                        </div>
-                        @endif
-                        @if(session('no'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <ul>
-                                <li>Email yang dimasukan sudah dipakai. Pastikan email yang dimasukan sudah benar.</li>
-                            </ul>
+                        @if (Session::has('gagal'))
+                        <div class="alert alert-danger">
+                            {{ Session::get('gagal') }}
                         </div>
                         @endif
                         <div class="form-group">

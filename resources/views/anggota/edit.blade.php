@@ -9,6 +9,31 @@
 		<div class="main-content">
 			<div class="container-fluid">
 				<div class="panel panel-headline" style="background-color: #e6e6e6;">
+					<!-- Modal -->
+					<div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="resetPasswordModalLabel">Ganti Password</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									Password <b>{{$anggota->name}} </b>akan di ganti?
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+									<form action="/anggota/reset-password" method="post">
+										@csrf
+										<input type="hidden" name="id" value="{{$anggota->id}}">
+										<button type="submit" class="btn btn-primary">Ya</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END MODAL -->
 						<div class="panel-heading">
 							<h3 class="panel-title" style="margin-top: 10px; font-size: 40px;">Ubah Admin dan User Website Alumni</h3>
 						</div>
@@ -76,30 +101,5 @@
 					</div>
 			</div>
 		</div>
-		<!-- Modal -->
-		<div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="resetPasswordModalLabel">Ganti Password</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						Password <b>{{$anggota->name}} </b>akan di ganti?
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-						<form action="/anggota/reset-password" method="post">
-							@csrf
-							<input type="hidden" name="id" value="{{$anggota->id}}">
-							<button type="submit" class="btn btn-primary">Ya</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- END MODAL -->
 </div>
 @endsection

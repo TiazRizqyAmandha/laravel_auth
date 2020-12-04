@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,8 @@ class HomeController extends Controller
             $data_anggota->photo_profil = $request->file('photo_profil')->getClientOriginalName();
             $data_anggota->save();
         }
-		return redirect('home')->with('sukses', 'data anggota berhasil di ubah');
+        Session::flash('success', 'data diri anggota berhasil di ubah');
+        return redirect()->route('home');
 	}
 	public function editpassword($id)
 	{
@@ -40,6 +42,7 @@ class HomeController extends Controller
 		$data_anggota = \App\User::find($id);
         $data_anggota->password = Hash::make($request->password);
         $data_anggota->save();
+        Session::flash('success2', 'password anda berhasil di ubah');
         return redirect("home")->with('sukses', 'password berhasil di ganti');
 	}
 }

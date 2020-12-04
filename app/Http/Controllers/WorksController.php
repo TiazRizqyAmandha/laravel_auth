@@ -36,7 +36,7 @@ class WorksController extends Controller
 	public function create(Request $request)
 	{
 		\App\Works::create($request->all());
-		return redirect('/' . strtolower(Auth::user()->role) . '/works')->with('sukses', 'data pekerjaan berhasil di tambah');
+		return redirect('/' . strtolower(Auth::user()->role) . '/works')->with('sukses1', 'data pekerjaan berhasil di tambah');
 	}
 
 	public function edit($id)
@@ -49,14 +49,14 @@ class WorksController extends Controller
 	{
 		$works = \App\Works::find($id);
 		$works->update($request->all());
-		return redirect('/' . strtolower(Auth::user()->role) . '/works')->with('sukses', 'data pekerjaan berhasil di update');
+		return redirect('/' . strtolower(Auth::user()->role) . '/works')->with('sukses2', 'data pekerjaan berhasil di update');
 	}
 
 	public function delete($id)
 	{
 		$works = \App\Works::find($id);
 		$works->delete($works);
-		return redirect('/' . strtolower(Auth::user()->role) . '/works')->with('sukses', 'data pekerjaan berhasil di hapus');
+		return redirect('/' . strtolower(Auth::user()->role) . '/works')->with('sukses3', 'data pekerjaan berhasil di hapus');
 	}
 
 	public function export() 

@@ -1,18 +1,28 @@
 @extends('layouts.master')
 @section('content')
-@if(session('sukses'))
-<div class="alert alert-success" role="alert">
-    {{session('sukses')}}
-</div>
-@endif
-@if(session('gagal'))
-<div class="alert alert-success" role="alert">
-    {{session('gagal')}}
-</div>
-@endif
     <div class="main">
         <div class="main-content">
             <div class="container-fluid">
+                @if (Session::has('sukses1'))
+                <div class="alert alert-success">
+                    {{ Session::get('sukses1') }}
+                </div>
+                @endif
+                @if (Session::has('sukses2'))
+                <div class="alert alert-warning">
+                    {{ Session::get('sukses2') }}
+                </div>
+                @endif
+                @if (Session::has('sukses3'))
+                <div class="alert alert-danger">
+                    {{ Session::get('sukses3') }}
+                </div>
+                @endif
+                @if (Session::has('gagal'))
+                <div class="alert alert-info">
+                    {{ Session::get('gagal') }}
+                </div>
+                @endif
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel">
@@ -43,7 +53,7 @@
                                                 <td>{{$category->status}}</td>
                                                 <td align="center">
                                                     <a href="/kategori/{{$category->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
-                                                    <a href="/kategori/{{$category->id}}/delete" class="btn btn-danger btn-sm" id="btnDeleted">Hapus</a>
+                                                    <a href="/kategori/{{$category->id}}/delete" class="btn btn-danger btn-sm">Hapus</a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -86,11 +96,11 @@
 </div>
 @endsection
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript"> 
+<!-- <script type="text/javascript"> 
         $(function () {
             $("#btnDeleted").click(function () {
                 alert("Yakin Ingin Menghapus Data");
                 return true;
             });
         });
-</script>
+</script> -->

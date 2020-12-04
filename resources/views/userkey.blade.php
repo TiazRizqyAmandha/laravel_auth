@@ -35,37 +35,24 @@
                         <form action="/key-user" method="post">
                             @csrf
                             <div class="card-body">
-                                @if(session('errors'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    Something it's wrong:
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
+                                @if (Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
                                 </div>
                                 @endif
-                                @if(session('error'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <ul>
-                                        <li>Key yang dimasukan belum benar. Pastikan Kunci yang dimasukan sudah benar.</li>
-                                    </ul>
+                                @if (Session::has('no'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('no') }}
                                 </div>
                                 @endif
-                                @if(session('no'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <ul>
-                                        <li>Key yang dimasukan sudah dipakai. Pastikan Kunci yang dimasukan sudah benar.</li>
-                                    </ul>
+                                @if (Session::has('error'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('error') }}
                                 </div>
                                 @endif
                                 <div class="form-group">
                                     <label><strong>Kunci</strong></label>
                                     <input name="key_user" type="text" class="form-control" placeholder="Kunci" required>
-                                    <p style="color:grey; font-size: 12px; text-align: center;">!!Kunci sudah dikirim tolong cek email!!</p>
                                 </div>
                             </div>
                             <div class="card-footer">

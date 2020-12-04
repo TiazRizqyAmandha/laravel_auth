@@ -116,7 +116,8 @@ class AuthController extends Controller
         if ($simpan) {
             Session::flash('success', 'Pendaftaran berhasil! Silahkan masuk untuk mengakses data');
             return redirect()->route('login');
-        } else {
+        } 
+        else {
             Session::flash('errors', ['' => 'Pendaftaran gagal! Silahkan ulangi beberapa saat lagi']);
             return redirect()->route('register');
         }
@@ -147,7 +148,7 @@ class AuthController extends Controller
         if ($user != null) {
             if($user->status == 'Belum Aktif')
             {
-                Session::flash('success', 'Kunci ditemukan, silahkan lengkapi data registrasi');
+                Session::flash('success', 'Kunci ditemukan, silahkan lengkapi data diri pendaftaran');
                 return redirect()->route('register')->with(['data_register' => $user]);
             }
             elseif ($user->status == 'Aktif') {

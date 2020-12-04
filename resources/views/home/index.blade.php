@@ -2,7 +2,17 @@
 @section('content')
 <div class="main">
 	<div class="main-content">
-		<div class="container-fluid">
+		<div class="container-fluid">			
+			@if (Session::has('success'))
+			<div class="alert alert-success">
+				{{ Session::get('success') }}
+			</div>
+			@endif
+			@if (Session::has('success2'))
+			<div class="alert alert-success">
+				{{ Session::get('success2') }}
+			</div>
+			@endif
 			<div class="panel panel-profile" style="height: 1000px;">
 						<div class="clearfix">
 							<!-- LEFT COLUMN -->
@@ -11,7 +21,7 @@
 								<div class="profile-header">
 									<div class="overlay"></div>
 									<div class="profile-main">
-										<img src="{{Auth::user()->getPhotoProfil()}}" class="img-circle" alt="Avatar" style="border: 1px solid #000000; width: 80px;height: 80px; overflow: hidden; border-radius: 50%;">
+										<a href="{{Auth::user()->getPhotoProfil()}}"><img src="{{Auth::user()->getPhotoProfil()}}" class="img-circle" alt="Avatar" style="border: 1px solid #000000; width: 80px;height: 80px; overflow: hidden; border-radius: 50%;"></a>
 										<h3 class="name">{{ Auth::user()->name}}({{Auth::user()->role}})</h3>
 										<span>{{Auth::user()->username}}</span>
 									</div>

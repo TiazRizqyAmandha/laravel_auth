@@ -39,7 +39,7 @@ class AnggotaController extends Controller
             $request->request->add(['key_user' => $request->input('username') . '-' . substr(str_shuffle($permitted_chars), 0, 5)]);
         }
         \App\User::create($request->all());
-        return redirect('/admin/anggota')->with('sukses', 'data anggota berhasil di tambah');
+        return redirect('/admin/anggota')->with('sukses1', 'data anggota berhasil di tambah');
     }
 
     public function edit($id)
@@ -59,7 +59,7 @@ class AnggotaController extends Controller
             $anggota->photo_profil = $request->file('photo_profil')->getClientOriginalName();
             $anggota->save();
         }
-        return redirect('/admin/anggota')->with('sukses', 'data anggota berhasil di ubah');
+        return redirect('/admin/anggota')->with('sukses2', 'data anggota berhasil di ubah');
     }
 
     public function delete($id)
@@ -68,20 +68,20 @@ class AnggotaController extends Controller
         $post = \App\Posts::where('users_id',$id)->first();
         $work = \App\Works::where('users_id',$id)->first();
         if ($post && $work) {
-            return redirect('/admin/anggota')->with('gagal', 'data anggota masih ada di tabel lowongan pekerjaan dan pekerjaan');
+            return redirect('/admin/anggota')->with('gagal', '!! data anggota masih ada di tabel lowongan pekerjaan dan pekerjaan !!');
         }
         elseif($post)
         {
-            return redirect('/admin/anggota')->with('gagal', 'data anggota masih ada di tabel lowongan pekerjaan');
+            return redirect('/admin/anggota')->with('gagal', '!! data anggota masih ada di tabel lowongan pekerjaan !!');
         }
         elseif($work)
         {
-            return redirect('/admin/anggota')->with('gagal', 'data anggota masih ada di tabel pekerjaan');
+            return redirect('/admin/anggota')->with('gagal', '!! data anggota masih ada di tabel pekerjaan !!');
         }
         else
         {
             $anggota->delete($anggota);
-            return redirect('/admin/anggota')->with('sukses', 'data anggota berhasil di hapus');
+            return redirect('/admin/anggota')->with('sukses3', 'data anggota berhasil di hapus');
         }
     }
 
