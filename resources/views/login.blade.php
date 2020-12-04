@@ -61,7 +61,7 @@
                                     @endif
                                     <div class="form-group">
                                         <label for=""><strong>Email</strong></label>
-                                        <input type="text" name="email" class="form-control" placeholder="Email">
+                                        <input type="email" name="email" class="form-control" placeholder="Email">
                                     </div>
                                     <div class="form-group">
                                         <label for=""><strong>Password</strong>&nbsp;
@@ -71,7 +71,8 @@
                                     </div>
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary btn-block">Masuk</button>
-                                        <p class="text-center">Belum punya akun? <a href="{{ route('email-key') }}">Daftar</a> sekarang!</p>
+                                        <p class="text-center" style="margin-top: 5px;">Belum punya akun? <a href="{{ route('email-key') }}">Daftar</a> sekarang!</p>
+                                        <p class="text-center"><a href="{{ url('/forgot_password')}}">Lupa Password?</a></p>
                                     </div>
                                 </form>
                         </div>

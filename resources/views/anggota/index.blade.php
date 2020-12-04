@@ -97,60 +97,69 @@
 						</div>
 						<div class="form-group">
 							<label><strong>Nama Lengkap</strong></label>
-							<input name="name" type="text" class="form-control" placeholder="Nama" required>
+							<input name="name" type="text" class="form-control" placeholder="Nama" required value="{{old('name')}}">
 						</div>
 						<div class="form-group">
 							<label><strong>Nama Pengguna</strong></label>
-							<input name="username" type="text" class="form-control" placeholder="Username" required>
+							<input name="username" type="text" class="form-control" placeholder="Username" required value="{{old('username')}}">
 						</div>
 						<div class="form-group">
 							<label><strong>Angkatan</strong></label>
-							<input name="generation" type="text" class="form-control" placeholder="Angkatan" required>
+							<input name="generation" type="text" class="form-control" placeholder="Angkatan" required value="{{old('generation')}}">
 						</div>
 						<div class="form-group">
 							<!-- Date input -->
 							<label><strong>Tanggal Lahir</strong></label>
-							<input class="form-control" id="date" name="birthdate" placeholder="MM/DD/YYY" type="date" required/>
+							<input class="form-control" id="date" name="birthdate" placeholder="MM/DD/YYY" type="date" required value="{{old('birthdate')}}"/>
 						</div>
 						<!-- Form code ends -->
 						<div class="form-group">
 							<label><strong>Nomor Telepon</strong></label>
-							<input name="phone_number" type="text" class="form-control" placeholder="Nomor Telepon" required>
+							<input name="phone_number" type="text" class="form-control" placeholder="Nomor Telepon" required value="{{old('birthdate')}}">
 						</div>
 						<div class="form-group">
 							<label><strong>Alamat</strong></label>
-							<textarea name="address" class="form-control" rows="3" placeholder="Alamat" required></textarea>
+							<textarea name="address" class="form-control" rows="3" placeholder="Alamat" required>{{old('address')}}</textarea>
 						</div>
 						<div class="form-group">
 							<label><strong>Deskripsi Diri</strong></label>
-							<textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri" required></textarea>
+							<textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri" required>{{old('self_description')}}</textarea>
 						</div>
-						<div class="form-group">
+						<div class="form-group {{$errors->has('email') ? ' has-error' : ''}}">
 							<label><strong>Email</strong></label>
-							<input type="text" name="email" class="form-control" placeholder="Email" required>
+							<input type="email" name="email" class="form-control" placeholder="Email" required value="{{old('email')}}">
+							@if($errors->has('email'))
+							<span class="help-block">{{$errors->first('email')}}</span>
+							@endif
 						</div>
-						<div class="form-group">
+						<div class="form-group {{$errors->has('password') ? ' has-error' : ''}}">
 							<label for=""><strong>Password</strong>&nbsp;
 							<input type="checkbox" onclick="myFunction()"></label>
-							<input type="password" name="password" class="form-control" id="myInput" required>
+							<input type="password" name="password" class="form-control" id="myInput" required value="{{old('password')}}">
+							@if($errors->has('password'))
+								<span class="help-block">{{$errors->first('password')}}</span>
+							@endif
 						</div>
-						<div class="form-group">
+						<div class="form-group {{$errors->has('password_confirmation') ? ' has-error' : ''}}">
 							<label for=""><strong>Konfirmasi Password</strong>&nbsp;
 							<input type="checkbox" onclick="myFunction2()"></label>
-							<input type="password" name="password_confirmation" class="form-control" id="myInput2" required>
+							<input type="password" name="password_confirmation" class="form-control" id="myInput2" required value="{{old('password_confirmation')}}">
+							@if($errors->has('password_confirmation'))
+								<span class="help-block">{{$errors->first('password_confirmation')}}</span>
+							@endif
 						</div>
 						<div class="form-group">
 							<label for="add_gender"><strong>Jenis Kelamin</strong></label>
 							<select name="gender" class="form-control" id="add_gender" required>
-								<option value="L">Laki-laki</option>
-								<option value="P">Perempuan</option>
+								<option value="L"{{(old('gender') == 'L') ? ' selected' : ''}}>Laki-laki</option>
+								<option value="P"{{(old('gender') == 'P') ? ' selected' : ''}}>Perempuan</option>
 							</select>
 						</div>
 						<div class="form-group">
 							<label for="add_role"><strong>Peran</strong></label>
 							<select name="role" class="form-control" id="add_role" required>
-								<option value="Admin">Admin</option>
-								<option value="User">User</option>
+								<option value="Admin"{{(old('role') == 'Admin') ? ' selected' : ''}}>Admin</option>
+								<option value="User"{{(old('role') == 'User') ? ' selected' : ''}}>User</option>
 							</select>
 						</div>
 					</div>

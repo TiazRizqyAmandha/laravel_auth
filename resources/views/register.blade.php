@@ -49,47 +49,53 @@
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label for=""><strong>Nama Lengkap</strong></label>
-                                        <input disabled value="{{ $data_reg != null ? $data_reg->name : null}}" name="name" type="text" class="form-control" placeholder="Nama">
+                                        <input value="{{ $data_reg != null ? $data_reg->name : null}}{{old('name')}}" name="name" type="text" class="form-control" placeholder="Nama" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for=""><strong>Nama Pengguna</strong></label>
-                                        <input disabled value="{{ $data_reg != null ? $data_reg->username : null}}" name="username" type="text" class="form-control" placeholder="Username">
+                                        <input value="{{ $data_reg != null ? $data_reg->username : null}} {{old('username')}}" name="username" type="text" class="form-control" placeholder="Username" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for=""><strong>Angkatan</strong></label>
-                                        <input disabled value="{{ $data_reg != null ? $data_reg->generation : null}}" name="generation" type="text" class="form-control" placeholder="Angkatan">
+                                        <input value="{{ $data_reg != null ? $data_reg->generation : null}} {{old('generation')}}" name="generation" type="text" class="form-control" placeholder="Angkatan" readonly>
                                     </div>
                                     <div class="form-group">
                                         <!-- Date input -->
                                         <label for=""><strong>Tanggal Lahir</strong></label>
-                                        <input value="{{ $data_reg != null ? $data_reg->birthdate : null}}" class="form-control" name="birthdate" placeholder="MM/DD/YYY" type="date" required />
+                                        <input value="{{ $data_reg != null ? $data_reg->birthdate : null}} {{old('birthdate')}}" class="form-control" name="birthdate" placeholder="MM/DD/YYY" type="date" required/>
                                     </div>
                                     <!-- Form code ends -->
                                     <div class="form-group">
                                         <label for=""><strong>Nomor Telepon</strong></label>
-                                        <input value="{{ $data_reg != null ? $data_reg->phone_number : null}}" name="phone_number" type="text" class="form-control" placeholder="Nomor Telepon" required>
+                                        <input value="{{ $data_reg != null ? $data_reg->phone_number : null}} {{old('phone_number')}}" name="phone_number" type="text" class="form-control" placeholder="Nomor Telepon" required>
                                     </div>
                                     <div class="form-group">
                                         <label for=""><strong>Alamat</strong></label>
-                                        <textarea name="address" class="form-control" rows="3" placeholder="Alamat" required>{{ $data_reg != null ? $data_reg->address : null}}</textarea>
+                                        <textarea name="address" class="form-control" rows="3" placeholder="Alamat" required>{{ $data_reg != null ? $data_reg->address : null}}{{old('address')}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for=""><strong>Deskripsi Diri</strong></label>
-                                        <textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri" required>{{ $data_reg != null ? $data_reg->self_description : null}}</textarea>
+                                        <textarea name="self_description" class="form-control" rows="3" placeholder="Deskripsi Diri" required>{{ $data_reg != null ? $data_reg->self_description : null}}{{old('self_description')}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for=""><strong>Email</strong></label>
-                                        <input value="{{ $data_reg != null ? $data_reg->email : null}}" type="text" name="email" class="form-control" placeholder="Email" readonly>
+                                        <input value="{{ $data_reg != null ? $data_reg->email : null}} {{old('email')}}" type="text" name="email" class="form-control" placeholder="Email" readonly>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group {{$errors->has('password') ? ' has-error' : ''}}">
                                         <label for=""><strong>Password</strong></label>
                                         <input type="checkbox" onclick="myFunction()"></label>
                                         <input type="password" name="password" class="form-control" id="myInput" placeholder="Password" required>
+                                        @if($errors->has('password'))
+                                        <span class="help-block">{{$errors->first('password')}}</span>
+                                        @endif
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group {{$errors->has('password_confirmation') ? ' has-error' : ''}}">
                                         <label for=""><strong>Konfirmasi Password</strong></label>
                                         <input type="checkbox" onclick="myFunction2()"></label>
                                         <input type="password" name="password_confirmation" class="form-control" id="myInput2" placeholder="Password" required>
+                                        @if($errors->has('password_confirmation'))
+                                        <span class="help-block">{{$errors->first('password_confirmation')}}</span>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1"><strong>Peran</strong></label>

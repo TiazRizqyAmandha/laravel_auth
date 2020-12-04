@@ -2,7 +2,7 @@
 <html lang="en" class="fullscreen-bg">
 
 <head>
-    <title>Email</title>
+    <title>Forgot Password</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -30,23 +30,23 @@
                     <div class="content">
                         <div class="user text-center">
                             <img src="{{asset('admin/assets/img/logo-dark3.png')}}" class="img-circle" alt="Avatar">
-                            <h2 class="name"> Cek Email</h2>
+                            <h2 class="name">Lupa Password - Masukkan Email</h2>
                         </div>
-                <form action="/email-key" method="post">
+                <form action="{{url('/forgot_password')}}" method="post">
                     @csrf
+                    @if (Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                    @endif
+                    @if (Session::has('error'))
+                    <div class="alert alert-warning">
+                        {{ Session::get('error') }}
+                    </div>
+                    @endif
                     <div class="card-body">
-                        @if (Session::has('no'))
-                        <div class="alert alert-danger">
-                            {{ Session::get('no') }}
-                        </div>
-                        @endif
-                        @if (Session::has('gagal'))
-                        <div class="alert alert-danger">
-                            {{ Session::get('gagal') }}
-                        </div>
-                        @endif
                         <div class="form-group">
-                            <input name="email_key" type="email" class="form-control" placeholder="email@gmail.com" required>
+                            <input name="email" id="email" type="email" class="form-control" placeholder="email@gmail.com" required>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -61,5 +61,4 @@
     </div>
     <!-- END WRAPPER -->
 </body>
-
 </html>

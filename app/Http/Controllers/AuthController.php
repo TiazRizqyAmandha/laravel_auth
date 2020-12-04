@@ -71,10 +71,12 @@ class AuthController extends Controller
     }
 
     public function register(Request $request)
-    {
+    {   
         $rules = [
             'email'                 => 'required|email',
-            'password'              => 'required|confirmed'
+            'password'              => 'required|confirmed',
+            'password'              => 'required|min:8',
+            'password_confirmation' => 'required|min:8',
         ];
 
         $messages = [
@@ -103,6 +105,7 @@ class AuthController extends Controller
         //     $message->to($user->email, $user->name);
         //     $message->subject('Selamat anda sudah terdaftar di Website Alumni');
         // });
+
         $details = [
             'name' => $user->name,
             'username' => $user->username,
@@ -213,5 +216,33 @@ class AuthController extends Controller
     {
         Auth::logout(); // menghapus session yang aktif
         return redirect()->route('login');
+    }
+
+    public function forgot(){
+        return view('forgot');
+    }
+
+    public function password(Request $request){
+        $user = User::whereEmail($request->email)->first();
+
+        if($user == null){
+            return redirect()->back()->with(['error' => 'Email tidak ditemukan']);
+        }
+        $user = Sentinel::findById($user->id);
+        $reminder = Reminder::exists($user) ? : Reminder::create($user);
+        $this->sendEmail($user, $reminder->code);
+
+        return redirect()->back()->with(['success' => 'Kode Dikirim ke Email']);
+    }
+
+    public function sendEmail($user, $code){
+        Mail::send(
+            'emails.sites.forgot',
+            ['user' => $user, 'code' => $code],
+            function($message) use ($user){
+                $message->to($user->email);
+                $message->subject($user->name."ubah password anda.");
+            }
+        );
     }
 }

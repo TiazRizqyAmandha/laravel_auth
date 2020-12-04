@@ -27,6 +27,11 @@ class AnggotaController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request,[
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required|min:8',
+            'email' => 'required|unique:users',
+        ]);
         if ($request->input('role') == 'Admin')
         {
             $request->request->add(['status' => 'Aktif']);

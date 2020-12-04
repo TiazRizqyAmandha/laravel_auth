@@ -15,6 +15,9 @@ Route::post('register-user', 'AuthController@register');
 //! email key
 Route::get('/email-key','AuthController@halamanEmailUser')->name('email-key');
 Route::post('/email-key','AuthController@keyEmail');
+//! forgot password
+Route::get('/forgot_password','AuthController@forgot');
+Route::post('/forgot_password','AuthController@password');
 
 Route::group(['middleware' => 'auth'], function () {
 
