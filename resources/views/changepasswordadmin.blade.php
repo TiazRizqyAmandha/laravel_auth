@@ -2,7 +2,7 @@
 <html lang="en" class="fullscreen-bg">
 
 <head>
-    <title>Ubah Password</title>
+    <title>Password Baru</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -30,9 +30,10 @@
                     <div class="content">
                         <div class="user text-center">
                             <img src="{{asset('admin/assets/img/logo-dark3.png')}}" class="img-circle" alt="Avatar">
-                            <h2 class="name">Lupa Password - Masukkan Email</h2>
+                            <h2 class="name">Masukkan Password Baru</h2>
                         </div>
-                <form action="{{url('/forgot_password')}}" method="post">
+                <form action="{{url('/new_password/'.$username.'/'.$userkey)}}" enctype="multipart/form-data" autocomplete="off" >  
+                    @method('post')
                     @csrf
                     @if (Session::has('success'))
                     <div class="alert alert-success">
@@ -46,11 +47,18 @@
                     @endif
                     <div class="card-body">
                         <div class="form-group">
-                            <input name="email" id="email" type="email" class="form-control" placeholder="email@gmail.com" required>
+                            <label for=""><strong>Password</strong></label>
+                            <input type="checkbox" onclick="myFunction()"></label>
+                            <input type="password" name="password" class="form-control" id="myInput" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for=""><strong>Konfirmasi Password</strong></label>
+                            <input type="checkbox" onclick="myFunction2()"></label>
+                            <input type="password" name="password_confirmation" class="form-control" id="myInput2" placeholder="Password" required>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-block">Kirim</button>
+                        <button type="submit" class="btn btn-primary btn-block" id="btnSubmit">Kirim</button>
                         <p class="text-center">Sudah punya akun? <a href="{{ route('login') }}">Masuk</a> sekarang!</p>
                     </div>
                 </form>
@@ -62,3 +70,39 @@
     <!-- END WRAPPER -->
 </body>
 </html>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") 
+        {
+            x.type = "text";
+        } 
+        else 
+        {
+            x.type = "password";
+        }
+        }
+    function myFunction2() {
+        var x = document.getElementById("myInput2");
+        if (x.type === "password") 
+        {
+            x.type = "text";
+        } 
+        else 
+        {
+            x.type = "password";
+        }
+    }
+    $(function () {
+        $("#btnSubmit").click(function () {
+            var password = $("#myInput").val();
+            var confirmPassword = $("#myInput2").val();
+            if (password != confirmPassword) {
+                alert("Password dan Konfirmasi Password tidak sama.");
+                return false;
+            }
+            return true;
+        });
+    });
+</script>

@@ -32,6 +32,8 @@ class AnggotaController extends Controller
             'password_confirmation' => 'required|min:8',
             'email' => 'required|unique:users',
         ]);
+        $permitted_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $request->request->add(['password_key' => $request->input('username') . '-' . substr(str_shuffle($permitted_chars), 0, 5)]);
         if ($request->input('role') == 'Admin')
         {
             $request->request->add(['status' => 'Aktif']);

@@ -84,7 +84,7 @@
 	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="addModalLabel">Tambah Lowongan Kerja</h5>
+				<h1 class="modal-title" id="addModalLabel"><b>Tambah Lowongan Kerja</b></h1>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -133,7 +133,7 @@
 						</select>
 						<select name="gender" class="form-control" id="input_filter" required>
 							<option value="" selected disabled>Jenis Kelamin</option>
-							<option value="ALL">Semua</option>
+							<option value="ALL">Laki-laki dan Perempuan</option>
 							<option value="L">Laki-laki</option>
 							<option value="P">Perempuan</option>
 						</select>

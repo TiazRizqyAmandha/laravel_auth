@@ -65,7 +65,7 @@ $gender = $_GET['gender'];
               <div class="col-md-2">
                 <select class="form-control" name="gender">
                   <option value="" selected disabled>Jenis Kelamin</option>
-                  <option value="ALL" {{ $gender != null && $gender == 'P' ? 'selected' : ''}}>Semua</option>
+                  <option value="ALL" {{ $gender != null && $gender == 'P' ? 'selected' : ''}}>Laki-laki dan Perempuan</option>
                   <option value="L" {{ $gender != null && $gender == 'L' ? 'selected' : ''}}>Laki-laki</option>
                   <option value="P" {{ $gender != null && $gender == 'P' ? 'selected' : ''}}>Perempuan</option>
                 </select>

@@ -10,7 +10,7 @@
 			<div class="container-fluid">
 				<div class="panel panel-headline" style="background-color: #e6e6e6;">
 						<div class="panel-heading">
-							<h3 class="panel-title" style="margin-top: 10px; font-size: 40px;">Ubah Pekerjaan</h3>
+							<h1 class="panel-title" style="margin-top: 10px; font-size: 40px;"><b>Ubah Pekerjaan</b></h1>
 						</div>
 						<div class="panel-body" style="margin-left: 15px;">
 							<div class="row">

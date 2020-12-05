@@ -14,10 +14,16 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NotifPendaftaranAlumni;
+use App\Mail\ForgotPassword;
 use App\Mail\NotifEmailAlumni;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
+    public function viewchange($username,$userkey){
+        dd("hai");
+        return view('changepasswordadmin',['username'=>$username,'userkey'=>$userkey]);
+    }
     public function showFormLogin()
     {
         if (Auth::check()) { // true sekalian session field di users nanti bisa dipanggil via Auth
@@ -223,26 +229,67 @@ class AuthController extends Controller
     }
 
     public function password(Request $request){
-        $user = User::whereEmail($request->email)->first();
+        $request->validate([
+            'email' => 'required|email'
+        ]);
 
-        if($user == null){
-            return redirect()->back()->with(['error' => 'Email tidak ditemukan']);
-        }
-        $user = Sentinel::findById($user->id);
-        $reminder = Reminder::exists($user) ? : Reminder::create($user);
-        $this->sendEmail($user, $reminder->code);
+        $user = DB::table('users')
+        ->where('email','=',$request->email)->first();
 
-        return redirect()->back()->with(['success' => 'Kode Dikirim ke Email']);
-    }
+        $user = User::where('email','=',$request->email)->first();
+        $username = $user->id;
+        $userkey = $user->password_key;
 
-    public function sendEmail($user, $code){
-        Mail::send(
-            'emails.sites.forgot',
-            ['user' => $user, 'code' => $code],
-            function($message) use ($user){
-                $message->to($user->email);
-                $message->subject($user->name."ubah password anda.");
+
+        
+        if($user != null) {
+            if($user->status == 'Aktif'){
+                $status = 'success';
+                $details = [
+                    'name' => $user->name,
+                    'password_key' => $user->password_key,
+                    'link' => url('/changepassword/'.$username.'/'.$userkey),
+                ];
+                 \Mail::to($user->email)->send(new ForgotPassword($details));
+                return redirect('/forgot_password')->with(['status' => $status]);
             }
-        );
+            else{
+                $status = 'notactive';
+                return redirect('/forgot_password')->with(['status' => $status]);
+            }
+            
+        } else {
+            $status = 'failed';
+            return redirect('/forgot_password')->with(['status' => $status]);
+        }
     }
+
+    public function new_pass(Request $request, $username, $userkey){
+        $request->validate([
+            'password' => 'required|min:8',
+            'confirmpassword' => 'required|same:password|min:8'
+        ]);
+
+
+
+
+        $user = User::find($username);
+        $status = 'failed';
+        if($userkey == md5($user->password_key)) {
+            $user->password = md5($request->password);
+            $permitted_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $request->request->add(['password_key' => $request->input('username') . '-' . substr(str_shuffle($permitted_chars), 0, 5)]);
+            if($user->save()) {
+                $status = 'success';
+                return redirect()->route('login')->with(['status' => $status]);
+            } else {
+                $result= 'failed';
+            }
+        } else {
+            $result = 'failed';
+        }
+        return redirect('/changepassword/'.$username.'/'.$userkey)->with(['status' => $status]);
+    }
+
+
 }

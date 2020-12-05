@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
-
+    public $incrementing = false;
     /**
      * The attributes that are mass assignable.
      *
@@ -30,6 +30,7 @@ class User extends Authenticatable
         'key_user',
         'status',
         'photo_profil',
+        'password_key',
     ];
 
     

@@ -35,7 +35,7 @@
 					</div>
 					<!-- END MODAL -->
 						<div class="panel-heading">
-							<h3 class="panel-title" style="margin-top: 10px; font-size: 40px;">Ubah Admin dan User Website Alumni</h3>
+							<h1 class="panel-title" style="margin-top: 10px; font-size: 40px;"><b>Ubah Admin dan User Website Alumni</b></h1>
 						</div>
 						<div class="panel-body" style="margin-left: 15px;">
 							<div class="row">

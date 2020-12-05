@@ -1,5 +1,23 @@
-<h1>Halo {{$user->name}}</h1>
-<p>
-	Takan tombol ubah password untuk merubah password kamu
-	<a href="{{url('reset_password/'.$user->name.'/'.$code)}}">Ubah Password</a>
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selamat Datang Anggota Baru</title>
+</head>
+<body>
+    <div style="width: 600px" >
+    <div> <img src="{{ $message->embed('images/HeaderAtas.jpg') }}" style="width: 550px; height: 120px;"></div>
+    <div class="ml-3 p-2">
+    <p style="font-size: 125%; font-weight:bold">Yang terhormat : {{$details['name']}}</p>
+    <p>Hai, ini email dari Website Alumni.</p>
+    <p>Silahkan<a href="{{$details['link']}}"><p style="font-size:150%; font-weight:bold">Ubah Password</p></a></p>
+    <p style="font-weight:bold">Terimakasih,</p>
+    <p style="font-size:110%; font-weight:bold">Website Alumni</p>
+    </div>  
+    <div> <img src="{{ $message->embed('images/HeaderBawah.jpg') }}" style="width: 550px; height: 120px;"></div>
+
+    </div>   
+</body>
+</html>

@@ -5,7 +5,7 @@
 			<div class="container-fluid">
 				<div class="panel panel-headline" style="background-color: #e6e6e6;">
 						<div class="panel-heading">
-							<h3 class="panel-title" style="margin-top: 5px; font-size: 40px;">Ubah Data {{Auth::user()->role}} Website Alumni</h3>
+							<h1 class="panel-title" style="margin-top: 5px; font-size: 40px;"><b>Ubah Data {{Auth::user()->role}} Website Alumni</b></h1>
 						</div>
 						<div class="panel-body" style="margin-left: 15px;">
 							<div class="row">

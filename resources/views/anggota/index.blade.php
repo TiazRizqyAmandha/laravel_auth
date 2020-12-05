@@ -26,7 +26,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="panel">
-								<div class="col-lg-6"><h1 style="text-align: left; margin-left: 10px;">Data Pekerjaan</h1>
+								<div class="col-lg-6"><h1 style="text-align: left; margin-left: 10px;">Data Anggota Website Alumni</h1>
 								</div>
 								<div class="col-lg-6">
 									@if(Auth::user()->role == 'Admin')
@@ -82,7 +82,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Tambah Data Admin dan User Website Alumni</h5>
+				<h1 class="modal-title" id="exampleModalLabel"><b>Tambah Data Admin dan User Website Alumni</b></h1>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
