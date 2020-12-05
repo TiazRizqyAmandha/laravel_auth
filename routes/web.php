@@ -19,8 +19,8 @@ Route::post('/email-key','AuthController@keyEmail');
 Route::get('/forgot_password','AuthController@forgot');
 Route::post('/forgot_password','AuthController@password');
 //! new password
-Route::get('/changepassword/{$username}/{$userkey}','AuthController@viewchange');
-Route::post('/new_password/{$username}/{$userkey}', 'AuthController@new_pass');
+Route::get('/changepassword/{username}/{userkey}','AuthController@viewchange');
+Route::post('/new_password', 'AuthController@new_pass')->name('new_password');
 
 
 Route::group(['middleware' => 'auth'], function () {

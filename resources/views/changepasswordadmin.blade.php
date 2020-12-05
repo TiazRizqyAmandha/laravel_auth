@@ -32,7 +32,7 @@
                             <img src="{{asset('admin/assets/img/logo-dark3.png')}}" class="img-circle" alt="Avatar">
                             <h2 class="name">Masukkan Password Baru</h2>
                         </div>
-                <form action="{{url('/new_password/'.$username.'/'.$userkey)}}" enctype="multipart/form-data" autocomplete="off" >  
+                <form method="post" action="{{route('new_password')}}" autocomplete="off" >  
                     @method('post')
                     @csrf
                     @if (Session::has('success'))
@@ -46,15 +46,23 @@
                     </div>
                     @endif
                     <div class="card-body">
-                        <div class="form-group">
+                        <div class="form-group {{$errors->has('password') ? ' has-error' : ''}}">
                             <label for=""><strong>Password</strong></label>
                             <input type="checkbox" onclick="myFunction()"></label>
                             <input type="password" name="password" class="form-control" id="myInput" placeholder="Password" required>
+                            @if($errors->has('password'))
+                                <span class="help-block">{{$errors->first('password')}}</span>
+                            @endif
                         </div>
-                        <div class="form-group">
+                        <div class="form-group {{$errors->has('password_confirmation') ? ' has-error' : ''}}">
                             <label for=""><strong>Konfirmasi Password</strong></label>
                             <input type="checkbox" onclick="myFunction2()"></label>
                             <input type="password" name="password_confirmation" class="form-control" id="myInput2" placeholder="Password" required>
+                            @if($errors->has('password_confirmation'))
+                                <span class="help-block">{{$errors->first('password_confirmation')}}</span>
+                            @endif
+                            <input type="hidden" id="userkey" name="userkey" value="{{ $userkey }}">
+                            <input type="hidden" id="username" name="username" value="{{ $username }}">
                         </div>
                     </div>
                     <div class="card-footer">

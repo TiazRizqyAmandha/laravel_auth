@@ -12,7 +12,9 @@
     <div class="ml-3 p-2">
     <p style="font-size: 125%; font-weight:bold">Yang terhormat : {{$details['name']}}</p>
     <p>Hai, ini email dari Website Alumni.</p>
-    <p>Silahkan<a href="{{$details['link']}}"><p style="font-size:150%; font-weight:bold">Ubah Password</p></a></p>
+    <!-- <p>Silahkan<a href="{{$details['link']}}"><p style="font-size:150%; font-weight:bold">Ubah Password</p></a></p> -->
+
+    <p>Silahkan<a href="{{$details['link']}}"><p style="font-size:150%; font-weight:bold">{{ $details['link'] }}</p></a></p>
     <p style="font-weight:bold">Terimakasih,</p>
     <p style="font-size:110%; font-weight:bold">Website Alumni</p>
     </div>  

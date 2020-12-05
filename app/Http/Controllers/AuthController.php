@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\DB;
 class AuthController extends Controller
 {
     public function viewchange($username,$userkey){
-        dd("hai");
         return view('changepasswordadmin',['username'=>$username,'userkey'=>$userkey]);
     }
     public function showFormLogin()
@@ -239,6 +238,7 @@ class AuthController extends Controller
         $user = User::where('email','=',$request->email)->first();
         $username = $user->id;
         $userkey = $user->password_key;
+        // $userkey = "abcd";
 
 
         
@@ -249,6 +249,8 @@ class AuthController extends Controller
                     'name' => $user->name,
                     'password_key' => $user->password_key,
                     'link' => url('/changepassword/'.$username.'/'.$userkey),
+                    // 'link' => route('changepassword',$username,$userkey),
+                    // 'link' => 'www.google.com'
                 ];
                  \Mail::to($user->email)->send(new ForgotPassword($details));
                 return redirect('/forgot_password')->with(['status' => $status]);
@@ -264,21 +266,20 @@ class AuthController extends Controller
         }
     }
 
-    public function new_pass(Request $request, $username, $userkey){
-        $request->validate([
+    public function new_pass(Request $request){
+        $this->validate($request,[
             'password' => 'required|min:8',
-            'confirmpassword' => 'required|same:password|min:8'
+            'password_confirmation' => 'required|min:8',
         ]);
-
-
-
-
-        $user = User::find($username);
+        $user = User::find($request->username);
         $status = 'failed';
-        if($userkey == md5($user->password_key)) {
-            $user->password = md5($request->password);
+        // dd($user,$request->input());
+        if($request->userkey == $user->password_key) {
+            $user->password = Hash::make($request->password);
             $permitted_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $request->request->add(['password_key' => $request->input('username') . '-' . substr(str_shuffle($permitted_chars), 0, 5)]);
+            // $user->save();
+            // dd("masuk if");
             if($user->save()) {
                 $status = 'success';
                 return redirect()->route('login')->with(['status' => $status]);
@@ -288,7 +289,7 @@ class AuthController extends Controller
         } else {
             $result = 'failed';
         }
-        return redirect('/changepassword/'.$username.'/'.$userkey)->with(['status' => $status]);
+        return redirect('/changepassword/'.$request->username.'/'.$request->userkey)->with(['status' => $status]);
     }
 
 
