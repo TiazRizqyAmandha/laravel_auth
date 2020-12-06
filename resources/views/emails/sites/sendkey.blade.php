@@ -11,6 +11,7 @@
     <div> <img src="{{ $message->embed('images/HeaderAtas.jpg') }}" style="width: 550px; height: 120px;"></div>
     <div class="ml-3 p-2">
     <p style="font-size: 125%; font-weight:bold">Yang terhormat : {{$details['name']}}</p>
+    <p>Berikut ini kami kirim kunci akun anda dalam website alumni</p>
     <p>Jangan bagikan kunci ini dengan siapapun!!</p>
     <p><b style="font-size: 25px;">{{$details['key_user']}}</b></p>
     <p style="font-weight:bold">Terimakasih,</p>

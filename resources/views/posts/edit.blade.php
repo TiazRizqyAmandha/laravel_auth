@@ -16,7 +16,7 @@
 							<div class="row">
 								<form action="/posts/{{$posts->id}}/update" method="POST" enctype="multipart/form-data">
 									@csrf
-									<input type="hidden" name="_method" value="put" />
+									<input type="hidden" name="_method" value="post" />
 									<input type="hidden" name="users_id" value="{{Auth::id()}}">
 									<input type="hidden" name="id" value="{{$posts->id}}">
 									<div class="form-group">

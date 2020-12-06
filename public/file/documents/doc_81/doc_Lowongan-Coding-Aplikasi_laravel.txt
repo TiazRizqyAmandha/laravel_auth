@@ -1,0 +1,31 @@
+Seorang ahli kimia dibunuh di labnya sendiri.Satu-satunya bukti adalah 
+selembar kertas yang memiliki nama-nama zat kimia
+yang tertulis di atasnya.
+Substansi tersebut adalah nikel,
+karbon, oksigen, lantanum, dan belerang.
+Kimiawan hanya memiliki 4 orang yang
+datang ke lab pada hari pembunuhan:
+- sesama ilmuwan Claire,
+- keponakannya Nicolas,
+- istrinya, dan temannya Marc.
+
+
+Seorang pria kaya bernama Tuan Ronald Green 
+tinggal di sebuah rumah indah di Baker Street.
+Beliau diculik dan ditemukan telah meninggal dunia.
+Anda ditunjuk untuk menangai kasus ini.
+Ditemukan secarik catatan bertulisan tangan
+Tuan Green pada saat team menyisir TKP.
+ Terdapat orang terdekat yang menjadi tersangka :
+- Jack Green, putra dan pewaris propertu
+- John Jacobson, Karyawan Mr. Green
+- June Green, istri Green
+
+submit => function store
+update =>function updte get user by id (buat get yang mau diupdate)
+	=>function buat updatenya
+delete =>destroy
+
+composer global require laravel/installer
+composer global require "laravel/installer"
+

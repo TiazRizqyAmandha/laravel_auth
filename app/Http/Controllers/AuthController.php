@@ -236,14 +236,14 @@ class AuthController extends Controller
         ->where('email','=',$request->email)->first();
 
         $user = User::where('email','=',$request->email)->first();
-        $username = $user->id;
-        $userkey = $user->password_key;
         // $userkey = "abcd";
 
 
         
         if($user != null) {
             if($user->status == 'Aktif'){
+                $username = $user->id;
+                $userkey = $user->password_key;
                 $status = 'success';
                 $details = [
                     'name' => $user->name,
@@ -253,16 +253,17 @@ class AuthController extends Controller
                     // 'link' => 'www.google.com'
                 ];
                  \Mail::to($user->email)->send(new ForgotPassword($details));
-                return redirect('/forgot_password')->with(['status' => $status]);
+                Session::flash('success', 'Email ditemukan, silahkan cek notifikasi email anda');
+                return redirect('/forgot_password');
             }
             else{
-                $status = 'notactive';
-                return redirect('/forgot_password')->with(['status' => $status]);
+                Session::flash('gagal', 'Email belum aktif, silahkan melakukan pendaftaran untuk mengaktifkan akun anda');
+                return redirect('/forgot_password');
             }
-            
-        } else {
-            $status = 'failed';
-            return redirect('/forgot_password')->with(['status' => $status]);
+        } 
+        else {
+            Session::flash('gagal2', 'Email tidak ditemukan');
+            return redirect('/forgot_password');
         }
     }
 
@@ -281,8 +282,8 @@ class AuthController extends Controller
             // $user->save();
             // dd("masuk if");
             if($user->save()) {
-                $status = 'success';
-                return redirect()->route('login')->with(['status' => $status]);
+                Session::flash('successforgotpassword', 'password berhasil diubah silahkan masuk');
+                return redirect()->route('login');
             } else {
                 $result= 'failed';
             }

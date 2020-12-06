@@ -59,6 +59,11 @@
                                         {{ Session::get('error') }}
                                     </div>
                                     @endif
+                                    @if (Session::has('successforgotpassword'))
+                                    <div class="alert alert-success">
+                                        {{ Session::get('successforgotpassword') }}
+                                    </div>
+                                    @endif
                                     <div class="form-group">
                                         <label for=""><strong>Email</strong></label>
                                         <input type="email" name="email" class="form-control" placeholder="Email">

@@ -39,9 +39,14 @@
                         {{ Session::get('success') }}
                     </div>
                     @endif
-                    @if (Session::has('error'))
-                    <div class="alert alert-warning">
-                        {{ Session::get('error') }}
+                    @if (Session::has('gagal'))
+                    <div class="alert alert-danger">
+                        {{ Session::get('gagal') }}
+                    </div>
+                    @endif
+                    @if (Session::has('gagal2'))
+                    <div class="alert alert-danger">
+                        {{ Session::get('gagal2') }}
                     </div>
                     @endif
                     <div class="card-body">

@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 class BerandaController extends Controller
 {
 
-	public function index($kategori = null, $generation = null, $username = null, $created_at = null, $gender = null)
+	public function index($kategori = null, $generation = null, $username = null, $created_at = null, 
+		$gender = null)
 	{
 		$data_posts = Posts::where('status', 'Aktif')->get();
 		$kategoris = PostsCategory::where('status', 'Aktif')->get();

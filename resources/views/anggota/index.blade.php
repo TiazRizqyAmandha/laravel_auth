@@ -26,6 +26,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="panel">
+							<div class="row">
 								<div class="col-lg-6"><h1 style="text-align: left; margin-left: 10px;">Data Anggota Website Alumni</h1>
 								</div>
 								<div class="col-lg-6">
@@ -36,6 +37,45 @@
 									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff6600; margin-top: 25px;"><i class="lnr lnr-printer"></i><a href="/anggota/exportpdf" style="margin-bottom: 10px; color: white;"> Export PDF</a></button>
 									@endif
 								</div>
+							</div>
+							<div class="row" style="margin-right: 10px;">
+								<div class="col-md-3">
+<!-- 									<div class="metric">
+										<span class="icon"><i class="fa fa-download"></i></span>
+										<p>
+											<span class="number">1,252</span>
+											<span class="title">Downloads</span>
+										</p>
+									</div> -->
+								</div>
+								<div class="col-md-3">
+<!-- 									<div class="metric">
+										<span class="icon"><i class="fa fa-shopping-bag"></i></span>
+										<p>
+											<span class="number">203</span>
+											<span class="title">Sales</span>
+										</p>
+									</div> -->
+								</div>
+								<div class="col-md-3">
+									<div class="metric">
+										<span class="icon"><i class="fa fa-eye" style="margin-top: 15px;"></i></span>
+										<p>
+											<span class="number">{{$jumlah_admin}}</span>
+											<span class="title">Admin</span>
+										</p>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="metric">
+										<span class="icon"><i class="fa fa-bar-chart" style="margin-top: 15px;"></i></span>
+										<p>
+											<span class="number">{{$jumlah_user}}</span>
+											<span class="title">User</span>
+										</p>
+									</div>
+								</div>
+							</div>
 								<div class="panel-body">
 									<table class="table table-bordered table-hover table-striped">
 										<thead>

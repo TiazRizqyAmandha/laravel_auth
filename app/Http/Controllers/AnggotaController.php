@@ -14,7 +14,9 @@ class AnggotaController extends Controller
     public function anggotaIndex()
     {
         $data_anggota = \App\User::all();
-        return view('anggota.index', ['data_anggota' => $data_anggota]);
+        $jumlah_admin =  User::where('role','Admin')->count();
+        $jumlah_user =  User::where('role','User')->count();
+        return view('anggota.index', ['data_anggota' => $data_anggota, 'jumlah_admin' => $jumlah_admin, 'jumlah_user' => $jumlah_user]);
     }
 
     public function read($id)

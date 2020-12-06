@@ -48,7 +48,13 @@ class WorksController extends Controller
 	public function update(Request $request, $id)
 	{
 		$works = \App\Works::find($id);
-		$works->update($request->all());
+		$works->company = $request->company;
+		$works->position = $request->position;
+		$works->works_place = $request->works_place;
+		$works->description = $request->description;
+		$works->date_start = $request->date_start;
+		$works->date_end = $request->date_end;
+		$works->update();
 		return redirect('/' . strtolower(Auth::user()->role) . '/works')->with('sukses2', 'data pekerjaan berhasil di update');
 	}
 

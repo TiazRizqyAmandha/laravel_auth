@@ -54,7 +54,7 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="{{url('/home')}}" class="active"><i class="lnr lnr-home"></i> <span>Profil</span></a></li>
+						<li><a href="{{url('/home')}}" class=""><i class="lnr lnr-home"></i> <span>Profil</span></a></li>
 						<li><a href="{{url('/beranda')}}" class=""><i class="lnr lnr-code"></i> <span>Beranda</span></a></li>
 						@if(Auth::user()->role == 'Admin')
 						<li><a href="{{url('/admin/works')}}" class=""><i class="lnr lnr-chart-bars"></i> <span>Pekerjaan</span></a></li>
