@@ -55,7 +55,38 @@ class PostsController extends Controller
 
 	public function store(Request $request)
 	{
-		$request->validate([
+		if ($request->isMethod('put')){
+			$request->validate([
+				'title' => 'required',
+				'body' => 'required',
+				'posts_category_id' => 'required',
+			]);
+
+			$posts = $request->isMethod('put') ? Posts::find($request->id) : new Posts;
+			$posts->title = $request->input('title');
+			$posts->body = $request->input('body');
+			// $posts->users_id = $request->input('users_id');
+			$posts->posts_category_id = $request->input('posts_category_id');
+			$posts->status = $request->input('status');
+			$filter = [
+				'generation' => $request->input('generation'),
+				'gender' => $request->input('gender'),
+			];
+			$posts->filter = json_encode($filter);
+			//? upload file
+			if ($document = $request->file('document')) {
+				$document_url = 'file/documents/doc_' . $request->input('users_id') . '/'; // upload path
+				$document_name = 'doc_' . preg_replace("/\s+/", "-", $request->input('title')) . '_' . $document->getClientOriginalName();
+				$document->move($document_url, $document_name);
+				$posts->document_url = $document_url . $document_name;
+			}
+
+			$posts->save();
+			
+			return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses1', 'data lowongan pekerjaan berhasil di ubah');
+		}
+		else{
+			$request->validate([
 			'title' => 'required',
 			'body' => 'required',
 			'posts_category_id' => 'required',
@@ -81,9 +112,8 @@ class PostsController extends Controller
 		}
 
 		$posts->save();
-		if ($request->isMethod('put'))
-			return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses1', 'data lowongan pekerjaan berhasil di ubah');
 		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses0', 'data lowongan pekerjaan berhasil di tambah');
+		}
 	}
 
 	public function edit($id)
@@ -96,8 +126,24 @@ class PostsController extends Controller
 	public function update(Request $request, $id)
 	{
 		$posts = \App\Posts::find($id);
-		$posts->update($request->all());
-		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses2', 'data lowongan pekrjaan berhasil di update');
+		$posts->title = $request->title;
+		$posts->body = $request->body;
+		$posts->status = $request->status;
+		$posts->posts_category_id = $request->posts_category_id;
+		$filter = [
+			'generation' => $request->input('generation'),
+			'gender' => $request->input('gender'),
+		];
+		$posts->filter = json_encode($filter);
+		//? upload file
+		if ($document = $request->file('document')) {
+			$document_url = 'file/documents/doc_' . $request->input('users_id') . '/'; // upload path
+			$document_name = 'doc_' . preg_replace("/\s+/", "-", $request->input('title')) . '_' . $document->getClientOriginalName();
+			$document->move($document_url, $document_name);
+			$posts->document_url = $document_url . $document_name;
+		}
+		$posts->update();
+		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses2', 'data lowongan pekerjaan berhasil di update');
 	}
 
 	public function delete($id)

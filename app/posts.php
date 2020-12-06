@@ -17,4 +17,8 @@ class Posts extends Model
     {
         return $this->belongsTo('App\User', 'users_id');
     }
+
+    public function komentar(){
+    	return $this->hasMany(Komentar::class);
+    }
 }

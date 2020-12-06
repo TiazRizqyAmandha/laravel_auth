@@ -43,9 +43,9 @@
 									<input type="hidden" name="status" value="Aktif">
 									{{csrf_field()}}
 									<div class="form-group">
-										<div class="form-group">
+										<!-- <div class="form-group">
 											<button class="btn btn-primary col-2 m-2" data-toggle="modal" data-target="#resetPasswordModal">Reset Password</button>
-										</div>
+										</div> -->
 										<div class="form-group">
 											<label for=""><strong>Photo Profil</strong></label>
 											<input type="file" name="photo_profil"  class="form-control">

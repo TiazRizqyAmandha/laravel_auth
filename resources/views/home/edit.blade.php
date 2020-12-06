@@ -13,7 +13,7 @@
 									<input type="hidden" name="status" value="Aktif">
 									{{csrf_field()}}
 									<div class="form-group">
-										<a href="/home/{{ Auth::user()->id}}/editpassword" class="btn btn-warning btn-sm">Ubah Password</a>
+										<!-- <a href="/home/{{ Auth::user()->id}}/editpassword" class="btn btn-warning btn-sm">Ubah Password</a> -->
 										<div class="form-group">
 											<label for=""><strong>Photo Profil</strong></label>
 											<input  type="file" name="photo_profil"  class="form-control">

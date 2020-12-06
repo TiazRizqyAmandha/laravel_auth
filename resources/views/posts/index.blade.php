@@ -63,17 +63,10 @@
 												@endif
 												<td>{{$posts->status}}</td>
 												<td>{{$posts->users->name}}</td>
-												@if(Auth::user()->name == $posts->users->name)
 												<td align="center">
 													<a href="/posts/{{$posts->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
-													<a href="/posts/{{$posts->id}}/delete" class="btn btn-danger btn-sm" id="btnDelete">Hapus</a>
+													<a href="/posts/{{$posts->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin data mau dihapus ?')">Hapus</a>
 												</td>
-												@else
-												<td align="center">
-													<a disabled href="/posts/{{$posts->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
-													<a href="/posts/{{$posts->id}}/delete" class="btn btn-danger btn-sm" id="btnDelete">Hapus</a>
-												</td>
-												@endif
 											</tr>
 											@endforeach
 										</tbody>

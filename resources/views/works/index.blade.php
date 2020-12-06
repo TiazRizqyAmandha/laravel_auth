@@ -57,7 +57,7 @@
 												<td>{{$works->users->name}}</td>
 												<td align="center">
 													<a href="/works/{{$works->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
-													<a href="/works/{{$works->id}}/delete" class="btn btn-danger btn-sm" id="btnDeleted">Hapus</a>
+													<a href="/works/{{$works->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin data mau dihapus ?')">Hapus</a>
 												</td>
 											</tr>
 											@endforeach
@@ -132,11 +132,11 @@
 <!-- End Modal -->
 @endsection
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript"> 
+<!-- <script type="text/javascript"> 
 		$(function () {
 			$("#btnDeleted").click(function () {
 				alert("Yakin Ingin Menghapus Data");
 				return true;
 			});
 		});
-</script>
+</script> -->

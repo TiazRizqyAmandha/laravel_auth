@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\Posts as ResourcesPosts;
 use App\Posts;
+use App\Komentar;
 use App\PostsCategory;
 use Illuminate\Http\Request;
 
@@ -17,5 +18,12 @@ class BerandaController extends Controller
 		$kategoris = PostsCategory::where('status', 'Aktif')->get();
 		$data_anggota = \App\User::all();
 		return view('beranda.index', ['data_posts' => $data_posts, 'data_anggota' => $data_anggota, 'kategoris' => $kategoris, 'kategori' => $kategori, 'generation' => $generation, 'username' => $username, 'created_at' => $created_at, 'gender' => $gender]);
+	}
+
+	public function postKomentar(Request $request, $kategori = null, $generation = null, $username = null, $created_at = null, $gender = null)
+	{
+		$request->request->add(['users_id' => auth()->user()->id]);
+		$komentar = Komentar::create($request->all());
+		return redirect()->back()->with('success','Komentar berhasil ditampilkan');
 	}
 }

@@ -27,7 +27,7 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="{{asset('admin/assets/img/logo-dark2.png')}}" alt="Klorofil Logo" class="img-responsive logo" style="width: 80px; height: 25px;"></a>
+				<a href="{{url('/home')}}"><img src="{{asset('admin/assets/img/logo-dark2.png')}}" alt="Klorofil Logo" class="img-responsive logo" style="width: 80px; height: 25px;"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -54,17 +54,17 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="{{url('/home')}}" class=""><i class="lnr lnr-home"></i> <span>Profil</span></a></li>
-						<li><a href="{{url('/beranda')}}" class=""><i class="lnr lnr-code"></i> <span>Beranda</span></a></li>
+						<li><a href="{{url('/home')}}" class=""><i class="lnr lnr-picture"></i> <span>Profil</span></a></li>
+						<li><a href="{{url('/beranda')}}" class=""><i class="lnr lnr-home"></i> <span>Beranda</span></a></li>
 						@if(Auth::user()->role == 'Admin')
-						<li><a href="{{url('/admin/works')}}" class=""><i class="lnr lnr-chart-bars"></i> <span>Pekerjaan</span></a></li>
+						<li><a href="{{url('/admin/works')}}" class=""><i class="lnr lnr-briefcase"></i> <span>Pekerjaan</span></a></li>
 						<li><a href="{{url('/admin/posts')}}" class=""><i class="lnr lnr-cog"></i> <span>Lowongan Kerja</span></a></li>
 						<li><a href="{{url('/admin/kategori')}}" class=""><i class="lnr lnr-alarm"></i> <span>Kategori</span></a></li>
-						<li><a href="{{url('/admin/anggota')}}" class=""><i class="lnr lnr-dice"></i> <span>Anggota</span></a></li>
+						<li><a href="{{url('/admin/anggota')}}" class=""><i class="lnr lnr-users"></i> <span>Anggota</span></a></li>
 						@elseif(Auth::user()->role == 'User')
-						<li><a href="{{url('/user/works')}}" class=""><i class="lnr lnr-chart-bars"></i> <span>Pekerjaan</span></a></li>
+						<li><a href="{{url('/user/works')}}" class=""><i class="lnr lnr-briefcase"></i> <span>Pekerjaan</span></a></li>
 						<li><a href="{{url('/user/posts')}}" class=""><i class="lnr lnr-cog"></i> <span>Lowongan Kerja</span></a></li>
-						<li><a href="{{url('/user/anggota')}}" class=""><i class="lnr lnr-dice"></i> <span>Anggota</span></a></li>
+						<li><a href="{{url('/user/anggota')}}" class=""><i class="lnr lnr-users"></i> <span>Anggota</span></a></li>
                     	@endif
 					</ul>
 				</nav>

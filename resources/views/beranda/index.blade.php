@@ -118,6 +118,40 @@ $gender = $_GET['gender'];
                   {{json_decode($posts->filter)->generation[$i]}} - 
                   @endfor ||
                 </p>
+                <p>
+                  <a href="#" class="btn btn-success btn-sm">Lihat</a>
+                </p>
+                <br>
+                <div class="btn-group">
+                  <button class="btn btn-default"><i class="lnr lnr-thumbs-up"></i>Suka</button>
+                  <button class="btn btn-default" id="btn-komentar-utama"><i class="lnr lnr-bubble"></i>Komentar</button>
+                </div>
+                <form action="" style="margin-top: 10px;display: none;" id="komentar-utama" method="post">
+                  @csrf
+                  <input type="hidden" name="posts_id" value="{{$posts->id}}">
+                  <input type="hidden" name="parent" value="0">
+                  <textarea  class="form-control" name="konten"  rows="4" placeholder="Komentar Anda"></textarea>
+                  <input type="submit" class="btn btn-primary" value="kirim">
+                </form>
+                <h3>Komentar</h3>
+                <ul class="list-unstyled activity-list">
+                    @foreach($posts->komentar()->where('parent',0)->orderBy('created_at','desc')->get() as $komentar)
+                    <li>
+                      <img src="{{$komentar->users->getPhotoProfil()}}" alt="Avatar" class="img-circle pull-left avatar">
+                      <p><a href="#">{{$komentar->users->name}}</a><br>{{$komentar->konten}}<span class="timestamp">{{$komentar->created_at->diffForHumans()}}</span></p>
+                      <form action="" method="POST" style="padding-left: 3.5em;">
+                        @csrf
+                       <input type="hidden" name="posts_id" value="{{$posts->id}}">
+                       <input type="hidden" name="parent" value="{{$komentar->id}}">
+                        <input type="text" name="konten" class="form-control">
+                        <input type="submit" class="btn btn-primary btn-xs" value="kirim">
+                      </form>
+                      @foreach($komentar->childs()->orderBy('created_at','desc')->get() as $child)
+                      <p><a href="#">{{$child->users->name}}</a>&nbsp;{{$child->konten}}<span class="timestamp">{{$child->created_at->diffForHumans()}}</span></p><br>
+                      @endforeach
+                    </li>
+                    @endforeach
+                </ul>
                 <hr>
               </div>
               @endif
@@ -137,3 +171,11 @@ $gender = $_GET['gender'];
 </div>
 </div>
 @endsection
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#btn-komentar-utama').click(function(){
+        $('#komentar-utama').toggle('slide');
+    });
+  });
+</script>

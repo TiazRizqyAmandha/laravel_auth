@@ -53,7 +53,7 @@
                                                 <td>{{$category->status}}</td>
                                                 <td align="center">
                                                     <a href="/kategori/{{$category->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
-                                                    <a href="/kategori/{{$category->id}}/delete" class="btn btn-danger btn-sm">Hapus</a>
+                                                    <a href="/kategori/{{$category->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin data mau dihapus ?')">Hapus</a>
                                                 </td>
                                             </tr>
                                             @endforeach

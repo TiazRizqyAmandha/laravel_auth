@@ -59,7 +59,7 @@
 								</div>
 								<div class="col-md-3">
 									<div class="metric">
-										<span class="icon"><i class="fa fa-eye" style="margin-top: 15px;"></i></span>
+										<span class="icon"><i class="fa fa-user" style="margin-top: 15px;"></i></span>
 										<p>
 											<span class="number">{{$jumlah_admin}}</span>
 											<span class="title">Admin</span>
@@ -68,7 +68,7 @@
 								</div>
 								<div class="col-md-3">
 									<div class="metric">
-										<span class="icon"><i class="fa fa-bar-chart" style="margin-top: 15px;"></i></span>
+										<span class="icon"><i class="fa fa-users" style="margin-top: 15px;"></i></span>
 										<p>
 											<span class="number">{{$jumlah_user}}</span>
 											<span class="title">User</span>
@@ -101,7 +101,7 @@
 												<td align="center">
 													@if(Auth::user()->role == 'Admin')
 													<a href="/anggota/{{$anggota->id}}/edit" class="btn btn-warning btn-sm">Ubah</a>
-													<a href="/anggota/{{$anggota->id}}/delete" class="btn btn-danger btn-sm">Hapus</a>
+													<a href="/anggota/{{$anggota->id}}/delete" class="btn btn-danger btn-sm"  onclick="return confirm('Yakin data mau dihapus ?')">Hapus</a>
 													@endif
 													<a href="/anggota/{{$anggota->id}}/read" class="btn btn-success btn-sm">Lihat</a>
 												</td>
