@@ -20,7 +20,11 @@ class BerandaController extends Controller
 		return view('beranda.index', ['data_posts' => $data_posts, 'data_anggota' => $data_anggota, 'kategoris' => $kategoris, 'kategori' => $kategori, 'generation' => $generation, 'username' => $username, 'created_at' => $created_at, 'gender' => $gender]);
 	}
 
-	public function postKomentar(Request $request, $kategori = null, $generation = null, $username = null, $created_at = null, $gender = null)
+	public function view(Posts $posts){
+		return view('beranda.view',compact(['posts']));
+	}
+
+	public function postKomentar(Request $request)
 	{
 		$request->request->add(['users_id' => auth()->user()->id]);
 		$komentar = Komentar::create($request->all());
