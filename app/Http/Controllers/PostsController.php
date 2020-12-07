@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\Posts as ResourcesPosts;
 use App\Posts;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\PostsExport;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
+use App\Mail\NotifNewPost;
 
 class PostsController extends Controller
 {
@@ -55,6 +57,7 @@ class PostsController extends Controller
 
 	public function store(Request $request)
 	{
+		// ini buat update si lowongan kerja
 		if ($request->isMethod('put')){
 			$request->validate([
 				'title' => 'required',
@@ -85,6 +88,7 @@ class PostsController extends Controller
 			
 			return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses1', 'data lowongan pekerjaan berhasil di ubah');
 		}
+		// ini buat create si lowongan kerja
 		else{
 			$request->validate([
 			'title' => 'required',
@@ -111,6 +115,17 @@ class PostsController extends Controller
 			$posts->document_url = $document_url . $document_name;
 		}
 
+		// ini buat kirim notif poast baru ke semua email
+		$details = [
+            'title' => $posts->title,
+            'body' => $posts->body,
+            'name' => $posts->users->name,
+            'category' => $posts->postsCategory->name,
+            'status' => $posts->status,
+            'gender' => json_decode($posts->filter)->gender,
+            'generation' =>json_decode($posts->filter),
+        ];
+        \Mail::to(User::all('email'))->send(new NotifNewPost($details));
 		$posts->save();
 		return redirect('/' . strtolower(Auth::user()->role) . '/posts')->with('sukses0', 'data lowongan pekerjaan berhasil di tambah');
 		}

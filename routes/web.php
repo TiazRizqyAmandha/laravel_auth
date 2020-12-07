@@ -28,7 +28,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('profile', 'HomeController@index')->name('profile');
     Route::get('/beranda/{kategori?}/{generation?}/{username?}/{created_at?}/{gender?}', 'BerandaController@index')->name('beranda');
+    //! view beranda
     Route::get('/beranda2/{posts}/view', 'BerandaController@view');
+    //! komentar beranda
     Route::post('/beranda2/{posts}/view', 'BerandaController@postKomentar');
     Route::get('/anggota/{id}/read', 'AnggotaController@read');
     Route::get('logout', 'AuthController@logout')->name('logout');
