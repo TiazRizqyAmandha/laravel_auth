@@ -101,7 +101,7 @@
 												</thead>
 												<tbody>
 													@foreach($post as $posts)
-													@if($p != null)
+													@if($posts != null)
 													<tr>
 														<td scope="row">{{$posts->title}}</td>
 														<td>{{$posts->body}}</td>

@@ -75,7 +75,7 @@ $gender = $_GET['gender'];
                 <ul class="list-unstyled activity-list">
                     @foreach($posts->komentar()->where('parent',0)->orderBy('created_at','desc')->get() as $komentar)
                     <li>
-                      <img src="{{$komentar->users->getPhotoProfil()}}" alt="Avatar" class="img-circle pull-left avatar">
+                      <img src="{{$komentar->users->getPhotoProfil()}}" alt="Avatar" class="img-circle pull-left avatar"/>
                       <p><a href="#">{{$komentar->users->name}}</a><br>{{$komentar->konten}}<span class="timestamp">{{$komentar->created_at->diffForHumans()}}</span></p>
                       <form action="" method="POST" style="padding-left: 3.5em;">
                         @csrf
