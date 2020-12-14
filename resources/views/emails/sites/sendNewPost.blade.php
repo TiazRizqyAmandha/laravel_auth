@@ -8,7 +8,7 @@
 </head>
 <body>
     <div style="width: 600px" >
-    <div> <img src="{{ $message->embed('images/HeaderAtas.jpg') }}" style="width: 550px; height: 120px;"></div>
+    <div> <img src="{{ $message->embed('images/HeaderAtas1.png') }}" style="width: 550px; height: 120px;"></div>
     <div class="ml-3 p-2">
     <p style="font-size: 200%; font-weight:bold">Anda mendapatkan postingan baru lowongan kerja baru dari</p>
     <p style="font-size: 200%; font-weight:bold"><a href="http://127.0.0.1:8000" style="font-family: Monaco;">Website Alumni</a></p>
@@ -28,7 +28,7 @@
     <p style="font-size:125%;">Terimakasih,</p>
     <p style="font-size:185%; font-weight:bold">Website Alumni</p>
     </div>  
-    <div> <img src="{{ $message->embed('images/HeaderBawah.jpg') }}" style="width: 550px; height: 120px;"></div>
+    <div> <img src="{{ $message->embed('images/HeaderBawah2.png') }}" style="width: 550px; height: 120px;"></div>
 
     </div>   
 </body>
