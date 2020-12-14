@@ -34,7 +34,7 @@
                 <div class="auth-box lockscreen clearfix" style="height: auto;">
                     <div class="content">
                         <div class="user text-center">
-                            <img src="{{asset('admin/assets/img/logo-dark3.png')}}" class="img-circle" alt="Avatar">
+                            <img src="{{asset('admin/assets/img/logo-dark7.png')}}" class="img-circle" alt="Avatar" style="height: 85px; width: 200px;">
                             <h2 class="name">Daftar</h2>
                         </div>
                         <form action="/register" method="post">
@@ -49,11 +49,11 @@
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label for=""><strong>Nama Lengkap</strong></label>
-                                        <input value="{{ $data_reg != null ? $data_reg->name : null}}{{old('name')}}" name="name" type="text" class="form-control" placeholder="Nama" readonly>
+                                        <input value="{{ $data_reg != null ? $data_reg->name : null}}{{old('name')}}" name="name" type="text" class="form-control" placeholder="Nama Lengkap" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for=""><strong>Nama Pengguna</strong></label>
-                                        <input value="{{ $data_reg != null ? $data_reg->username : null}} {{old('username')}}" name="username" type="text" class="form-control" placeholder="Username" readonly>
+                                        <input value="{{ $data_reg != null ? $data_reg->username : null}} {{old('username')}}" name="username" type="text" class="form-control" placeholder="Nama Pengguna" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for=""><strong>Angkatan</strong></label>
@@ -92,7 +92,7 @@
                                     <div class="form-group {{$errors->has('password_confirmation') ? ' has-error' : ''}}">
                                         <label for=""><strong>Konfirmasi Password</strong></label>
                                         <input type="checkbox" onclick="myFunction2()"></label>
-                                        <input type="password" name="password_confirmation" class="form-control" id="myInput2" placeholder="Password" required>
+                                        <input type="password" name="password_confirmation" class="form-control" id="myInput2" placeholder="Konfirmasi Password" required>
                                         @if($errors->has('password_confirmation'))
                                         <span class="help-block">{{$errors->first('password_confirmation')}}</span>
                                         @endif
@@ -107,7 +107,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary btn-block" id="btnSubmit">Daftar</button>
+                                <button type="submit" class="btn btn-block" id="btnSubmit" style="background-color: #97cf16 ;">Daftar</button>
                                 <p class="text-center">Sudah punya akun? <a href="{{ route('login') }}">Masuk</a> sekarang!</p>
                             </div>
                         </form>

@@ -25,9 +25,9 @@
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
-		<nav class="navbar navbar-default navbar-fixed-top">
+		<nav class="navbar navbar-default navbar-fixed-top" style="height: 85px;">
 			<div class="brand">
-				<a href="{{url('/home')}}"><img src="{{asset('admin/assets/img/logo-dark2.png')}}" alt="Klorofil Logo" class="img-responsive logo" style="width: 80px; height: 25px;"></a>
+				<a href="{{url('/home')}}"><img src="{{asset('admin/assets/img/logo-dark7.png')}}" alt="Klorofil Logo" class="img-responsive logo" style="width: 90px; height: 25px;"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -50,6 +50,7 @@
 		</nav>
 		<!-- END NAVBAR -->
 		<!-- LEFT SIDEBAR -->
+		<br>
 		<div id="sidebar-nav" class="sidebar">
 			<div class="sidebar-scroll">
 				<nav>
@@ -77,8 +78,7 @@
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
-</p>
+				<p class="copyright">1772052 <i class="fa fa-love"></i>Tiaz Rizqy Amandha</p>
 			</div>
 		</footer>
 	</div>

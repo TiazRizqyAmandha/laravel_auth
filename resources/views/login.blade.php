@@ -30,7 +30,7 @@
                     <div class="left">
                         <div class="content">
                             <div class="header">
-                                <div class="logo text-center"><img src="{{asset('admin/assets/img/logo-dark3.png')}}" alt="Klorofil Logo"></div>
+                                <div class="logo text-center"><img src="{{asset('admin/assets/img/logo-dark7.png')}}" alt="Klorofil Logo" style="height: 85px; width: 200px;"></div>
                                 <p class="lead">Masuk</p>
                             </div>
                             <form action="{{ route('login') }}" method="post">
@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+                                        <button type="submit" class="btn btn-block" style="background-color: #97cf16 ;">Masuk</button>
                                         <p class="text-center" style="margin-top: 5px;">Belum punya akun? <a href="{{ route('email-key') }}">Daftar</a> sekarang!</p>
                                         <p class="text-center"><a href="{{ url('/forgot_password')}}">Lupa Password?</a></p>
                                     </div>

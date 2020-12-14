@@ -82,7 +82,7 @@ $gender = $_GET['gender'];
                        <input type="hidden" name="posts_id" value="{{$posts->id}}">
                        <input type="hidden" name="parent" value="{{$komentar->id}}">
                         <input type="text" name="konten" class="form-control">
-                        <input type="submit" class="btn btn-primary btn-xs" value="kirim">
+                        <input type="submit" class="btn btn-xs" value="kirim" style="background-color: #97cf16; color: black;">
                       </form>
                       @foreach($komentar->childs()->orderBy('created_at','desc')->get() as $child)
                       <p><a href="#">{{$child->users->name}}</a>&nbsp;{{$child->konten}}<span class="timestamp">{{$child->created_at->diffForHumans()}}</span></p><br>

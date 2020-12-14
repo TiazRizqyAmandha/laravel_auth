@@ -57,7 +57,7 @@
 										<a href="https://mail.google.com/" class="btn btn-default">Email</a>
 										<input type="text" value="{{$anggota->email}}" id="myInput" readonly="">
 										<!-- The button used to copy the text -->
-										<button onclick="myFunction()" style="width: 75px; height: 28px; text-align: center; background-color: #ff6600;">Copy</button>
+										<button onclick="myFunction()" style="width: 75px; height: 28px; text-align: center; background-color: #dadae6;">Copy</button>
 									</div>
 								</div>
 								<!-- END AWARDS -->

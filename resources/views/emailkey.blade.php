@@ -29,7 +29,7 @@
                 <div class="auth-box lockscreen clearfix">
                     <div class="content">
                         <div class="user text-center">
-                            <img src="{{asset('admin/assets/img/logo-dark3.png')}}" class="img-circle" alt="Avatar">
+                            <img src="{{asset('admin/assets/img/logo-dark7.png')}}" class="img-circle" alt="Avatar" style="height: 95px; width: 240px;">
                             <h2 class="name"> Cek Email</h2>
                         </div>
                 <form action="/email-key" method="post">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-block">Kirim</button>
+                        <button type="submit" class="btn btn-block" style="background-color: #97cf16">Kirim</button>
                         <p class="text-center">Sudah punya akun? <a href="{{ route('login') }}">Masuk</a> sekarang!</p>
                     </div>
                 </form>

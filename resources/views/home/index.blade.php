@@ -31,7 +31,7 @@
 								<div class="profile-detail">
 									<div class="profile-info">
 										<h4 class="heading"><strong>Data Diri</strong>
-										<a href="/home/{{ Auth::user()->id}}/edit"><i class="fa fa-cog fa-fw w3-margin-right w3-large w3-text-teal"></i></a></h4>
+										<a href="/home/{{ Auth::user()->id}}/edit"><i class="fa fa-cog" style="color: #97cf16"></i></a></h4>
 										<ul class="list-unstyled list-justify">
 											<li><i class="fa fa-id-card fa-fw w3-margin-right w3-large w3-text-teal" name="username"></i> {{Auth::user()->id}}</li>
 											<li><i class="fa fa-graduation-cap fa-fw w3-margin-right w3-large w3-text-teal" name="generation"></i> {{Auth::user()->generation}}</li>

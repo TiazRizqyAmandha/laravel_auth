@@ -62,10 +62,10 @@ $gender = $_GET['gender'];
                 </select>
               </div>
               <div class="col-md-1">
-                <button class="btn btn-primary" type="submit">Saring</button>
+                <button class="btn btn-sm" type="submit" style="background-color: #f19db4; color: black;">Saring</button>
               </div>
               <div class="col-md-1">
-                <button class="btn btn-warning" type="submit"><a href="{{url('/beranda')}}">Normal</a></button>
+                <button class="btn btn-sm " type="submit" style="background-color: #a1e0ea; color: black; margin-right: : 5px;"><a href="{{url('/beranda')}}">Normal</a></button>
               </div>
             </div>
             <br>
@@ -119,7 +119,7 @@ $gender = $_GET['gender'];
                   @endfor ||
                 </p>
                 <p>
-                  <a href="/beranda2/{{$posts->id}}/view"><button type="button" class="btn btn-success"><i class="lnr lnr-magnifier"></i> Lihat</button></a>
+                  <a href="/beranda2/{{$posts->id}}/view"><button type="button" class="btn" style="background-color: #aa93ff; color: black;"><i class="lnr lnr-magnifier"></i> Lihat</button></a>
                 </p>
                 <hr>
               </div>

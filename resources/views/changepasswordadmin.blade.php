@@ -29,7 +29,7 @@
                 <div class="auth-box lockscreen clearfix">
                     <div class="content">
                         <div class="user text-center">
-                            <img src="{{asset('admin/assets/img/logo-dark3.png')}}" class="img-circle" alt="Avatar">
+                            <img src="{{asset('admin/assets/img/logo-dark7.png')}}" class="img-circle" alt="Avatar" style="height: 85px; width: 200px;">
                             <h2 class="name">Masukkan Password Baru</h2>
                         </div>
                 <form method="post" action="{{route('new_password')}}" autocomplete="off" >  
@@ -57,7 +57,7 @@
                         <div class="form-group {{$errors->has('password_confirmation') ? ' has-error' : ''}}">
                             <label for=""><strong>Konfirmasi Password</strong></label>
                             <input type="checkbox" onclick="myFunction2()"></label>
-                            <input type="password" name="password_confirmation" class="form-control" id="myInput2" placeholder="Password" required>
+                            <input type="password" name="password_confirmation" class="form-control" id="myInput2" placeholder="Konfirmasi Password" required>
                             @if($errors->has('password_confirmation'))
                                 <span class="help-block">{{$errors->first('password_confirmation')}}</span>
                             @endif
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-block" id="btnSubmit">Kirim</button>
+                        <button type="submit" class="btn btn-block" id="btnSubmit" style="background-color: #97cf16 ;">Kirim</button>
                         <p class="text-center">Sudah punya akun? <a href="{{ route('login') }}">Masuk</a> sekarang!</p>
                     </div>
                 </form>
