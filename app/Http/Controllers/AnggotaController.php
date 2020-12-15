@@ -112,7 +112,9 @@ class AnggotaController extends Controller
     public function exportPDF() 
     {
         $ang = \App\User::all();
-        $pdf = PDF::loadView('export.anggotapdf',['ang' => $ang]);
+        $jumlah_admin =  User::where('role','Admin')->count();
+        $jumlah_user =  User::where('role','User')->count();
+        $pdf = PDF::loadView('export.anggotapdf',['ang' => $ang, 'jumlah_admin' => $jumlah_admin, 'jumlah_user' => $jumlah_user]);
         $pdf->setPaper('A4', 'landscape');
         return $pdf->download('Anggota.pdf');
     }

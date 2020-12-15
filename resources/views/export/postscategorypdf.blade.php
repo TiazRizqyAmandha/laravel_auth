@@ -1,4 +1,5 @@
 <div style="overflow-x:auto;">
+	<div class="header" style="margin-bottom: 20px; text-align: center;"> <img src="images/Laporan_Kategori.png"></div>
 <table class="table" style="border: 1px solid black; border-collapse: collapse; margin-left: 210px;">
 	<thead style="border: 1px solid black; border-collapse: collapse;">
 		<tr>

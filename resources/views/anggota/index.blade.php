@@ -26,38 +26,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="panel">
-							<div class="row">
-								<div class="col-lg-6"><h1 style="text-align: left; margin-left: 10px;">Data Anggota Website Alumni</h1>
+							<div class="row" style="margin-right: 17px;">
+								<div class="col-md-8"><h1 style="text-align: left; margin-left: 20px;">Data Anggota</h1>
 								</div>
-								<div class="col-lg-6">
-									@if(Auth::user()->role == 'Admin')
-									<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" style="margin-left: 30px; margin-top: 25px;"><i class="fa fa-check-circle"></i> Tambah</button>
-									&nbsp;
-									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff3399; margin-top: 25px;"><i class="lnr lnr-printer"></i><a href="/anggota/export" style="margin-bottom: 10px; color: white;"> Export Excel</a></button>
-									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff6600; margin-top: 25px;"><i class="lnr lnr-printer"></i><a href="/anggota/exportpdf" style="margin-bottom: 10px; color: white;"> Export PDF</a></button>
-									@endif
-								</div>
-							</div>
-							<div class="row" style="margin-right: 10px;">
-								<div class="col-md-3">
-<!-- 									<div class="metric">
-										<span class="icon"><i class="fa fa-download"></i></span>
-										<p>
-											<span class="number">1,252</span>
-											<span class="title">Downloads</span>
-										</p>
-									</div> -->
-								</div>
-								<div class="col-md-3">
-<!-- 									<div class="metric">
-										<span class="icon"><i class="fa fa-shopping-bag"></i></span>
-										<p>
-											<span class="number">203</span>
-											<span class="title">Sales</span>
-										</p>
-									</div> -->
-								</div>
-								<div class="col-md-3">
+								<div class="col-md-2" style="margin-top: 10px; height: 15px; ">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-user" style="margin-top: 15px;"></i></span>
 										<p>
@@ -66,14 +38,24 @@
 										</p>
 									</div>
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-2" style="margin-top: 10px; ">
 									<div class="metric">
-										<span class="icon"><i class="fa fa-users" style="margin-top: 15px;"></i></span>
+										<span class="icon"><i class="fa fa-users" style="margin-top: 15px; "></i></span>
 										<p>
 											<span class="number">{{$jumlah_user}}</span>
 											<span class="title">User</span>
 										</p>
 									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col" style="text-align: right; margin-right: 40px;">
+									@if(Auth::user()->role == 'Admin')
+									<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" style="margin-left: 10px;"><i class="fa fa-check-circle"></i> Tambah</button>
+									&nbsp;
+									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff3399;"><i class="lnr lnr-printer"></i><a href="/anggota/export" style="margin-bottom: 10px; color: white;"> Export Excel</a></button>
+									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff6600;"><i class="lnr lnr-printer"></i><a href="/anggota/exportpdf" style="margin-bottom: 10px; color: white;"> Export PDF</a></button>
+									@endif
 								</div>
 							</div>
 								<div class="panel-body">

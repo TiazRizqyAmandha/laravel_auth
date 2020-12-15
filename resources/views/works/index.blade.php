@@ -21,14 +21,14 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="panel">
-								<div class="col-lg-6"><h1 style="text-align: left; margin-left: 10px;">Data Pekerjaan</h1>
+								<div class="col-md-4"><h1 style="text-align: left; margin-left: 10px;">Data Pekerjaan</h1>
 								</div>
-								<div class="col-lg-6">
-									<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal" style="margin-left: 30px; margin-top: 25px;"><i class="fa fa-check-circle"></i> Tambah</button>
+								<div class="col-md-8" style="text-align: right; margin-top: 20px;">
+									<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal" style="margin-left: 10px;"><i class="fa fa-check-circle"></i> Tambah</button>
 									&nbsp;
 									@if(Auth::user()->role == 'Admin')
-									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff3399; margin-top: 25px;"><i class="lnr lnr-printer"></i><a href="/works/export" style="margin-bottom: 10px; color: white;"> Export Excel</a></button>
-									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff6600; margin-top: 25px;"><i class="lnr lnr-printer"></i><a href="/works/exportpdf" style="margin-bottom: 10px; color: white;"> Export PDF</a></button>
+									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff3399;"><i class="lnr lnr-printer"></i><a href="/works/export" style="margin-bottom: 10px; color: white;"> Export Excel</a></button>
+									<button type="button" class="btn" style="margin-left: 5px; background-color: #ff6600;"><i class="lnr lnr-printer"></i><a href="/works/exportpdf" style="margin-bottom: 10px; color: white;"> Export PDF</a></button>
 									@endif
 								</div>
 								<div class="panel-body">
