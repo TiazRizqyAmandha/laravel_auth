@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Des 2020 pada 14.43
+-- Waktu pembuatan: 01 Jan 2021 pada 02.05
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.10
 
@@ -115,7 +115,7 @@ INSERT INTO `posts` (`id`, `title`, `body`, `category`, `document_url`, `filter`
 (107, 'Pembuatan Website Mengajar', 'mebuat website yang bisa menghubungkan guru dan siswa', NULL, 'file/documents/doc_1/doc_Pembuatan-Website-Mengajar_dokumen update.docx', '{\"generation\":[\"2012\",\"2013\",\"2014\",\"2015\",\"2016\",\"2017\",\"2018\",\"2019\",\"2020\"],\"gender\":\"ALL\"}', 'Aktif', 83, 8, '2020-12-07 05:53:46', '2020-12-07 06:10:37'),
 (108, 'Pembuatan Aplikasi KUMON', 'membuat website kumon untuk anak sd hingga sma', NULL, 'file/documents/doc_83/doc_Pembuatan-Aplikasi-KUMON_Dokumen3.txt', '{\"generation\":[\"2012\",\"2013\",\"2014\",\"2015\"],\"gender\":\"ALL\"}', 'Aktif', 83, 8, '2020-12-07 05:56:22', '2020-12-07 06:05:43'),
 (109, 'Pembuatan Website Pemilu Online', 'membuat website pemerintah yang berguna untuk pemilihan suara secara online selama masa pendemi corona', NULL, 'file/documents/doc_84/doc_Pembuatan-Website-Pemilu-Online_1772052 Tiaz Rizqy Amandha - Prasidang TA.docx', '{\"generation\":[\"2017\",\"2019\"],\"gender\":\"L\"}', 'Aktif', 84, 7, '2020-12-07 06:15:45', '2020-12-07 06:16:30'),
-(110, 'Mahasiswa', '-', NULL, 'file/documents/doc_85/doc_Mahasiswa_1772052 Tiaz Rizqy Amandha - Prasidang TA.docx', '{\"generation\":[\"2018\",\"2020\"],\"gender\":\"ALL\"}', 'Tidak Aktif', 85, 2, '2020-12-07 23:14:02', '2020-12-07 23:15:22');
+(110, 'Pembuatan Website Keuangan dan Pembukuan', 'dicari pekerjaan yang bisa membuat sebuah website yang akan digunakan untuk pembukuan keuangan dalam sebuah perusahaan tekstil', NULL, 'file/documents/doc_84/doc_Pembuatan-Website-Keuangan-dan-Pembukuan_001 - Surat Keterangan telah melaksanakan tugas sebagai ASDOS Ganjil 1819.pdf', '{\"generation\":[\"2019\",\"2020\",\"2021\"],\"gender\":\"ALL\"}', 'Aktif', 85, 7, '2020-12-07 23:14:02', '2020-12-31 17:59:00');
 
 -- --------------------------------------------------------
 
@@ -174,10 +174,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `address`, `birthdate`, `generation`, `phone_number`, `gender`, `role`, `self_description`, `username`, `key_user`, `password_key`, `status`, `photo_profil`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Tiaz Rizqy Amandha', 'Jalan Mentor No.66 Keluarahan Sukaraja, Kecamatan Cicendo, Kota Bandung, Jawa Barat', '1999-06-24', '2017', '081220452951', 'P', 'Admin', 'Mahasiswa Semester Akhir yang sedang berjuang menyelesaikan TA, semoga berjalan lancar Aamiin', 'Manda', '', '', 'Aktif', 'Manda.jpg', 'amandhatiazrizqi@gmail.com', '2020-11-17 13:18:30', '$2y$10$kHAu7GjooZpdC.NnteaYB.KT2UMbYAGO8SqInwU854p1kl0Ofqtam', NULL, '2020-11-17 13:18:30', '2020-12-04 03:59:15'),
-(83, 'Anastasha Levina', 'Komp. Setra Duta Purnama J1-10, Bandung', '1998-12-18', '2017', '085318078809', 'P', 'User', 'Seorang Programmer Handal Yang Akan Sangat Dibutuhkan Dunia Baik Dunia Asli Maupun Khayalan Dia Hidup Di Dunia Disney.', 'Levina', 'Levina-CNYQc', 'Levina-CmMJt', 'Aktif', 'Lele.jpg', 'tramandha240699@gmail.com', '2020-12-07 05:48:46', '$2y$10$CGJWoGtaRTYXkAZx1wVffOmxAgWz.PmAeTv/qXTXyw6IwHUgRSDhW', NULL, '2020-12-07 05:46:44', '2020-12-07 06:01:54'),
-(84, 'Febrina Anastasha', 'Taman Holis Indah II blok C no 10', '1999-02-10', '2017', '082240648151', 'P', 'Admin', 'Orangnya terlalu datar sampe dihina', 'Febrina', NULL, 'Febrina-YuacR', 'Aktif', 'Ubin.jpg', '1772052amandha@gmail.com', NULL, '$2y$10$FN94gAjrh1PlK3.iDZaKd.9OU79x5sdpHb/wM7.KPsIlOb/vX0QEK', NULL, '2020-12-07 06:12:40', '2020-12-07 06:14:29'),
-(85, 'coba', '-', '1998-09-19', '2020', '081220454965', 'P', 'User', '-', 'coba', 'coba-CJNjU', 'coba-FDZmK', 'Aktif', 'Celine.jpg', 'wakram190965@gmail.com', '2020-12-07 23:08:03', '$2y$10$qW0ekYQSOBQXS3ZkDlAkXeHgNG4XIqKVQJPLZqNK2Yvhz9Bdn9qHC', NULL, '2020-12-07 23:04:07', '2020-12-07 23:20:10');
+(83, 'Anastasha Levina', 'Komp. Setra Duta Purnama J1-10, Bandung', '1998-12-18', '2017', '085318078809', 'P', 'User', 'Seorang Programmer Handal Yang Akan Sangat Dibutuhkan Dunia Baik Dunia Asli Maupun Khayalan Dia Hidup Di Dunia Disney.', 'Lele', 'Levina-CNYQc', 'Levina-CmMJt', 'Aktif', 'Lele.jpg', 'tramandha240699@gmail.com', '2020-12-07 05:48:46', '$2y$10$CGJWoGtaRTYXkAZx1wVffOmxAgWz.PmAeTv/qXTXyw6IwHUgRSDhW', NULL, '2020-12-07 05:46:44', '2020-12-31 17:12:49'),
+(84, 'Febrina Anastasha', 'Taman Holis Indah II blok C no 10', '1999-02-10', '2017', '082240648151', 'P', 'Admin', 'Orangnya terlalu datar sampe dihina', 'Ubin', NULL, 'Febrina-YuacR', 'Aktif', 'Ubin.jpg', '1772052amandha@gmail.com', NULL, '$2y$10$FN94gAjrh1PlK3.iDZaKd.9OU79x5sdpHb/wM7.KPsIlOb/vX0QEK', NULL, '2020-12-07 06:12:40', '2020-12-31 17:12:10'),
+(85, 'Celine Lieshiana', 'jl. Sukamekae 3 no 9', '1999-05-18', '2017', '085321540947', 'P', 'User', 'Seorang perempuan biasa :)', 'Cel2', 'coba-CJNjU', 'coba-FDZmK', 'Aktif', 'Celine.jpg', 'wakram190965@gmail.com', '2020-12-07 23:08:03', '$2y$10$qW0ekYQSOBQXS3ZkDlAkXeHgNG4XIqKVQJPLZqNK2Yvhz9Bdn9qHC', NULL, '2020-12-07 23:04:07', '2020-12-31 17:11:11'),
+(86, 'Tiaz Rizqy Amandha', 'Jalan mentor no.66', '1999-06-24', '2017', '1999-06-24', 'P', 'Admin', 'seorang mahasiswa semester 7 yang sedang berjuang dengan stata', 'Cunda', NULL, 'Cunda-JXqEP', 'Aktif', 'Manda.jpg', 'amandhatiazrizqi@gmail.com', NULL, '$2y$10$7GdrEEYYEtX29G7PmVw60.CxD82AyZhSLTwZap5o5V6Yi0fO256i.', NULL, '2020-12-31 17:37:11', '2020-12-31 17:39:04');
 
 -- --------------------------------------------------------
 
@@ -203,11 +203,11 @@ CREATE TABLE `works` (
 --
 
 INSERT INTO `works` (`id`, `users_id`, `company`, `position`, `works_place`, `description`, `date_start`, `date_end`, `created_at`, `updated_at`) VALUES
-(17, 1, 'Pejuang Kejujuran Sejak Dini', 'Pembuat Design Website', 'jln. pejuang kejujuran no.24', 'membuat sebuah website dengan design yang ditentuka oleh pembeli dengan syarat-syarat yang ada. juga membuat backend dari website tersebut jika dibutuhkan', '2021-02-01', '2040-02-01', '2020-11-29 11:20:49', '2020-12-04 04:04:50'),
-(18, 1, 'Pejuang Keadilan', 'Pembuat Website Pemerintah', 'jon. pejuang keadilan no.24', 'membuat website yang dibutuhkan pemerintah, tergantung kebutuhan yang diinginkan oleh pemerintah', '2021-02-01', '2040-02-01', '2020-11-29 11:22:08', '2020-11-29 11:26:01'),
 (28, 83, 'Disney', 'CEO of Disney', '4600 North World Drive Orlando, FL 32830', 'Seorang CEO yang sangat mencintai Disney dan menjadi CEO yang terbaik pada masanya.', '2020-12-01', '2040-12-01', '2020-12-07 05:51:21', '2020-12-07 05:51:21'),
 (29, 83, 'Pejuang Keadilan', 'Sekretaris', 'Jalan Pejuang Keadlina no.00', 'Seorang Sekretaris yang sangat mencintai keadilan', '2020-12-01', '2025-12-31', '2020-12-07 05:52:28', '2020-12-07 05:57:43'),
-(30, 85, 'Perusahaan A', 'posisi', 'jalan', 'blabla', '2020-12-01', '2020-12-31', '2020-12-07 23:10:26', '2020-12-07 23:10:26');
+(30, 85, 'Perusahaan Ajaib', 'Developer dan Backend', 'Jalan ajaib no.77', 'bekerja dengan ajaib', '2020-12-01', '2025-12-31', '2020-12-07 23:10:26', '2020-12-31 18:01:26'),
+(31, 86, 'Pejuang Kejujuran Sejak Dini', 'Pembuat Design Website', 'jln. pejuang kejujuran no.24', 'membuat sebuah website dengan design yang ditentukan oleh pembeli dengan syarat-syarat yang ada. juga membuat backend dari website tersebut jika dibutuhkan', '2020-01-01', '2025-01-01', '2020-12-31 17:40:47', '2020-12-31 17:40:47'),
+(32, 86, 'Pejuang Keadilan', 'Pembuat Website Pemerintah', 'jln. pejuang keadilan no.24', 'membuat website yang dibutuhkan pemerintah, tergantung kebutuhan yang diinginkan oleh pemerintah', '2021-02-02', '2030-02-02', '2020-12-31 17:41:55', '2020-12-31 17:41:55');
 
 --
 -- Indexes for dumped tables
@@ -297,13 +297,13 @@ ALTER TABLE `posts_category`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT untuk tabel `works`
 --
 ALTER TABLE `works`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

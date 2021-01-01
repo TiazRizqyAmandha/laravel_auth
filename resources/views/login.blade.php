@@ -27,12 +27,9 @@
         <div class="vertical-align-wrap">
             <div class="vertical-align-middle">
                 <div class="auth-box ">
-                    <div class="left">
+                    <div class="right">
                         <div class="content">
-                            <div class="header">
-                                <div class="logo text-center"><img src="{{asset('admin/assets/img/logo-dark7.png')}}" alt="Klorofil Logo" style="height: 85px; width: 200px;"></div>
-                                <p class="lead">Masuk</p>
-                            </div>
+                            <p class="lead" style="color: black; font-size: 40px;"><b>Masuk</b></p>
                             <form action="{{ route('login') }}" method="post">
                                 @csrf
                                 <div class="card-body">
@@ -64,30 +61,26 @@
                                         {{ Session::get('successforgotpassword') }}
                                     </div>
                                     @endif
-                                    <div class="form-group">
-                                        <label for=""><strong>Email</strong></label>
-                                        <input type="email" name="email" class="form-control" placeholder="Email">
+                                    <div class="form-group" style="margin-left: 120px;">
+                                        <label for="" style="color: black;"><strong>Email</strong></label>
+                                        <input type="email" name="email" class="form-control" placeholder="Email" style="width: 400px;">
                                     </div>
-                                    <div class="form-group">
-                                        <label for=""><strong>Password</strong>&nbsp;
+                                    <div class="form-group" style="margin-left: 120px;">
+                                        <label for="" style="color: black;"><strong>Password</strong>&nbsp;
                                             <input type="checkbox" onclick="myFunction()"></label>
-                                            <input type="password" name="password" class="form-control" id="myInput" placeholder="Password">
+                                            <input type="password" name="password" class="form-control" id="myInput" placeholder="Password" style="width: 400px;">
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-block" style="background-color: #97cf16 ;">Masuk</button>
-                                        <p class="text-center" style="margin-top: 5px;">Belum punya akun? <a href="{{ route('email-key') }}">Daftar</a> sekarang!</p>
-                                        <p class="text-center"><a href="{{ url('/forgot_password')}}">Lupa Password?</a></p>
+                                        <button type="submit" class="btn btn-block btn-sm" style="background-color: #97cf16 ; width: 200px; margin-left: 230px;"><b style="color: black; font-size: 17px;">Masuk</b></button>
+                                        <p class="text-center" style="margin-top: 5px; color: black;"><b>Belum punya akun? <a href="{{ route('email-key') }}" style="color: black;"><u>Daftar</u></a> sekarang!</b></p>
+                                        <p class="text-center"><a href="{{ url('/forgot_password')}}"  style="color: black;"><b><u>Lupa Password?</u></b></a></p>
                                     </div>
                                 </form>
                         </div>
                     </div>
-                    <div class="right">
-                        <div class="overlay"></div>
-                        <div class="content text">
-                            <h1 class="heading">Website Alumni</h1>
-                            <p>Fakultas Teknologi Informasi</p>
-                        </div>
+                    <div class="left">
+                        <img src="{{asset('admin/assets/img/logo-dark7.png')}}" alt="Klorofil Logo" style="height: 135px; width: 320px;">
                     </div>
                     <div class="clearfix"></div>
                 </div>
