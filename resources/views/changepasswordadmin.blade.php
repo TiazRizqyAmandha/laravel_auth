@@ -29,7 +29,7 @@
                 <div class="auth-box lockscreen clearfix">
                     <div class="content">
                         <div class="user text-center">
-                            <img src="{{asset('admin/assets/img/logo-dark7.png')}}" class="img-circle" alt="Avatar" style="height: 85px; width: 200px;">
+                            <img src="{{asset('admin/assets/img/logo-dark7.png')}}" alt="Avatar" style="height: 85px; width: 200px;">
                             <h2 class="name">Masukkan Password Baru</h2>
                         </div>
                 <form method="post" action="{{route('new_password')}}" autocomplete="off" >  

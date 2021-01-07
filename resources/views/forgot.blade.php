@@ -29,7 +29,7 @@
                 <div class="auth-box lockscreen clearfix">
                     <div class="content">
                         <div class="user text-center">
-                            <img src="{{asset('admin/assets/img/logo-dark7.png')}}" class="img-circle" alt="Avatar" style="height: 95px; width: 240px;">
+                            <img src="{{asset('admin/assets/img/logo-dark7.png')}}" alt="Avatar" style="height: 95px; width: 240px;">
                             <h2 class="name">Lupa Password - Masukkan Email</h2>
                         </div>
                 <form action="{{url('/forgot_password')}}" method="post">

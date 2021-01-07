@@ -34,7 +34,7 @@
                 <div class="auth-box lockscreen clearfix" style="height: auto;">
                     <div class="content">
                         <div class="user text-center">
-                            <img src="{{asset('admin/assets/img/logo-dark7.png')}}" class="img-circle" alt="Avatar" style="height: 85px; width: 200px;">
+                            <img src="{{asset('admin/assets/img/logo-dark7.png')}}" alt="Avatar" style="height: 85px; width: 200px;">
                             <h2 class="name">Daftar</h2>
                         </div>
                         <form action="/register" method="post">

@@ -29,7 +29,6 @@
                 <div class="auth-box ">
                     <div class="right">
                         <div class="content">
-                            <p class="lead" style="color: black; font-size: 40px;"><b>Masuk</b></p>
                             <form action="{{ route('login') }}" method="post">
                                 @csrf
                                 <div class="card-body">
@@ -61,7 +60,7 @@
                                         {{ Session::get('successforgotpassword') }}
                                     </div>
                                     @endif
-                                    <div class="form-group" style="margin-left: 120px;">
+                                    <div class="form-group" style="margin-left: 120px; margin-top: 50px;">
                                         <label for="" style="color: black;"><strong>Email</strong></label>
                                         <input type="email" name="email" class="form-control" placeholder="Email" style="width: 400px;">
                                     </div>

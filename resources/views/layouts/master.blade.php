@@ -25,9 +25,9 @@
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
-		<nav class="navbar navbar-default navbar-fixed-top" style="height: 85px;">
+		<nav class="navbar navbar-default navbar-fixed-top" style="height: 110px;">
 			<div class="brand">
-				<a href="{{url('/home')}}"><img src="{{asset('admin/assets/img/logo-dark7.png')}}" alt="Klorofil Logo" class="img-responsive logo" style="width: 90px; height: 25px;"></a>
+				<a href="{{url('/home')}}"><img src="{{asset('admin/assets/img/logo-dark7.png')}}" alt="Klorofil Logo" class="img-responsive logo" style="width: 130px; height: 50px;"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
