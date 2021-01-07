@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Jan 2021 pada 02.05
+-- Waktu pembuatan: 08 Jan 2021 pada 00.37
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.10
 
@@ -63,7 +63,11 @@ INSERT INTO `komentar` (`id`, `konten`, `users_id`, `posts_id`, `parent`, `creat
 (14, 'jadi mendaftar ?', 83, 107, 11, '2020-12-07 06:08:08', '2020-12-07'),
 (15, 'jadi, terimakasih infonya :)', 1, 107, 11, '2020-12-07 06:08:35', '2020-12-07'),
 (16, 'Hai apa kabar?', 84, 108, 0, '2020-12-07 06:13:23', '2020-12-07'),
-(17, 'aku mau daftar', 85, 107, 0, '2020-12-07 23:12:46', '2020-12-08');
+(17, 'aku mau daftar', 85, 107, 0, '2020-12-07 23:12:46', '2020-12-08'),
+(18, 'Hai hai', 86, 109, 0, '2021-01-05 09:13:47', '2021-01-05'),
+(19, 'Test', 86, 110, 0, '2021-01-05 21:22:59', '2021-01-06'),
+(20, 'test 2', 83, 109, 0, '2021-01-05 21:39:22', '2021-01-06'),
+(21, '??', 83, 109, 18, '2021-01-05 21:39:30', '2021-01-06');
 
 -- --------------------------------------------------------
 
@@ -112,10 +116,10 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `body`, `category`, `document_url`, `filter`, `status`, `users_id`, `posts_category_id`, `created_at`, `updated_at`) VALUES
-(107, 'Pembuatan Website Mengajar', 'mebuat website yang bisa menghubungkan guru dan siswa', NULL, 'file/documents/doc_1/doc_Pembuatan-Website-Mengajar_dokumen update.docx', '{\"generation\":[\"2012\",\"2013\",\"2014\",\"2015\",\"2016\",\"2017\",\"2018\",\"2019\",\"2020\"],\"gender\":\"ALL\"}', 'Aktif', 83, 8, '2020-12-07 05:53:46', '2020-12-07 06:10:37'),
 (108, 'Pembuatan Aplikasi KUMON', 'membuat website kumon untuk anak sd hingga sma', NULL, 'file/documents/doc_83/doc_Pembuatan-Aplikasi-KUMON_Dokumen3.txt', '{\"generation\":[\"2012\",\"2013\",\"2014\",\"2015\"],\"gender\":\"ALL\"}', 'Aktif', 83, 8, '2020-12-07 05:56:22', '2020-12-07 06:05:43'),
 (109, 'Pembuatan Website Pemilu Online', 'membuat website pemerintah yang berguna untuk pemilihan suara secara online selama masa pendemi corona', NULL, 'file/documents/doc_84/doc_Pembuatan-Website-Pemilu-Online_1772052 Tiaz Rizqy Amandha - Prasidang TA.docx', '{\"generation\":[\"2017\",\"2019\"],\"gender\":\"L\"}', 'Aktif', 84, 7, '2020-12-07 06:15:45', '2020-12-07 06:16:30'),
-(110, 'Pembuatan Website Keuangan dan Pembukuan', 'dicari pekerjaan yang bisa membuat sebuah website yang akan digunakan untuk pembukuan keuangan dalam sebuah perusahaan tekstil', NULL, 'file/documents/doc_84/doc_Pembuatan-Website-Keuangan-dan-Pembukuan_001 - Surat Keterangan telah melaksanakan tugas sebagai ASDOS Ganjil 1819.pdf', '{\"generation\":[\"2019\",\"2020\",\"2021\"],\"gender\":\"ALL\"}', 'Aktif', 85, 7, '2020-12-07 23:14:02', '2020-12-31 17:59:00');
+(110, 'Pembuatan Website Keuangan dan Pembukuan', 'dicari pekerjaan yang bisa membuat sebuah website yang akan digunakan untuk pembukuan keuangan dalam sebuah perusahaan tekstil', NULL, 'file/documents/doc_84/doc_Pembuatan-Website-Keuangan-dan-Pembukuan_001 - Surat Keterangan telah melaksanakan tugas sebagai ASDOS Ganjil 1819.pdf', '{\"generation\":[\"2019\",\"2020\",\"2021\"],\"gender\":\"ALL\"}', 'Aktif', 85, 7, '2020-12-07 23:14:02', '2020-12-31 17:59:00'),
+(111, 'Pembuatan Website Penilaian Guru', 'membuat website yang bisa memudahkan guru dalam memeriksa tugas-tugas siswa', NULL, 'file/documents/doc_86/doc_Pembuatan-Website-Penilaian-Guru_WhatsApp Image 2021-01-05 at 13.59.53.jpeg', '{\"generation\":[\"2014\",\"2015\",\"2016\"],\"gender\":\"ALL\"}', 'Aktif', 86, 7, '2021-01-07 16:03:21', '2021-01-07 16:03:21');
 
 -- --------------------------------------------------------
 
@@ -176,7 +180,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `address`, `birthdate`, `generation`, `phone_number`, `gender`, `role`, `self_description`, `username`, `key_user`, `password_key`, `status`, `photo_profil`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (83, 'Anastasha Levina', 'Komp. Setra Duta Purnama J1-10, Bandung', '1998-12-18', '2017', '085318078809', 'P', 'User', 'Seorang Programmer Handal Yang Akan Sangat Dibutuhkan Dunia Baik Dunia Asli Maupun Khayalan Dia Hidup Di Dunia Disney.', 'Lele', 'Levina-CNYQc', 'Levina-CmMJt', 'Aktif', 'Lele.jpg', 'tramandha240699@gmail.com', '2020-12-07 05:48:46', '$2y$10$CGJWoGtaRTYXkAZx1wVffOmxAgWz.PmAeTv/qXTXyw6IwHUgRSDhW', NULL, '2020-12-07 05:46:44', '2020-12-31 17:12:49'),
 (84, 'Febrina Anastasha', 'Taman Holis Indah II blok C no 10', '1999-02-10', '2017', '082240648151', 'P', 'Admin', 'Orangnya terlalu datar sampe dihina', 'Ubin', NULL, 'Febrina-YuacR', 'Aktif', 'Ubin.jpg', '1772052amandha@gmail.com', NULL, '$2y$10$FN94gAjrh1PlK3.iDZaKd.9OU79x5sdpHb/wM7.KPsIlOb/vX0QEK', NULL, '2020-12-07 06:12:40', '2020-12-31 17:12:10'),
-(85, 'Celine Lieshiana', 'jl. Sukamekae 3 no 9', '1999-05-18', '2017', '085321540947', 'P', 'User', 'Seorang perempuan biasa :)', 'Cel2', 'coba-CJNjU', 'coba-FDZmK', 'Aktif', 'Celine.jpg', 'wakram190965@gmail.com', '2020-12-07 23:08:03', '$2y$10$qW0ekYQSOBQXS3ZkDlAkXeHgNG4XIqKVQJPLZqNK2Yvhz9Bdn9qHC', NULL, '2020-12-07 23:04:07', '2020-12-31 17:11:11'),
+(85, 'Celine Lieshiana', 'Jl. Sukamekae 3 No 9', '1999-05-18', '2017', '085321540947', 'P', 'User', 'Seorang Perempuan Biasa :)', 'Cel2', 'coba-CJNjU', 'coba-FDZmK', 'Aktif', 'Celine.jpg', 'wakram190965@gmail.com', '2021-01-07 16:22:27', '$2y$10$ygdTuHuARH19MTZEc8jnUOoeiUCWIlE715sT5e9Ah1XUA4qOqTK9G', NULL, '2020-12-07 23:04:07', '2021-01-07 16:22:31'),
 (86, 'Tiaz Rizqy Amandha', 'Jalan mentor no.66', '1999-06-24', '2017', '1999-06-24', 'P', 'Admin', 'seorang mahasiswa semester 7 yang sedang berjuang dengan stata', 'Cunda', NULL, 'Cunda-JXqEP', 'Aktif', 'Manda.jpg', 'amandhatiazrizqi@gmail.com', NULL, '$2y$10$7GdrEEYYEtX29G7PmVw60.CxD82AyZhSLTwZap5o5V6Yi0fO256i.', NULL, '2020-12-31 17:37:11', '2020-12-31 17:39:04');
 
 -- --------------------------------------------------------
@@ -223,7 +227,8 @@ ALTER TABLE `failed_jobs`
 -- Indeks untuk tabel `komentar`
 --
 ALTER TABLE `komentar`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `users_id` (`users_id`);
 
 --
 -- Indeks untuk tabel `migrations`
@@ -273,7 +278,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -285,7 +290,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT untuk tabel `posts_category`
@@ -297,7 +302,7 @@ ALTER TABLE `posts_category`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT untuk tabel `works`
