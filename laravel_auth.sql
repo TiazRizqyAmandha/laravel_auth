@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jan 2021 pada 00.37
+-- Waktu pembuatan: 08 Jan 2021 pada 16.41
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.10
 
@@ -180,8 +180,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `address`, `birthdate`, `generation`, `phone_number`, `gender`, `role`, `self_description`, `username`, `key_user`, `password_key`, `status`, `photo_profil`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (83, 'Anastasha Levina', 'Komp. Setra Duta Purnama J1-10, Bandung', '1998-12-18', '2017', '085318078809', 'P', 'User', 'Seorang Programmer Handal Yang Akan Sangat Dibutuhkan Dunia Baik Dunia Asli Maupun Khayalan Dia Hidup Di Dunia Disney.', 'Lele', 'Levina-CNYQc', 'Levina-CmMJt', 'Aktif', 'Lele.jpg', 'tramandha240699@gmail.com', '2020-12-07 05:48:46', '$2y$10$CGJWoGtaRTYXkAZx1wVffOmxAgWz.PmAeTv/qXTXyw6IwHUgRSDhW', NULL, '2020-12-07 05:46:44', '2020-12-31 17:12:49'),
 (84, 'Febrina Anastasha', 'Taman Holis Indah II blok C no 10', '1999-02-10', '2017', '082240648151', 'P', 'Admin', 'Orangnya terlalu datar sampe dihina', 'Ubin', NULL, 'Febrina-YuacR', 'Aktif', 'Ubin.jpg', '1772052amandha@gmail.com', NULL, '$2y$10$FN94gAjrh1PlK3.iDZaKd.9OU79x5sdpHb/wM7.KPsIlOb/vX0QEK', NULL, '2020-12-07 06:12:40', '2020-12-31 17:12:10'),
-(85, 'Celine Lieshiana', 'Jl. Sukamekae 3 No 9', '1999-05-18', '2017', '085321540947', 'P', 'User', 'Seorang Perempuan Biasa :)', 'Cel2', 'coba-CJNjU', 'coba-FDZmK', 'Aktif', 'Celine.jpg', 'wakram190965@gmail.com', '2021-01-07 16:22:27', '$2y$10$ygdTuHuARH19MTZEc8jnUOoeiUCWIlE715sT5e9Ah1XUA4qOqTK9G', NULL, '2020-12-07 23:04:07', '2021-01-07 16:22:31'),
-(86, 'Tiaz Rizqy Amandha', 'Jalan mentor no.66', '1999-06-24', '2017', '1999-06-24', 'P', 'Admin', 'seorang mahasiswa semester 7 yang sedang berjuang dengan stata', 'Cunda', NULL, 'Cunda-JXqEP', 'Aktif', 'Manda.jpg', 'amandhatiazrizqi@gmail.com', NULL, '$2y$10$7GdrEEYYEtX29G7PmVw60.CxD82AyZhSLTwZap5o5V6Yi0fO256i.', NULL, '2020-12-31 17:37:11', '2020-12-31 17:39:04');
+(85, 'Celine Lieshiana', 'Jl. Sukamekae 3 No 9', '1999-05-18', '2017', '085321540947', 'P', 'User', 'Seorang Perempuan Biasa-biasa :)', 'Cel2', 'coba-CJNjU', 'coba-FDZmK', 'Aktif', 'Celine.jpg', 'wakram190965@gmail.com', '2021-01-08 08:23:50', '$2y$10$.bseHk5vZxMOkY3gyNh98eILi19W79WAY3eBMU8cU2IqpOLh.6UlC', NULL, '2020-12-07 23:04:07', '2021-01-08 08:36:29'),
+(86, 'Tiaz Rizqy Amandha', 'Jalan mentor no.66', '1999-06-24', '2017', '1999-06-24', 'P', 'Admin', 'seorang mahasiswa semester 7 yang sedang berjuang dengan stata, semoga berhasil :)', 'Cunda', NULL, 'Cunda-JXqEP', 'Aktif', 'Manda.jpg', 'amandhatiazrizqi@gmail.com', NULL, '$2y$10$7GdrEEYYEtX29G7PmVw60.CxD82AyZhSLTwZap5o5V6Yi0fO256i.', NULL, '2020-12-31 17:37:11', '2021-01-08 08:29:42');
 
 -- --------------------------------------------------------
 
