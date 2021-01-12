@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jan 2021 pada 16.41
+-- Waktu pembuatan: 12 Jan 2021 pada 09.48
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.10
 
@@ -67,7 +67,11 @@ INSERT INTO `komentar` (`id`, `konten`, `users_id`, `posts_id`, `parent`, `creat
 (18, 'Hai hai', 86, 109, 0, '2021-01-05 09:13:47', '2021-01-05'),
 (19, 'Test', 86, 110, 0, '2021-01-05 21:22:59', '2021-01-06'),
 (20, 'test 2', 83, 109, 0, '2021-01-05 21:39:22', '2021-01-06'),
-(21, '??', 83, 109, 18, '2021-01-05 21:39:30', '2021-01-06');
+(21, '??', 83, 109, 18, '2021-01-05 21:39:30', '2021-01-06'),
+(22, 'how to join ?', 88, 108, 0, '2021-01-11 09:38:49', '2021-01-11'),
+(23, 'hai jaemin, how to join ?', 89, 112, 0, '2021-01-11 09:58:35', '2021-01-11'),
+(24, 'test3', 89, 109, 20, '2021-01-11 09:58:57', '2021-01-11'),
+(25, 'Dibutuhkan Secepatnya!!', 89, 113, 0, '2021-01-11 10:04:17', '2021-01-11');
 
 -- --------------------------------------------------------
 
@@ -116,10 +120,12 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `body`, `category`, `document_url`, `filter`, `status`, `users_id`, `posts_category_id`, `created_at`, `updated_at`) VALUES
-(108, 'Pembuatan Aplikasi KUMON', 'membuat website kumon untuk anak sd hingga sma', NULL, 'file/documents/doc_83/doc_Pembuatan-Aplikasi-KUMON_Dokumen3.txt', '{\"generation\":[\"2012\",\"2013\",\"2014\",\"2015\"],\"gender\":\"ALL\"}', 'Aktif', 83, 8, '2020-12-07 05:56:22', '2020-12-07 06:05:43'),
+(108, 'Pembuatan Aplikasi KUMON', 'membuat website kumon untuk anak sd hingga sma', NULL, 'file/documents/doc_83/doc_Pembuatan-Aplikasi-KUMON_Dokumen3.txt', '{\"generation\":[\"2013\",\"2014\",\"2015\"],\"gender\":\"ALL\"}', 'Aktif', 83, 8, '2020-12-07 05:56:22', '2021-01-11 09:46:01'),
 (109, 'Pembuatan Website Pemilu Online', 'membuat website pemerintah yang berguna untuk pemilihan suara secara online selama masa pendemi corona', NULL, 'file/documents/doc_84/doc_Pembuatan-Website-Pemilu-Online_1772052 Tiaz Rizqy Amandha - Prasidang TA.docx', '{\"generation\":[\"2017\",\"2019\"],\"gender\":\"L\"}', 'Aktif', 84, 7, '2020-12-07 06:15:45', '2020-12-07 06:16:30'),
 (110, 'Pembuatan Website Keuangan dan Pembukuan', 'dicari pekerjaan yang bisa membuat sebuah website yang akan digunakan untuk pembukuan keuangan dalam sebuah perusahaan tekstil', NULL, 'file/documents/doc_84/doc_Pembuatan-Website-Keuangan-dan-Pembukuan_001 - Surat Keterangan telah melaksanakan tugas sebagai ASDOS Ganjil 1819.pdf', '{\"generation\":[\"2019\",\"2020\",\"2021\"],\"gender\":\"ALL\"}', 'Aktif', 85, 7, '2020-12-07 23:14:02', '2020-12-31 17:59:00'),
-(111, 'Pembuatan Website Penilaian Guru', 'membuat website yang bisa memudahkan guru dalam memeriksa tugas-tugas siswa', NULL, 'file/documents/doc_86/doc_Pembuatan-Website-Penilaian-Guru_WhatsApp Image 2021-01-05 at 13.59.53.jpeg', '{\"generation\":[\"2014\",\"2015\",\"2016\"],\"gender\":\"ALL\"}', 'Aktif', 86, 7, '2021-01-07 16:03:21', '2021-01-07 16:03:21');
+(111, 'Pembuatan Website Penilaian Guru', 'membuat website yang bisa memudahkan guru dalam memeriksa tugas-tugas siswa', NULL, 'file/documents/doc_86/doc_Pembuatan-Website-Penilaian-Guru_WhatsApp Image 2021-01-05 at 13.59.53.jpeg', '{\"generation\":[\"2014\",\"2015\",\"2016\"],\"gender\":\"ALL\"}', 'Aktif', 86, 7, '2021-01-07 16:03:21', '2021-01-07 16:03:21'),
+(112, 'Menciptakan Lagu', 'membuat sebuah lagu bergenre r&b', NULL, 'file/documents/doc_88/doc_Menciptakan-Lagu_jaemin2.jpg', '{\"generation\":[\"2013\",\"2014\",\"2015\",\"2016\"],\"gender\":\"L\"}', 'Aktif', 88, 26, '2021-01-11 09:44:59', '2021-01-11 09:44:59'),
+(113, 'Mencari seorang Guru Dance', 'dibutuh seorang yang berpengalaman dalam melatih koreografi atau dance', NULL, 'file/documents/doc_89/doc_Mencari-seorang-Guru-Dance_jeno6.jpg', '{\"generation\":[\"2013\",\"2015\",\"2017\",\"2019\",\"2021\"],\"gender\":\"L\"}', 'Aktif', 89, 27, '2021-01-11 10:03:15', '2021-01-11 10:03:15');
 
 -- --------------------------------------------------------
 
@@ -142,7 +148,9 @@ CREATE TABLE `posts_category` (
 INSERT INTO `posts_category` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
 (2, 'Software', 'Aktif', '2020-11-21 11:03:05', '2020-12-06 07:04:09'),
 (7, 'Developer', 'Aktif', '2020-11-25 11:57:43', '2020-11-28 02:54:47'),
-(8, 'Front Developer', 'Aktif', '2020-11-27 08:21:39', '2020-12-03 12:02:07');
+(8, 'Front Developer', 'Aktif', '2020-11-27 08:21:39', '2021-01-11 09:45:40'),
+(26, 'Composer Musik', 'Aktif', '2021-01-11 09:43:44', '2021-01-11 09:43:44'),
+(27, 'Dancer', 'Aktif', '2021-01-11 10:02:18', '2021-01-11 10:02:18');
 
 -- --------------------------------------------------------
 
@@ -181,7 +189,11 @@ INSERT INTO `users` (`id`, `name`, `address`, `birthdate`, `generation`, `phone_
 (83, 'Anastasha Levina', 'Komp. Setra Duta Purnama J1-10, Bandung', '1998-12-18', '2017', '085318078809', 'P', 'User', 'Seorang Programmer Handal Yang Akan Sangat Dibutuhkan Dunia Baik Dunia Asli Maupun Khayalan Dia Hidup Di Dunia Disney.', 'Lele', 'Levina-CNYQc', 'Levina-CmMJt', 'Aktif', 'Lele.jpg', 'tramandha240699@gmail.com', '2020-12-07 05:48:46', '$2y$10$CGJWoGtaRTYXkAZx1wVffOmxAgWz.PmAeTv/qXTXyw6IwHUgRSDhW', NULL, '2020-12-07 05:46:44', '2020-12-31 17:12:49'),
 (84, 'Febrina Anastasha', 'Taman Holis Indah II blok C no 10', '1999-02-10', '2017', '082240648151', 'P', 'Admin', 'Orangnya terlalu datar sampe dihina', 'Ubin', NULL, 'Febrina-YuacR', 'Aktif', 'Ubin.jpg', '1772052amandha@gmail.com', NULL, '$2y$10$FN94gAjrh1PlK3.iDZaKd.9OU79x5sdpHb/wM7.KPsIlOb/vX0QEK', NULL, '2020-12-07 06:12:40', '2020-12-31 17:12:10'),
 (85, 'Celine Lieshiana', 'Jl. Sukamekae 3 No 9', '1999-05-18', '2017', '085321540947', 'P', 'User', 'Seorang Perempuan Biasa-biasa :)', 'Cel2', 'coba-CJNjU', 'coba-FDZmK', 'Aktif', 'Celine.jpg', 'wakram190965@gmail.com', '2021-01-08 08:23:50', '$2y$10$.bseHk5vZxMOkY3gyNh98eILi19W79WAY3eBMU8cU2IqpOLh.6UlC', NULL, '2020-12-07 23:04:07', '2021-01-08 08:36:29'),
-(86, 'Tiaz Rizqy Amandha', 'Jalan mentor no.66', '1999-06-24', '2017', '1999-06-24', 'P', 'Admin', 'seorang mahasiswa semester 7 yang sedang berjuang dengan stata, semoga berhasil :)', 'Cunda', NULL, 'Cunda-JXqEP', 'Aktif', 'Manda.jpg', 'amandhatiazrizqi@gmail.com', NULL, '$2y$10$7GdrEEYYEtX29G7PmVw60.CxD82AyZhSLTwZap5o5V6Yi0fO256i.', NULL, '2020-12-31 17:37:11', '2021-01-08 08:29:42');
+(86, 'Tiaz Rizqy Amandha', 'Jalan mentor no.66', '1999-06-24', '2017', '081220452951', 'P', 'Admin', 'seorang mahasiswa semester 7 yang sedang berjuang dengan stata, semoga berhasil :)', 'Cunda', NULL, 'Cunda-JXqEP', 'Aktif', 'Manda.jpg', 'amandhatiazrizqi@gmail.com', NULL, '$2y$10$7GdrEEYYEtX29G7PmVw60.CxD82AyZhSLTwZap5o5V6Yi0fO256i.', NULL, '2020-12-31 17:37:11', '2021-01-10 09:37:13'),
+(88, 'Na Jaemin', 'Jalan nct dream no.7', '2000-08-13', '2018', '081213082000', 'L', 'Admin', 'seorang laki-laki yang romantis, dan sangat menyayangi sijeuni.', 'Nana', NULL, 'Nana-dPCvt', 'Aktif', 'jaemin4.jpg', '1772052@maranatha.ac.id', NULL, '$2y$10$yf3K/m581QGqR3.tFIvIHeg.QoWCOkhOqSe1tZ0HgkD9MN7HHjLYW', NULL, '2021-01-11 09:31:32', '2021-01-11 09:37:38'),
+(89, 'Lee Jeno', 'Jalan Nct Dream No.3', '2000-04-23', '2018', '081223042000', 'L', 'User', 'Seorang Laki-laki Yang Memili Senyum Bulan Sabit', 'Nono', 'Nono-BTFLC', 'Nono-DVYjC', 'Aktif', 'jeno5.jpg', 'JaehyunAurelia@gmail.com', '2021-01-11 09:51:08', '$2y$10$Lfx8aKGSnrqZCt5C5YLPM.cQ3OBmjr30parwx37QYjupZROYYeA6S', NULL, '2021-01-11 09:48:08', '2021-01-11 09:57:51'),
+(90, 'coba', 'jalan', '1999-01-01', '2020', '081220452951', 'P', 'Admin', '-', 'coba', NULL, 'coba-IVBep', 'Aktif', NULL, 'amandha@gmail.com', NULL, '$2y$10$Vs1SZajqjno0Yih82OwLeO9a6XTlzW8b854Cbh2fuFijFubacE.UG', NULL, '2021-01-11 22:30:53', '2021-01-11 22:30:53'),
+(91, 'coba2', 'jalan', '2000-01-01', '2020', '08122000000', 'L', 'Admin', '-', 'coba2', NULL, 'coba2-WIlVQ', 'Aktif', NULL, 'AMANDHA2@gmail.com', NULL, '$2y$10$Y7nK08cfIRJj1G9K5GJhWu4IYIGSUIXb3oMGdwo7eH.WFiHfwPd3i', NULL, '2021-01-11 22:32:31', '2021-01-11 22:32:31');
 
 -- --------------------------------------------------------
 
@@ -207,11 +219,15 @@ CREATE TABLE `works` (
 --
 
 INSERT INTO `works` (`id`, `users_id`, `company`, `position`, `works_place`, `description`, `date_start`, `date_end`, `created_at`, `updated_at`) VALUES
-(28, 83, 'Disney', 'CEO of Disney', '4600 North World Drive Orlando, FL 32830', 'Seorang CEO yang sangat mencintai Disney dan menjadi CEO yang terbaik pada masanya.', '2020-12-01', '2040-12-01', '2020-12-07 05:51:21', '2020-12-07 05:51:21'),
+(28, 83, 'Disney Land', 'CEO of Disney', '4600 North World Drive Orlando, FL 32830', 'Seorang CEO yang sangat mencintai Disney dan menjadi CEO yang terbaik pada masanya.', '2020-12-01', '2040-12-01', '2020-12-07 05:51:21', '2021-01-11 10:04:49'),
 (29, 83, 'Pejuang Keadilan', 'Sekretaris', 'Jalan Pejuang Keadlina no.00', 'Seorang Sekretaris yang sangat mencintai keadilan', '2020-12-01', '2025-12-31', '2020-12-07 05:52:28', '2020-12-07 05:57:43'),
 (30, 85, 'Perusahaan Ajaib', 'Developer dan Backend', 'Jalan ajaib no.77', 'bekerja dengan ajaib', '2020-12-01', '2025-12-31', '2020-12-07 23:10:26', '2020-12-31 18:01:26'),
 (31, 86, 'Pejuang Kejujuran Sejak Dini', 'Pembuat Design Website', 'jln. pejuang kejujuran no.24', 'membuat sebuah website dengan design yang ditentukan oleh pembeli dengan syarat-syarat yang ada. juga membuat backend dari website tersebut jika dibutuhkan', '2020-01-01', '2025-01-01', '2020-12-31 17:40:47', '2020-12-31 17:40:47'),
-(32, 86, 'Pejuang Keadilan', 'Pembuat Website Pemerintah', 'jln. pejuang keadilan no.24', 'membuat website yang dibutuhkan pemerintah, tergantung kebutuhan yang diinginkan oleh pemerintah', '2021-02-02', '2030-02-02', '2020-12-31 17:41:55', '2020-12-31 17:41:55');
+(32, 86, 'Pejuang Keadilan', 'Pembuat Website Pemerintah', 'jln. pejuang keadilan no.24', 'membuat website yang dibutuhkan pemerintah, tergantung kebutuhan yang diinginkan oleh pemerintah', '2021-02-02', '2030-02-02', '2020-12-31 17:41:55', '2020-12-31 17:41:55'),
+(33, 88, 'NCT Dream', 'Rapper', 'jalan nct 2020 no.1', 'bekerja sebagai seorang rapper dalam sebuah grup', '2015-04-01', '2040-04-01', '2021-01-11 09:41:27', '2021-01-11 09:41:27'),
+(34, 88, 'NCT Dream', 'Dancer', 'jalan nct 2020 no.2', 'bekerja sebagai dancer dalam sebuah grup', '2015-04-01', '2050-04-01', '2021-01-11 09:42:14', '2021-01-11 09:42:14'),
+(35, 89, 'NCT Dream', 'Main Dancer', 'jalan nct 2020 no.5', 'bekerja sebagai main dancer atau dancer utama', '2015-01-01', '2050-01-01', '2021-01-11 10:00:23', '2021-01-11 10:00:23'),
+(36, 89, 'NCT Dream', 'Main Rapper', 'jalan nct 2020 no.10', 'bekerja sebagai main rapper atau rapper yang utama', '2014-05-01', '2024-05-01', '2021-01-11 10:01:15', '2021-01-11 10:01:15');
 
 --
 -- Indexes for dumped tables
@@ -278,7 +294,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -290,25 +306,25 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT untuk tabel `posts_category`
 --
 ALTER TABLE `posts_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT untuk tabel `works`
 --
 ALTER TABLE `works`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
