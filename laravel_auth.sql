@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Jan 2021 pada 09.48
+-- Waktu pembuatan: 15 Jan 2021 pada 10.52
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.10
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `laravel_auth`
 --
+CREATE DATABASE IF NOT EXISTS `laravel_auth` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `laravel_auth`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Struktur dari tabel `failed_jobs`
 --
 
+DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -42,6 +45,7 @@ CREATE TABLE `failed_jobs` (
 -- Struktur dari tabel `komentar`
 --
 
+DROP TABLE IF EXISTS `komentar`;
 CREATE TABLE `komentar` (
   `id` bigint(20) NOT NULL,
   `konten` text NOT NULL,
@@ -71,7 +75,10 @@ INSERT INTO `komentar` (`id`, `konten`, `users_id`, `posts_id`, `parent`, `creat
 (22, 'how to join ?', 88, 108, 0, '2021-01-11 09:38:49', '2021-01-11'),
 (23, 'hai jaemin, how to join ?', 89, 112, 0, '2021-01-11 09:58:35', '2021-01-11'),
 (24, 'test3', 89, 109, 20, '2021-01-11 09:58:57', '2021-01-11'),
-(25, 'Dibutuhkan Secepatnya!!', 89, 113, 0, '2021-01-11 10:04:17', '2021-01-11');
+(25, 'Dibutuhkan Secepatnya!!', 89, 113, 0, '2021-01-11 10:04:17', '2021-01-11'),
+(26, 'kenapa?', 86, 109, 18, '2021-01-15 02:51:36', '2021-01-15'),
+(27, 'kenapa?', 86, 109, 18, '2021-01-15 02:51:37', '2021-01-15'),
+(28, 'levina', 86, 109, 18, '2021-01-15 02:51:50', '2021-01-15');
 
 -- --------------------------------------------------------
 
@@ -79,6 +86,7 @@ INSERT INTO `komentar` (`id`, `konten`, `users_id`, `posts_id`, `parent`, `creat
 -- Struktur dari tabel `migrations`
 --
 
+DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -101,6 +109,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Struktur dari tabel `posts`
 --
 
+DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -133,6 +142,7 @@ INSERT INTO `posts` (`id`, `title`, `body`, `category`, `document_url`, `filter`
 -- Struktur dari tabel `posts_category`
 --
 
+DROP TABLE IF EXISTS `posts_category`;
 CREATE TABLE `posts_category` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -158,6 +168,7 @@ INSERT INTO `posts_category` (`id`, `name`, `status`, `created_at`, `updated_at`
 -- Struktur dari tabel `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -191,9 +202,7 @@ INSERT INTO `users` (`id`, `name`, `address`, `birthdate`, `generation`, `phone_
 (85, 'Celine Lieshiana', 'Jl. Sukamekae 3 No 9', '1999-05-18', '2017', '085321540947', 'P', 'User', 'Seorang Perempuan Biasa-biasa :)', 'Cel2', 'coba-CJNjU', 'coba-FDZmK', 'Aktif', 'Celine.jpg', 'wakram190965@gmail.com', '2021-01-08 08:23:50', '$2y$10$.bseHk5vZxMOkY3gyNh98eILi19W79WAY3eBMU8cU2IqpOLh.6UlC', NULL, '2020-12-07 23:04:07', '2021-01-08 08:36:29'),
 (86, 'Tiaz Rizqy Amandha', 'Jalan mentor no.66', '1999-06-24', '2017', '081220452951', 'P', 'Admin', 'seorang mahasiswa semester 7 yang sedang berjuang dengan stata, semoga berhasil :)', 'Cunda', NULL, 'Cunda-JXqEP', 'Aktif', 'Manda.jpg', 'amandhatiazrizqi@gmail.com', NULL, '$2y$10$7GdrEEYYEtX29G7PmVw60.CxD82AyZhSLTwZap5o5V6Yi0fO256i.', NULL, '2020-12-31 17:37:11', '2021-01-10 09:37:13'),
 (88, 'Na Jaemin', 'Jalan nct dream no.7', '2000-08-13', '2018', '081213082000', 'L', 'Admin', 'seorang laki-laki yang romantis, dan sangat menyayangi sijeuni.', 'Nana', NULL, 'Nana-dPCvt', 'Aktif', 'jaemin4.jpg', '1772052@maranatha.ac.id', NULL, '$2y$10$yf3K/m581QGqR3.tFIvIHeg.QoWCOkhOqSe1tZ0HgkD9MN7HHjLYW', NULL, '2021-01-11 09:31:32', '2021-01-11 09:37:38'),
-(89, 'Lee Jeno', 'Jalan Nct Dream No.3', '2000-04-23', '2018', '081223042000', 'L', 'User', 'Seorang Laki-laki Yang Memili Senyum Bulan Sabit', 'Nono', 'Nono-BTFLC', 'Nono-DVYjC', 'Aktif', 'jeno5.jpg', 'JaehyunAurelia@gmail.com', '2021-01-11 09:51:08', '$2y$10$Lfx8aKGSnrqZCt5C5YLPM.cQ3OBmjr30parwx37QYjupZROYYeA6S', NULL, '2021-01-11 09:48:08', '2021-01-11 09:57:51'),
-(90, 'coba', 'jalan', '1999-01-01', '2020', '081220452951', 'P', 'Admin', '-', 'coba', NULL, 'coba-IVBep', 'Aktif', NULL, 'amandha@gmail.com', NULL, '$2y$10$Vs1SZajqjno0Yih82OwLeO9a6XTlzW8b854Cbh2fuFijFubacE.UG', NULL, '2021-01-11 22:30:53', '2021-01-11 22:30:53'),
-(91, 'coba2', 'jalan', '2000-01-01', '2020', '08122000000', 'L', 'Admin', '-', 'coba2', NULL, 'coba2-WIlVQ', 'Aktif', NULL, 'AMANDHA2@gmail.com', NULL, '$2y$10$Y7nK08cfIRJj1G9K5GJhWu4IYIGSUIXb3oMGdwo7eH.WFiHfwPd3i', NULL, '2021-01-11 22:32:31', '2021-01-11 22:32:31');
+(89, 'Lee Jeno', 'Jalan Nct Dream No.3', '2000-04-23', '2018', '081223042000', 'L', 'User', 'Seorang Laki-laki Yang Memili Senyum Bulan Sabit', 'Nono', 'Nono-BTFLC', 'Nono-DVYjC', 'Aktif', 'jeno5.jpg', 'JaehyunAurelia@gmail.com', '2021-01-11 09:51:08', '$2y$10$Lfx8aKGSnrqZCt5C5YLPM.cQ3OBmjr30parwx37QYjupZROYYeA6S', NULL, '2021-01-11 09:48:08', '2021-01-11 09:57:51');
 
 -- --------------------------------------------------------
 
@@ -201,6 +210,7 @@ INSERT INTO `users` (`id`, `name`, `address`, `birthdate`, `generation`, `phone_
 -- Struktur dari tabel `works`
 --
 
+DROP TABLE IF EXISTS `works`;
 CREATE TABLE `works` (
   `id` int(10) UNSIGNED NOT NULL,
   `users_id` bigint(20) UNSIGNED NOT NULL,
@@ -294,7 +304,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
